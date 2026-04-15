@@ -5,53 +5,50 @@ import '../theme/app_radius.dart';
 import '../theme/app_spacing.dart';
 import '../theme/app_text_styles.dart';
 
-enum AppButtonVariant { primary, light }
+enum AppOutlinedButtonVariant { primary, light }
 
-class AppButton extends StatelessWidget {
+class AppOutlinedButton extends StatelessWidget {
   final String label;
   final VoidCallback? onPressed;
-  final bool isLoading;
   final Widget? leading;
+  final bool isLoading;
   final EdgeInsetsGeometry? padding;
   final double? height;
   final double? width;
   final bool expand;
-  final AppButtonVariant variant;
+  final AppOutlinedButtonVariant variant;
 
-  const AppButton({
+  const AppOutlinedButton({
     super.key,
     required this.label,
     required this.onPressed,
-    this.isLoading = false,
     this.leading,
+    this.isLoading = false,
     this.padding,
     this.height,
     this.width,
     this.expand = true,
-    this.variant = AppButtonVariant.primary,
+    this.variant = AppOutlinedButtonVariant.primary,
   });
 
   @override
   Widget build(BuildContext context) {
-    final _AppButtonStyle style = _resolveStyle();
+    final _AppOutlinedButtonStyle style = _resolveStyle();
 
     return SizedBox(
       height: height ?? 56,
       width: expand ? double.infinity : width,
-      child: ElevatedButton(
+      child: OutlinedButton(
         onPressed: isLoading ? null : onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: style.backgroundColor,
+        style: OutlinedButton.styleFrom(
           foregroundColor: style.foregroundColor,
-          disabledBackgroundColor: AppColors.border,
-          disabledForegroundColor: AppColors.textSecondary,
-          elevation: 0,
           padding:
               padding ??
               const EdgeInsets.symmetric(
                 horizontal: AppSpacing.xl,
                 vertical: AppSpacing.lg,
               ),
+          side: BorderSide(color: style.borderColor, width: 1.4),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppRadius.xl),
           ),
@@ -65,7 +62,7 @@ class AppButton extends StatelessWidget {
                   width: 22,
                   height: 22,
                   child: CircularProgressIndicator(
-                    strokeWidth: 2.4,
+                    strokeWidth: 2.2,
                     valueColor: AlwaysStoppedAnimation<Color>(
                       style.loadingColor,
                     ),
@@ -95,37 +92,37 @@ class AppButton extends StatelessWidget {
     );
   }
 
-  _AppButtonStyle _resolveStyle() {
+  _AppOutlinedButtonStyle _resolveStyle() {
     switch (variant) {
-      case AppButtonVariant.primary:
-        return const _AppButtonStyle(
-          backgroundColor: AppColors.primary,
-          foregroundColor: AppColors.white,
-          loadingColor: AppColors.white,
-          textStyle: AppTextStyles.buttonPrimary,
-        );
-      case AppButtonVariant.light:
-        return _AppButtonStyle(
-          backgroundColor: AppColors.white,
+      case AppOutlinedButtonVariant.primary:
+        return const _AppOutlinedButtonStyle(
           foregroundColor: AppColors.primary,
+          borderColor: AppColors.primary,
           loadingColor: AppColors.primary,
-          textStyle: AppTextStyles.buttonPrimary.copyWith(
-            color: AppColors.primary,
+          textStyle: AppTextStyles.buttonOutlined,
+        );
+      case AppOutlinedButtonVariant.light:
+        return _AppOutlinedButtonStyle(
+          foregroundColor: AppColors.white,
+          borderColor: AppColors.white,
+          loadingColor: AppColors.white,
+          textStyle: AppTextStyles.buttonOutlined.copyWith(
+            color: AppColors.white,
           ),
         );
     }
   }
 }
 
-class _AppButtonStyle {
-  final Color backgroundColor;
+class _AppOutlinedButtonStyle {
   final Color foregroundColor;
+  final Color borderColor;
   final Color loadingColor;
   final TextStyle textStyle;
 
-  const _AppButtonStyle({
-    required this.backgroundColor,
+  const _AppOutlinedButtonStyle({
     required this.foregroundColor,
+    required this.borderColor,
     required this.loadingColor,
     required this.textStyle,
   });

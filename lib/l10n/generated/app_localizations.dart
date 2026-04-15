@@ -18,7 +18,7 @@ import 'app_localizations_en.dart';
 /// `supportedLocales` list. For example:
 ///
 /// ```dart
-/// import 'l10n/app_localizations.dart';
+/// import 'generated/app_localizations.dart';
 ///
 /// return MaterialApp(
 ///   localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -67,8 +67,8 @@ abstract class AppLocalizations {
 
   final String localeName;
 
-  static AppLocalizations? of(BuildContext context) {
-    return Localizations.of<AppLocalizations>(context, AppLocalizations);
+  static AppLocalizations of(BuildContext context) {
+    return Localizations.of<AppLocalizations>(context, AppLocalizations)!;
   }
 
   static const LocalizationsDelegate<AppLocalizations> delegate =
@@ -247,6 +247,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'6-digit code from your email'**
   String get enterConfirmationCode;
+
+  /// No description provided for @forgotPasswordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot your password?'**
+  String get forgotPasswordTitle;
+
+  /// No description provided for @home.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get home;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
+  /// No description provided for @searchPlaceholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Search here'**
+  String get searchPlaceholder;
+
+  /// No description provided for @lessonTypesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What types of lessons are you usually interested in?'**
+  String get lessonTypesTitle;
+
+  /// No description provided for @quranCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Holy Quran'**
+  String get quranCategory;
+
+  /// No description provided for @islamicSciencesCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Islamic Sciences'**
+  String get islamicSciencesCategory;
+
+  /// No description provided for @viewAllNearbyMosques.
+  ///
+  /// In en, this message translates to:
+  /// **'View all nearby mosques'**
+  String get viewAllNearbyMosques;
+
+  /// No description provided for @viewAllAcademies.
+  ///
+  /// In en, this message translates to:
+  /// **'View all academies'**
+  String get viewAllAcademies;
+
+  /// No description provided for @sampleMosqueName.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample Mosque'**
+  String get sampleMosqueName;
+
+  /// No description provided for @sampleAcademyName.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample Academy'**
+  String get sampleAcademyName;
+
+  /// No description provided for @notifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notifications;
+
+  /// No description provided for @settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settings;
+
+  /// No description provided for @bookmarks.
+  ///
+  /// In en, this message translates to:
+  /// **'Bookmarks'**
+  String get bookmarks;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
 }
 
 class _AppLocalizationsDelegate

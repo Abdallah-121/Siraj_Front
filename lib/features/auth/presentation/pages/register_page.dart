@@ -11,7 +11,9 @@ import '../widgets/register_form.dart';
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
 
-  void _onRegisterPressed(BuildContext context) {}
+  void _onRegisterPressed(BuildContext context) {
+    Navigator.pushReplacementNamed(context, RouteNames.home);
+  }
 
   void _onLoginPressed(BuildContext context) {
     Navigator.pushReplacementNamed(context, RouteNames.login);
@@ -24,7 +26,7 @@ class RegisterPage extends StatelessWidget {
       title: context.l10n.registerTitle,
       headerPadding: const EdgeInsets.fromLTRB(
         AppSpacing.xl,
-        10,
+        32,
         AppSpacing.xl,
         18,
       ),

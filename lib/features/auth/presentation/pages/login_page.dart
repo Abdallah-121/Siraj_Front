@@ -11,7 +11,9 @@ import '../widgets/login_form.dart';
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
-  void _onLoginPressed(BuildContext context) {}
+  void _onLoginPressed(BuildContext context) {
+    Navigator.pushReplacementNamed(context, RouteNames.home);
+  }
 
   void _onGooglePressed(BuildContext context) {}
 

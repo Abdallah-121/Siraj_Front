@@ -23,7 +23,9 @@ class WelcomePage extends StatelessWidget {
     Navigator.pushNamed(context, RouteNames.login);
   }
 
-  void _onGuestPressed(BuildContext context) {}
+  void _onGuestPressed(BuildContext context) {
+    Navigator.pushReplacementNamed(context, RouteNames.home);
+  }
 
   @override
   Widget build(BuildContext context) {

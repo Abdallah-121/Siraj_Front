@@ -82,4 +82,49 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get enterConfirmationCode => 'رقم من ست خانات في بريدك';
+
+  @override
+  String get forgotPasswordTitle => 'هل نسيت كلمة المرور؟';
+
+  @override
+  String get home => 'الرئيسية';
+
+  @override
+  String get search => 'بحث';
+
+  @override
+  String get searchPlaceholder => 'ابحث هنا';
+
+  @override
+  String get lessonTypesTitle => 'نوع الدروس التي تهتم بها عادة؟';
+
+  @override
+  String get quranCategory => 'القرآن الكريم';
+
+  @override
+  String get islamicSciencesCategory => 'العلوم الشرعية';
+
+  @override
+  String get viewAllNearbyMosques => 'عرض كل المساجد القريبة';
+
+  @override
+  String get viewAllAcademies => 'عرض كل الأكاديميات';
+
+  @override
+  String get sampleMosqueName => 'مسجد كذا';
+
+  @override
+  String get sampleAcademyName => 'أكاديمية كذا';
+
+  @override
+  String get notifications => 'الإشعارات';
+
+  @override
+  String get settings => 'الإعدادات';
+
+  @override
+  String get bookmarks => 'المحفوظات';
+
+  @override
+  String get profile => 'الملف الشخصي';
 }

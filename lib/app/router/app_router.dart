@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seraj/features/home/presentation/pages/home_page.dart';
 
 import '../../features/auth/presentation/pages/forgot_password_page.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
@@ -20,6 +21,8 @@ abstract final class AppRouter {
           settings: settings,
           child: const ForgotPasswordPage(),
         );
+      case RouteNames.home:
+        return _materialRoute(settings: settings, child: const HomePage());
       default:
         return _materialRoute(settings: settings, child: const WelcomePage());
     }

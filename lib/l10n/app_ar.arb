@@ -25,5 +25,19 @@
   "newPassword": "كلمة المرور الجديدة",
   "enterNewPassword": "اكتب كلمة المرور",
   "confirmationCode": "كود التأكيد",
-  "enterConfirmationCode": "رقم من ست خانات في بريدك"
+  "enterConfirmationCode": "رقم من ست خانات في بريدك",
+  "home": "الرئيسية",
+  "search": "بحث",
+  "searchPlaceholder": "ابحث هنا",
+  "lessonTypesTitle": "نوع الدروس التي تهتم بها عادة؟",
+  "quranCategory": "القرآن الكريم",
+  "islamicSciencesCategory": "العلوم الشرعية",
+  "viewAllNearbyMosques": "عرض كل المساجد القريبة",
+  "viewAllAcademies": "عرض كل الأكاديميات",
+  "sampleMosqueName": "مسجد كذا",
+  "sampleAcademyName": "أكاديمية كذا",
+  "notifications": "الإشعارات",
+  "settings": "الإعدادات",
+  "bookmarks": "المحفوظات",
+  "profile": "الملف الشخصي"
 }

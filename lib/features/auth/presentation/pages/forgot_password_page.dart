@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../../app/router/route_names.dart';
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/responsive/responsive_constraints.dart';
 import '../../../../core/responsive/responsive_wrapper.dart';
-import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/context_extensions.dart';
 import '../../../../core/widgets/app_gap.dart';
@@ -19,7 +19,9 @@ class ForgotPasswordPage extends StatelessWidget {
     Navigator.pop(context);
   }
 
-  void _onNextPressed(BuildContext context) {}
+  void _onNextPressed(BuildContext context) {
+    Navigator.pushReplacementNamed(context, RouteNames.login);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +55,7 @@ class ForgotPasswordPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   AuthTitleText(
-                    title: context.l10n.forgotPassword,
+                    title: context.l10n.forgotPasswordTitle,
                     textAlign: TextAlign.center,
                   ),
                   AppGap.v32,
@@ -119,10 +121,12 @@ class _ActionCircleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color backgroundColor = isFilled
-        ? AppColors.primary
-        : AppColors.transparent;
-    final Color borderColor = isFilled ? AppColors.primary : AppColors.primary;
-    final Color iconColor = isFilled ? AppColors.white : AppColors.primary;
+        ? Theme.of(context).colorScheme.primary
+        : Colors.transparent;
+    final Color borderColor = Theme.of(context).colorScheme.primary;
+    final Color iconColor = isFilled
+        ? Colors.white
+        : Theme.of(context).colorScheme.primary;
 
     return SizedBox(
       width: 58,

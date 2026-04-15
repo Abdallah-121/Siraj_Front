@@ -24,6 +24,20 @@
   "newPassword": "New password",
   "enterNewPassword": "Enter your password",
   "confirmationCode": "Confirmation code",
-  "enterConfirmationCode": "6-digit code from your email"
-
+  "enterConfirmationCode": "6-digit code from your email",
+  "forgotPasswordTitle": "Forgot your password?",
+  "home": "Home",
+  "search": "Search",
+  "searchPlaceholder": "Search here",
+  "lessonTypesTitle": "What types of lessons are you usually interested in?",
+  "quranCategory": "Holy Quran",
+  "islamicSciencesCategory": "Islamic Sciences",
+  "viewAllNearbyMosques": "View all nearby mosques",
+  "viewAllAcademies": "View all academies",
+  "sampleMosqueName": "Sample Mosque",
+  "sampleAcademyName": "Sample Academy",
+  "notifications": "Notifications",
+  "settings": "Settings",
+  "bookmarks": "Bookmarks",
+  "profile": "Profile"
 }

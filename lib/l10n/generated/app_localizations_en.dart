@@ -82,4 +82,50 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get enterConfirmationCode => '6-digit code from your email';
+
+  @override
+  String get forgotPasswordTitle => 'Forgot your password?';
+
+  @override
+  String get home => 'Home';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get searchPlaceholder => 'Search here';
+
+  @override
+  String get lessonTypesTitle =>
+      'What types of lessons are you usually interested in?';
+
+  @override
+  String get quranCategory => 'Holy Quran';
+
+  @override
+  String get islamicSciencesCategory => 'Islamic Sciences';
+
+  @override
+  String get viewAllNearbyMosques => 'View all nearby mosques';
+
+  @override
+  String get viewAllAcademies => 'View all academies';
+
+  @override
+  String get sampleMosqueName => 'Sample Mosque';
+
+  @override
+  String get sampleAcademyName => 'Sample Academy';
+
+  @override
+  String get notifications => 'Notifications';
+
+  @override
+  String get settings => 'Settings';
+
+  @override
+  String get bookmarks => 'Bookmarks';
+
+  @override
+  String get profile => 'Profile';
 }

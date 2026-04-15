@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:seraj/app/local/app_locale_controller.dart';
 import 'package:seraj/app/local/app_locale_scope.dart';
+import 'package:seraj/l10n/generated/app_localizations.dart';
 
-import '../l10n/app_localizations.dart';
 import '../core/theme/app_theme.dart';
 import 'router/app_router.dart';
 import 'router/route_names.dart';

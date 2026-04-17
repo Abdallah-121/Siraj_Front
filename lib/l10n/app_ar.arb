@@ -39,5 +39,22 @@
   "notifications": "الإشعارات",
   "settings": "الإعدادات",
   "bookmarks": "المحفوظات",
-  "profile": "الملف الشخصي"
+  "profile": "الملف الشخصي",
+  "accountLocationTitle": "اختر موقعك",
+  "governorate": "المحافظة",
+  "searchGovernorate": "ابحث عن المحافظة",
+  "neighborhood": "الحي",
+  "writeNeighborhood": "يرجى كتابة المنطقة السكنية",
+  "neighborhoodHelp": "إذا كان الحي/القرية غير موجود، يرجى ذكر العنوان المناسب",
+  "damascus": "دمشق",
+  "aleppo": "حلب",
+  "hama": "حماة",
+  "tartus": "طرطوس",
+  "latakia": "اللاذقية",
+  "daraa": "درعا",
+  "suwayda": "السويداء",
+  "homs": "حمص",
+  "deirEzzor": "دير الزور",
+  "next": "التالي",
+  "back": "رجوع"
 }

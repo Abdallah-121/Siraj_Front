@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:seraj/features/home/presentation/pages/home_page.dart';
 
+import '../../features/auth/presentation/pages/account_location_page.dart';
 import '../../features/auth/presentation/pages/forgot_password_page.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
 import '../../features/auth/presentation/pages/register_page.dart';
 import '../../features/auth/presentation/pages/welcome_page.dart';
+import '../../features/home/presentation/pages/home_page.dart';
 import 'route_names.dart';
 
 abstract final class AppRouter {
@@ -20,6 +21,11 @@ abstract final class AppRouter {
         return _materialRoute(
           settings: settings,
           child: const ForgotPasswordPage(),
+        );
+      case RouteNames.accountLocation:
+        return _materialRoute(
+          settings: settings,
+          child: const AccountLocationPage(),
         );
       case RouteNames.home:
         return _materialRoute(settings: settings, child: const HomePage());

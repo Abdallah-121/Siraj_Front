@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  intl: any
   cupertino_icons: ^1.0.8
   flutter_gen: ^5.13.0+1
 
@@ -24,4 +25,4 @@ flutter:
   uses-material-design: true
   generate: true
   assets:
-    - 'assets/images/seraj_logo.png'
+    - assets/images/seraj_logo.png

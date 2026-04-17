@@ -337,6 +337,108 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profile'**
   String get profile;
+
+  /// No description provided for @accountLocationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your location'**
+  String get accountLocationTitle;
+
+  /// No description provided for @governorate.
+  ///
+  /// In en, this message translates to:
+  /// **'Governorate'**
+  String get governorate;
+
+  /// No description provided for @searchGovernorate.
+  ///
+  /// In en, this message translates to:
+  /// **'Search governorate'**
+  String get searchGovernorate;
+
+  /// No description provided for @neighborhood.
+  ///
+  /// In en, this message translates to:
+  /// **'Neighborhood'**
+  String get neighborhood;
+
+  /// No description provided for @writeNeighborhood.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your residential area'**
+  String get writeNeighborhood;
+
+  /// No description provided for @neighborhoodHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'If your neighborhood/village is not listed, please provide the closest suitable address'**
+  String get neighborhoodHelp;
+
+  /// No description provided for @damascus.
+  ///
+  /// In en, this message translates to:
+  /// **'Damascus'**
+  String get damascus;
+
+  /// No description provided for @aleppo.
+  ///
+  /// In en, this message translates to:
+  /// **'Aleppo'**
+  String get aleppo;
+
+  /// No description provided for @hama.
+  ///
+  /// In en, this message translates to:
+  /// **'Hama'**
+  String get hama;
+
+  /// No description provided for @tartus.
+  ///
+  /// In en, this message translates to:
+  /// **'Tartus'**
+  String get tartus;
+
+  /// No description provided for @latakia.
+  ///
+  /// In en, this message translates to:
+  /// **'Latakia'**
+  String get latakia;
+
+  /// No description provided for @daraa.
+  ///
+  /// In en, this message translates to:
+  /// **'Daraa'**
+  String get daraa;
+
+  /// No description provided for @suwayda.
+  ///
+  /// In en, this message translates to:
+  /// **'As-Suwayda'**
+  String get suwayda;
+
+  /// No description provided for @homs.
+  ///
+  /// In en, this message translates to:
+  /// **'Homs'**
+  String get homs;
+
+  /// No description provided for @deirEzzor.
+  ///
+  /// In en, this message translates to:
+  /// **'Deir ez-Zor'**
+  String get deirEzzor;
+
+  /// No description provided for @next.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get next;
+
+  /// No description provided for @back.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get back;
 }
 
 class _AppLocalizationsDelegate

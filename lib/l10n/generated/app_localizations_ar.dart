@@ -127,4 +127,56 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get profile => 'الملف الشخصي';
+
+  @override
+  String get accountLocationTitle => 'اختر موقعك';
+
+  @override
+  String get governorate => 'المحافظة';
+
+  @override
+  String get searchGovernorate => 'ابحث عن المحافظة';
+
+  @override
+  String get neighborhood => 'الحي';
+
+  @override
+  String get writeNeighborhood => 'يرجى كتابة المنطقة السكنية';
+
+  @override
+  String get neighborhoodHelp =>
+      'إذا كان الحي/القرية غير موجود، يرجى ذكر العنوان المناسب';
+
+  @override
+  String get damascus => 'دمشق';
+
+  @override
+  String get aleppo => 'حلب';
+
+  @override
+  String get hama => 'حماة';
+
+  @override
+  String get tartus => 'طرطوس';
+
+  @override
+  String get latakia => 'اللاذقية';
+
+  @override
+  String get daraa => 'درعا';
+
+  @override
+  String get suwayda => 'السويداء';
+
+  @override
+  String get homs => 'حمص';
+
+  @override
+  String get deirEzzor => 'دير الزور';
+
+  @override
+  String get next => 'التالي';
+
+  @override
+  String get back => 'رجوع';
 }

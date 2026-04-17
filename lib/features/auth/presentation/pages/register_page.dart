@@ -12,7 +12,7 @@ class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
 
   void _onRegisterPressed(BuildContext context) {
-    Navigator.pushReplacementNamed(context, RouteNames.home);
+    Navigator.pushReplacementNamed(context, RouteNames.accountLocation);
   }
 
   void _onLoginPressed(BuildContext context) {

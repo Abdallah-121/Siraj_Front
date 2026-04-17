@@ -8,20 +8,20 @@ import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/context_extensions.dart';
 import '../../../../core/widgets/app_gap.dart';
 import '../../../../core/widgets/app_scaffold.dart';
+import '../widgets/account_location_form.dart';
 import '../widgets/auth_flow_actions.dart';
 import '../widgets/auth_logo_panel.dart';
 import '../widgets/auth_title_text.dart';
-import '../widgets/forgot_password_form.dart';
 
-class ForgotPasswordPage extends StatelessWidget {
-  const ForgotPasswordPage({super.key});
+class AccountLocationPage extends StatelessWidget {
+  const AccountLocationPage({super.key});
 
   void _onBackPressed(BuildContext context) {
     Navigator.pop(context);
   }
 
   void _onNextPressed(BuildContext context) {
-    Navigator.pushReplacementNamed(context, RouteNames.login);
+    Navigator.pushReplacementNamed(context, RouteNames.home);
   }
 
   @override
@@ -50,18 +50,20 @@ class ForgotPasswordPage extends StatelessWidget {
                 AppSpacing.xl,
                 AppSpacing.xxl,
                 AppSpacing.xl,
-                AppSpacing.xl,
+                AppSpacing.lg,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   AuthTitleText(
-                    title: context.l10n.forgotPasswordTitle,
+                    title: context.l10n.accountLocationTitle,
                     textAlign: TextAlign.center,
                   ),
-                  AppGap.v32,
-                  const ForgotPasswordForm(),
-                  const Spacer(),
+                  AppGap.v24,
+                  const Expanded(
+                    child: SingleChildScrollView(child: AccountLocationForm()),
+                  ),
+                  AppGap.v16,
                   AuthFlowActions(
                     onBackPressed: () => _onBackPressed(context),
                     onNextPressed: () => _onNextPressed(context),

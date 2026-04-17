@@ -39,5 +39,22 @@
   "notifications": "Notifications",
   "settings": "Settings",
   "bookmarks": "Bookmarks",
-  "profile": "Profile"
+  "profile": "Profile",
+  "accountLocationTitle": "Choose your location",
+  "governorate": "Governorate",
+  "searchGovernorate": "Search governorate",
+  "neighborhood": "Neighborhood",
+  "writeNeighborhood": "Please enter your residential area",
+  "neighborhoodHelp": "If your neighborhood/village is not listed, please provide the closest suitable address",
+  "damascus": "Damascus",
+  "aleppo": "Aleppo",
+  "hama": "Hama",
+  "tartus": "Tartus",
+  "latakia": "Latakia",
+  "daraa": "Daraa",
+  "suwayda": "As-Suwayda",
+  "homs": "Homs",
+  "deirEzzor": "Deir ez-Zor",
+  "next": "Next",
+  "back": "Back"
 }

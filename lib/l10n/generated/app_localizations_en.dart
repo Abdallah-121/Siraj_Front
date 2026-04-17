@@ -128,4 +128,56 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profile => 'Profile';
+
+  @override
+  String get accountLocationTitle => 'Choose your location';
+
+  @override
+  String get governorate => 'Governorate';
+
+  @override
+  String get searchGovernorate => 'Search governorate';
+
+  @override
+  String get neighborhood => 'Neighborhood';
+
+  @override
+  String get writeNeighborhood => 'Please enter your residential area';
+
+  @override
+  String get neighborhoodHelp =>
+      'If your neighborhood/village is not listed, please provide the closest suitable address';
+
+  @override
+  String get damascus => 'Damascus';
+
+  @override
+  String get aleppo => 'Aleppo';
+
+  @override
+  String get hama => 'Hama';
+
+  @override
+  String get tartus => 'Tartus';
+
+  @override
+  String get latakia => 'Latakia';
+
+  @override
+  String get daraa => 'Daraa';
+
+  @override
+  String get suwayda => 'As-Suwayda';
+
+  @override
+  String get homs => 'Homs';
+
+  @override
+  String get deirEzzor => 'Deir ez-Zor';
+
+  @override
+  String get next => 'Next';
+
+  @override
+  String get back => 'Back';
 }

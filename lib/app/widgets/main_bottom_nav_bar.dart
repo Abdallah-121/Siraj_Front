@@ -4,7 +4,7 @@ import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../core/utils/context_extensions.dart';
 
-enum MainNavItem { search, settings, home, notifications, bookmarks }
+enum MainNavItem { search, settings, home, notifications, bookmarks, profile }
 
 class MainBottomNavBar extends StatelessWidget {
   final MainNavItem currentItem;
@@ -61,6 +61,12 @@ class MainBottomNavBar extends StatelessWidget {
               isSelected: currentItem == MainNavItem.bookmarks,
               tooltip: context.l10n.bookmarks,
               onTap: () => onItemSelected?.call(MainNavItem.bookmarks),
+            ),
+            _MainNavBarItem(
+              icon: Icons.person_outline_rounded,
+              isSelected: currentItem == MainNavItem.profile,
+              tooltip: context.l10n.profile,
+              onTap: () => onItemSelected?.call(MainNavItem.profile),
             ),
           ],
         ),

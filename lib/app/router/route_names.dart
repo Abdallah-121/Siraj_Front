@@ -17,11 +17,12 @@ abstract final class RouteNames {
   static const String courseRegistration = '/explore/course-registration';
 
   static const String search = '/search';
-
   static const String settings = '/settings';
 
   static const String profile = '/profile';
   static const String editProfile = '/profile/edit';
   static const String currentCourses = '/profile/current-courses';
   static const String completedCourses = '/profile/completed-courses';
+
+  static const String technicalSupport = '/support/technical';
 }

@@ -1135,6 +1135,132 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Logged out successfully'**
   String get logoutSuccessMessage;
+
+  /// No description provided for @profileTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profileTitle;
+
+  /// No description provided for @editProfileTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit profile'**
+  String get editProfileTitle;
+
+  /// No description provided for @favorites.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorites'**
+  String get favorites;
+
+  /// No description provided for @currentLessons.
+  ///
+  /// In en, this message translates to:
+  /// **'Lessons not attended yet'**
+  String get currentLessons;
+
+  /// No description provided for @completedLessons.
+  ///
+  /// In en, this message translates to:
+  /// **'Lessons attended'**
+  String get completedLessons;
+
+  /// No description provided for @currentCoursesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your current lessons'**
+  String get currentCoursesTitle;
+
+  /// No description provided for @completedCoursesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Lessons you completed'**
+  String get completedCoursesTitle;
+
+  /// No description provided for @editProfileButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit profile'**
+  String get editProfileButton;
+
+  /// No description provided for @saveProfileChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'Save changes'**
+  String get saveProfileChanges;
+
+  /// No description provided for @sampleUserName.
+  ///
+  /// In en, this message translates to:
+  /// **'Username'**
+  String get sampleUserName;
+
+  /// No description provided for @sampleUserEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get sampleUserEmail;
+
+  /// No description provided for @courseName.
+  ///
+  /// In en, this message translates to:
+  /// **'Course name'**
+  String get courseName;
+
+  /// No description provided for @sampleCourseTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Any mosque, academy, sheikh, or teacher'**
+  String get sampleCourseTeacher;
+
+  /// No description provided for @sampleCourseTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Any lesson time'**
+  String get sampleCourseTime;
+
+  /// No description provided for @technicalSupportWelcomeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to technical support!'**
+  String get technicalSupportWelcomeTitle;
+
+  /// No description provided for @technicalSupportDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Please describe your issue in detail so we can help you'**
+  String get technicalSupportDescription;
+
+  /// No description provided for @yourProblem.
+  ///
+  /// In en, this message translates to:
+  /// **'Your issue...'**
+  String get yourProblem;
+
+  /// No description provided for @sendProblem.
+  ///
+  /// In en, this message translates to:
+  /// **'Send issue'**
+  String get sendProblem;
+
+  /// No description provided for @problemSentSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Issue sent successfully!'**
+  String get problemSentSuccessfully;
+
+  /// No description provided for @problemSendFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to send issue!'**
+  String get problemSendFailed;
+
+  /// No description provided for @problemSendFailedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Please review your message and try again'**
+  String get problemSendFailedMessage;
 }
 
 class _AppLocalizationsDelegate

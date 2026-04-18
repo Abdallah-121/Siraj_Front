@@ -46,6 +46,9 @@ class _HomePageState extends State<HomePage> {
       case MainNavItem.settings:
         Navigator.pushNamed(context, RouteNames.settings);
         break;
+      case MainNavItem.profile:
+        Navigator.pushNamed(context, RouteNames.profile);
+        break;
       default:
         setState(() {
           _currentItem = item;

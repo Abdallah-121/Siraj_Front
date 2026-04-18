@@ -539,4 +539,69 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get logoutSuccessMessage => 'Logged out successfully';
+
+  @override
+  String get profileTitle => 'Profile';
+
+  @override
+  String get editProfileTitle => 'Edit profile';
+
+  @override
+  String get favorites => 'Favorites';
+
+  @override
+  String get currentLessons => 'Lessons not attended yet';
+
+  @override
+  String get completedLessons => 'Lessons attended';
+
+  @override
+  String get currentCoursesTitle => 'Your current lessons';
+
+  @override
+  String get completedCoursesTitle => 'Lessons you completed';
+
+  @override
+  String get editProfileButton => 'Edit profile';
+
+  @override
+  String get saveProfileChanges => 'Save changes';
+
+  @override
+  String get sampleUserName => 'Username';
+
+  @override
+  String get sampleUserEmail => 'Email';
+
+  @override
+  String get courseName => 'Course name';
+
+  @override
+  String get sampleCourseTeacher => 'Any mosque, academy, sheikh, or teacher';
+
+  @override
+  String get sampleCourseTime => 'Any lesson time';
+
+  @override
+  String get technicalSupportWelcomeTitle => 'Welcome to technical support!';
+
+  @override
+  String get technicalSupportDescription =>
+      'Please describe your issue in detail so we can help you';
+
+  @override
+  String get yourProblem => 'Your issue...';
+
+  @override
+  String get sendProblem => 'Send issue';
+
+  @override
+  String get problemSentSuccessfully => 'Issue sent successfully!';
+
+  @override
+  String get problemSendFailed => 'Failed to send issue!';
+
+  @override
+  String get problemSendFailedMessage =>
+      'Please review your message and try again';
 }

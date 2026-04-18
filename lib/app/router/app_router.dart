@@ -15,6 +15,10 @@ import '../../features/explore/presentation/sheikhs/pages/sheikhs_page.dart';
 import '../../features/explore/presentation/subjects/pages/subject_branch_selection_page.dart';
 import '../../features/explore/presentation/subjects/pages/subject_places_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
+import '../../features/profile/presentation/pages/completed_courses_page.dart';
+import '../../features/profile/presentation/pages/current_courses_page.dart';
+import '../../features/profile/presentation/pages/edit_profile_page.dart';
+import '../../features/profile/presentation/pages/profile_page.dart';
 import '../../features/search/presentation/pages/search_page.dart';
 import '../../features/settings/presentation/pages/settings_page.dart';
 import 'route_names.dart';
@@ -80,6 +84,23 @@ abstract final class AppRouter {
         return _materialRoute(settings: settings, child: const SearchPage());
       case RouteNames.settings:
         return _materialRoute(settings: settings, child: const SettingsPage());
+      case RouteNames.profile:
+        return _materialRoute(settings: settings, child: const ProfilePage());
+      case RouteNames.editProfile:
+        return _materialRoute(
+          settings: settings,
+          child: const EditProfilePage(),
+        );
+      case RouteNames.currentCourses:
+        return _materialRoute(
+          settings: settings,
+          child: const CurrentCoursesPage(),
+        );
+      case RouteNames.completedCourses:
+        return _materialRoute(
+          settings: settings,
+          child: const CompletedCoursesPage(),
+        );
       default:
         return _materialRoute(settings: settings, child: const WelcomePage());
     }

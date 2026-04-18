@@ -535,4 +535,69 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get logoutSuccessMessage => 'تم تسجيل الخروج بنجاح';
+
+  @override
+  String get profileTitle => 'الملف الشخصي';
+
+  @override
+  String get editProfileTitle => 'تعديل الملف الشخصي';
+
+  @override
+  String get favorites => 'المفضلة';
+
+  @override
+  String get currentLessons => 'الدروس التي لم يتم حضورها';
+
+  @override
+  String get completedLessons => 'الدروس التي تم حضورها';
+
+  @override
+  String get currentCoursesTitle => 'دروسك الحالية';
+
+  @override
+  String get completedCoursesTitle => 'دروس أنهيت منها';
+
+  @override
+  String get editProfileButton => 'تعديل الملف الشخصي';
+
+  @override
+  String get saveProfileChanges => 'حفظ التعديلات';
+
+  @override
+  String get sampleUserName => 'اسم المستخدم';
+
+  @override
+  String get sampleUserEmail => 'الإيميل';
+
+  @override
+  String get courseName => 'اسم الدرس';
+
+  @override
+  String get sampleCourseTeacher => 'أي جامع أو أكاديمية أو شيخ أو أستاذ';
+
+  @override
+  String get sampleCourseTime => 'أي ساعة الدرس';
+
+  @override
+  String get technicalSupportWelcomeTitle => 'أهلًا بك في الدعم التقني!';
+
+  @override
+  String get technicalSupportDescription =>
+      'يرجى كتابة مشكلتك بالتفصيل لنحلها لك';
+
+  @override
+  String get yourProblem => 'مشكلتك...';
+
+  @override
+  String get sendProblem => 'إرسال المشكلة';
+
+  @override
+  String get problemSentSuccessfully => 'تم إرسال المشكلة بنجاح!';
+
+  @override
+  String get problemSendFailed => 'فشل إرسال المشكلة!';
+
+  @override
+  String get problemSendFailedMessage =>
+      'يرجى مراجعة رسالتك والمحاولة مرة أخرى';
 }

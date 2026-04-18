@@ -5,4 +5,16 @@ abstract final class RouteNames {
   static const String forgotPassword = '/forgot-password';
   static const String accountLocation = '/account-location';
   static const String home = '/home';
+
+  static const String mosques = '/explore/mosques';
+  static const String academies = '/explore/academies';
+  static const String sheikhs = '/explore/sheikhs';
+  static const String subjectBranchSelection = '/explore/subject-branches';
+  static const String subjectPlaces = '/explore/subject-places';
+  static const String mosqueDetail = '/explore/mosque-detail';
+  static const String academyDetail = '/explore/academy-detail';
+  static const String sheikhDetail = '/explore/sheikh-detail';
+  static const String courseRegistration = '/explore/course-registration';
+
+  static const String search = '/search';
 }

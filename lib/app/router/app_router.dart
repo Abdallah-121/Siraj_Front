@@ -5,6 +5,15 @@ import '../../features/auth/presentation/pages/forgot_password_page.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
 import '../../features/auth/presentation/pages/register_page.dart';
 import '../../features/auth/presentation/pages/welcome_page.dart';
+import '../../features/explore/presentation/academies/pages/academies_page.dart';
+import '../../features/explore/presentation/academies/pages/academy_detail_page.dart';
+import '../../features/explore/presentation/mosques/pages/mosque_detail_page.dart';
+import '../../features/explore/presentation/mosques/pages/mosques_page.dart';
+import '../../features/explore/presentation/registration/pages/course_registration_page.dart';
+import '../../features/explore/presentation/sheikhs/pages/sheikh_detail_page.dart';
+import '../../features/explore/presentation/sheikhs/pages/sheikhs_page.dart';
+import '../../features/explore/presentation/subjects/pages/subject_branch_selection_page.dart';
+import '../../features/explore/presentation/subjects/pages/subject_places_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
 import 'route_names.dart';
 
@@ -29,6 +38,42 @@ abstract final class AppRouter {
         );
       case RouteNames.home:
         return _materialRoute(settings: settings, child: const HomePage());
+      case RouteNames.mosques:
+        return _materialRoute(settings: settings, child: const MosquesPage());
+      case RouteNames.academies:
+        return _materialRoute(settings: settings, child: const AcademiesPage());
+      case RouteNames.sheikhs:
+        return _materialRoute(settings: settings, child: const SheikhsPage());
+      case RouteNames.subjectBranchSelection:
+        return _materialRoute(
+          settings: settings,
+          child: const SubjectBranchSelectionPage(),
+        );
+      case RouteNames.subjectPlaces:
+        return _materialRoute(
+          settings: settings,
+          child: const SubjectPlacesPage(),
+        );
+      case RouteNames.mosqueDetail:
+        return _materialRoute(
+          settings: settings,
+          child: const MosqueDetailPage(),
+        );
+      case RouteNames.academyDetail:
+        return _materialRoute(
+          settings: settings,
+          child: const AcademyDetailPage(),
+        );
+      case RouteNames.sheikhDetail:
+        return _materialRoute(
+          settings: settings,
+          child: const SheikhDetailPage(),
+        );
+      case RouteNames.courseRegistration:
+        return _materialRoute(
+          settings: settings,
+          child: const CourseRegistrationPage(),
+        );
       default:
         return _materialRoute(settings: settings, child: const WelcomePage());
     }

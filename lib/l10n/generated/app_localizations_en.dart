@@ -180,4 +180,311 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get back => 'Back';
+
+  @override
+  String get mosques => 'Mosques';
+
+  @override
+  String get academies => 'Academies';
+
+  @override
+  String get sheikhs => 'Sheikhs';
+
+  @override
+  String get showMosquesBy => 'Show mosques by';
+
+  @override
+  String get showAcademiesBy => 'Show academies by';
+
+  @override
+  String get area => 'Area';
+
+  @override
+  String get quran => 'Quran';
+
+  @override
+  String get shariaSciences => 'Sharia Sciences';
+
+  @override
+  String get sheikh => 'Sheikh';
+
+  @override
+  String get nameLabel => 'Name';
+
+  @override
+  String get preacherLabel => 'Preacher';
+
+  @override
+  String get imamLabel => 'Imam';
+
+  @override
+  String get studyTypeLabel => 'Study type';
+
+  @override
+  String get sampleName => 'Name';
+
+  @override
+  String get samplePreacher => 'Preacher';
+
+  @override
+  String get sampleImam => 'Imam';
+
+  @override
+  String get sampleStudyType => 'Quran, sciences, or both';
+
+  @override
+  String get freeAcademy => 'Free academy';
+
+  @override
+  String get paidAcademy => 'Paid academy';
+
+  @override
+  String get newUpdateAvailable => 'New update available';
+
+  @override
+  String get subjectBranchSelectionTitle => 'Sharia Sciences';
+
+  @override
+  String get subjectPlacesTitle => 'Holy Quran';
+
+  @override
+  String get hadith => 'Hadith';
+
+  @override
+  String get tafsir => 'Tafsir';
+
+  @override
+  String get fiqh => 'Fiqh';
+
+  @override
+  String get aqeedah => 'Aqeedah';
+
+  @override
+  String get arabicLanguage => 'Arabic Language';
+
+  @override
+  String get tajweed => 'Tajweed';
+
+  @override
+  String get showResultsBy => 'Show results by';
+
+  @override
+  String get mosqueDetails => 'Mosque details';
+
+  @override
+  String get academyDetails => 'Academy details';
+
+  @override
+  String get availableLessons => 'Available lessons:';
+
+  @override
+  String get studyProgram => 'Study program:';
+
+  @override
+  String get teachers => 'Teachers:';
+
+  @override
+  String get notes => 'Notes:';
+
+  @override
+  String get contactNumber => 'Contact number:';
+
+  @override
+  String get numberOfStudents => 'Number of students:';
+
+  @override
+  String get registration => 'Registration';
+
+  @override
+  String get sampleLessonsValue =>
+      'Holy Quran - Sharia Sciences - Arabic Language';
+
+  @override
+  String get sampleProgramValue => 'Sunday, Tuesday, and Thursday';
+
+  @override
+  String get sampleTeachersValue => 'Sheikh Abdullah - Sheikh Mahmoud';
+
+  @override
+  String get sampleNotesValue => 'Please arrive 15 minutes early';
+
+  @override
+  String get sampleContactValue => '09XXXXXXXX';
+
+  @override
+  String get sampleStudentsValue => '120 students';
+
+  @override
+  String get sheikhDetails => 'Sheikh details';
+
+  @override
+  String get specialization => 'Specialization:';
+
+  @override
+  String get teachingLocations => 'Teaching locations:';
+
+  @override
+  String get sampleSpecializationValue => 'Fiqh - Tafsir - Quran Sciences';
+
+  @override
+  String get sampleTeachingLocationsValue => 'Sample Mosque - Sample Academy';
+
+  @override
+  String get showSheikhsBy => 'Show sheikhs by';
+
+  @override
+  String get registrationComingSoon => 'Registration will be connected later';
+
+  @override
+  String placesTeachingSubject(Object subject) {
+    return 'Mosques and academies that teach $subject';
+  }
+
+  @override
+  String get sampleMosqueTitle => 'Sample Mosque';
+
+  @override
+  String get sampleAcademyTitle => 'Sample Academy';
+
+  @override
+  String get sampleMosqueDescription =>
+      'This mosque offers Quran حلقات and Sharia lessons supervised by qualified teachers.';
+
+  @override
+  String get sampleAcademyDescription =>
+      'A specialized educational academy that teaches Sharia sciences and Arabic through a structured program.';
+
+  @override
+  String get registerInClass => 'Register in class';
+
+  @override
+  String get registerInCourse => 'Register in course';
+
+  @override
+  String get sampleSheikhTitle => 'Sample Sheikh';
+
+  @override
+  String get sampleSheikhDescription =>
+      'A sheikh specialized in teaching Sharia sciences and Quran studies through regular lessons and a clear educational program.';
+
+  @override
+  String get registerWithSheikh => 'Register in circle';
+
+  @override
+  String get teachersAndSheikhs => 'Teachers and sheikhs:';
+
+  @override
+  String get maximumStudents => 'Maximum students in the course:';
+
+  @override
+  String get registrationOpenFrom => 'Registration form opens from:';
+
+  @override
+  String get certificateAvailable => 'Certificate available';
+
+  @override
+  String get noCertificateAvailable => 'No certificate for this course';
+
+  @override
+  String get forMoreContactInfo => 'For more information call:';
+
+  @override
+  String get sampleLessonsMultiline =>
+      'The Holy Quran and how to apply it in our daily life';
+
+  @override
+  String get sampleProgramMultiline =>
+      'Sunday from 2 to 4\nSunday from 2 to 4\nSunday from 2 to 4';
+
+  @override
+  String get sampleTeachersMultiline => 'Sample Sheikh, preacher, imam';
+
+  @override
+  String get sampleMaximumStudentsValue => '12';
+
+  @override
+  String get sampleRegistrationDateValue => 'Sample date';
+
+  @override
+  String get sampleRegistrationDateSecondValue => 'Sample date';
+
+  @override
+  String get registrationFormTitle => 'Registration form';
+
+  @override
+  String get firstName => 'First name';
+
+  @override
+  String get enterArabicName => 'Enter your name in Arabic';
+
+  @override
+  String get lastName => 'Last name';
+
+  @override
+  String get enterArabicLastName => 'Enter your last name in Arabic';
+
+  @override
+  String get appUsername => 'Username';
+
+  @override
+  String get enterAppUsername => 'Your name in the app';
+
+  @override
+  String get phoneNumber => 'Phone number';
+
+  @override
+  String get enterPhoneNumber => 'Enter your number starting with 09';
+
+  @override
+  String get confirmRegistration => 'Confirm registration';
+
+  @override
+  String get registrationAgreement =>
+      'Please make sure the information in the form is accurate to complete the registration. Requests with incomplete data will not be approved.';
+
+  @override
+  String get registrationSuccessTitle => 'Registration completed successfully!';
+
+  @override
+  String get registrationFailureTitle => 'Registration failed!';
+
+  @override
+  String get registrationFailureMessage =>
+      'Please review your information in the form';
+
+  @override
+  String get searchTitle => 'Search';
+
+  @override
+  String get suggestions => 'Suggestions';
+
+  @override
+  String get recentSearches => 'Recent searches';
+
+  @override
+  String get searchPlaceholderTitle => 'Search here';
+
+  @override
+  String get mosquesSuggestion => 'Mosques';
+
+  @override
+  String get academiesSuggestion => 'Academies';
+
+  @override
+  String get shariaSuggestion => 'Sharia sciences';
+
+  @override
+  String get quranSuggestion => 'Holy Quran';
+
+  @override
+  String get fiqhSuggestion => 'Fiqh';
+
+  @override
+  String get hadithSuggestion => 'Hadith';
+
+  @override
+  String get sheikhSuggestion => 'Sheikh';
+
+  @override
+  String get sampleRecentSearch => 'Mosque';
 }

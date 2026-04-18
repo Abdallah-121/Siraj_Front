@@ -439,6 +439,600 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Back'**
   String get back;
+
+  /// No description provided for @mosques.
+  ///
+  /// In en, this message translates to:
+  /// **'Mosques'**
+  String get mosques;
+
+  /// No description provided for @academies.
+  ///
+  /// In en, this message translates to:
+  /// **'Academies'**
+  String get academies;
+
+  /// No description provided for @sheikhs.
+  ///
+  /// In en, this message translates to:
+  /// **'Sheikhs'**
+  String get sheikhs;
+
+  /// No description provided for @showMosquesBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Show mosques by'**
+  String get showMosquesBy;
+
+  /// No description provided for @showAcademiesBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Show academies by'**
+  String get showAcademiesBy;
+
+  /// No description provided for @area.
+  ///
+  /// In en, this message translates to:
+  /// **'Area'**
+  String get area;
+
+  /// No description provided for @quran.
+  ///
+  /// In en, this message translates to:
+  /// **'Quran'**
+  String get quran;
+
+  /// No description provided for @shariaSciences.
+  ///
+  /// In en, this message translates to:
+  /// **'Sharia Sciences'**
+  String get shariaSciences;
+
+  /// No description provided for @sheikh.
+  ///
+  /// In en, this message translates to:
+  /// **'Sheikh'**
+  String get sheikh;
+
+  /// No description provided for @nameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get nameLabel;
+
+  /// No description provided for @preacherLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Preacher'**
+  String get preacherLabel;
+
+  /// No description provided for @imamLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Imam'**
+  String get imamLabel;
+
+  /// No description provided for @studyTypeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Study type'**
+  String get studyTypeLabel;
+
+  /// No description provided for @sampleName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get sampleName;
+
+  /// No description provided for @samplePreacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Preacher'**
+  String get samplePreacher;
+
+  /// No description provided for @sampleImam.
+  ///
+  /// In en, this message translates to:
+  /// **'Imam'**
+  String get sampleImam;
+
+  /// No description provided for @sampleStudyType.
+  ///
+  /// In en, this message translates to:
+  /// **'Quran, sciences, or both'**
+  String get sampleStudyType;
+
+  /// No description provided for @freeAcademy.
+  ///
+  /// In en, this message translates to:
+  /// **'Free academy'**
+  String get freeAcademy;
+
+  /// No description provided for @paidAcademy.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid academy'**
+  String get paidAcademy;
+
+  /// No description provided for @newUpdateAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'New update available'**
+  String get newUpdateAvailable;
+
+  /// No description provided for @subjectBranchSelectionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sharia Sciences'**
+  String get subjectBranchSelectionTitle;
+
+  /// No description provided for @subjectPlacesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Holy Quran'**
+  String get subjectPlacesTitle;
+
+  /// No description provided for @hadith.
+  ///
+  /// In en, this message translates to:
+  /// **'Hadith'**
+  String get hadith;
+
+  /// No description provided for @tafsir.
+  ///
+  /// In en, this message translates to:
+  /// **'Tafsir'**
+  String get tafsir;
+
+  /// No description provided for @fiqh.
+  ///
+  /// In en, this message translates to:
+  /// **'Fiqh'**
+  String get fiqh;
+
+  /// No description provided for @aqeedah.
+  ///
+  /// In en, this message translates to:
+  /// **'Aqeedah'**
+  String get aqeedah;
+
+  /// No description provided for @arabicLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Arabic Language'**
+  String get arabicLanguage;
+
+  /// No description provided for @tajweed.
+  ///
+  /// In en, this message translates to:
+  /// **'Tajweed'**
+  String get tajweed;
+
+  /// No description provided for @showResultsBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Show results by'**
+  String get showResultsBy;
+
+  /// No description provided for @mosqueDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Mosque details'**
+  String get mosqueDetails;
+
+  /// No description provided for @academyDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Academy details'**
+  String get academyDetails;
+
+  /// No description provided for @availableLessons.
+  ///
+  /// In en, this message translates to:
+  /// **'Available lessons:'**
+  String get availableLessons;
+
+  /// No description provided for @studyProgram.
+  ///
+  /// In en, this message translates to:
+  /// **'Study program:'**
+  String get studyProgram;
+
+  /// No description provided for @teachers.
+  ///
+  /// In en, this message translates to:
+  /// **'Teachers:'**
+  String get teachers;
+
+  /// No description provided for @notes.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes:'**
+  String get notes;
+
+  /// No description provided for @contactNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact number:'**
+  String get contactNumber;
+
+  /// No description provided for @numberOfStudents.
+  ///
+  /// In en, this message translates to:
+  /// **'Number of students:'**
+  String get numberOfStudents;
+
+  /// No description provided for @registration.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration'**
+  String get registration;
+
+  /// No description provided for @sampleLessonsValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Holy Quran - Sharia Sciences - Arabic Language'**
+  String get sampleLessonsValue;
+
+  /// No description provided for @sampleProgramValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Sunday, Tuesday, and Thursday'**
+  String get sampleProgramValue;
+
+  /// No description provided for @sampleTeachersValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Sheikh Abdullah - Sheikh Mahmoud'**
+  String get sampleTeachersValue;
+
+  /// No description provided for @sampleNotesValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Please arrive 15 minutes early'**
+  String get sampleNotesValue;
+
+  /// No description provided for @sampleContactValue.
+  ///
+  /// In en, this message translates to:
+  /// **'09XXXXXXXX'**
+  String get sampleContactValue;
+
+  /// No description provided for @sampleStudentsValue.
+  ///
+  /// In en, this message translates to:
+  /// **'120 students'**
+  String get sampleStudentsValue;
+
+  /// No description provided for @sheikhDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Sheikh details'**
+  String get sheikhDetails;
+
+  /// No description provided for @specialization.
+  ///
+  /// In en, this message translates to:
+  /// **'Specialization:'**
+  String get specialization;
+
+  /// No description provided for @teachingLocations.
+  ///
+  /// In en, this message translates to:
+  /// **'Teaching locations:'**
+  String get teachingLocations;
+
+  /// No description provided for @sampleSpecializationValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Fiqh - Tafsir - Quran Sciences'**
+  String get sampleSpecializationValue;
+
+  /// No description provided for @sampleTeachingLocationsValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample Mosque - Sample Academy'**
+  String get sampleTeachingLocationsValue;
+
+  /// No description provided for @showSheikhsBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Show sheikhs by'**
+  String get showSheikhsBy;
+
+  /// No description provided for @registrationComingSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration will be connected later'**
+  String get registrationComingSoon;
+
+  /// No description provided for @placesTeachingSubject.
+  ///
+  /// In en, this message translates to:
+  /// **'Mosques and academies that teach {subject}'**
+  String placesTeachingSubject(Object subject);
+
+  /// No description provided for @sampleMosqueTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample Mosque'**
+  String get sampleMosqueTitle;
+
+  /// No description provided for @sampleAcademyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample Academy'**
+  String get sampleAcademyTitle;
+
+  /// No description provided for @sampleMosqueDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'This mosque offers Quran حلقات and Sharia lessons supervised by qualified teachers.'**
+  String get sampleMosqueDescription;
+
+  /// No description provided for @sampleAcademyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'A specialized educational academy that teaches Sharia sciences and Arabic through a structured program.'**
+  String get sampleAcademyDescription;
+
+  /// No description provided for @registerInClass.
+  ///
+  /// In en, this message translates to:
+  /// **'Register in class'**
+  String get registerInClass;
+
+  /// No description provided for @registerInCourse.
+  ///
+  /// In en, this message translates to:
+  /// **'Register in course'**
+  String get registerInCourse;
+
+  /// No description provided for @sampleSheikhTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample Sheikh'**
+  String get sampleSheikhTitle;
+
+  /// No description provided for @sampleSheikhDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'A sheikh specialized in teaching Sharia sciences and Quran studies through regular lessons and a clear educational program.'**
+  String get sampleSheikhDescription;
+
+  /// No description provided for @registerWithSheikh.
+  ///
+  /// In en, this message translates to:
+  /// **'Register in circle'**
+  String get registerWithSheikh;
+
+  /// No description provided for @teachersAndSheikhs.
+  ///
+  /// In en, this message translates to:
+  /// **'Teachers and sheikhs:'**
+  String get teachersAndSheikhs;
+
+  /// No description provided for @maximumStudents.
+  ///
+  /// In en, this message translates to:
+  /// **'Maximum students in the course:'**
+  String get maximumStudents;
+
+  /// No description provided for @registrationOpenFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration form opens from:'**
+  String get registrationOpenFrom;
+
+  /// No description provided for @certificateAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Certificate available'**
+  String get certificateAvailable;
+
+  /// No description provided for @noCertificateAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No certificate for this course'**
+  String get noCertificateAvailable;
+
+  /// No description provided for @forMoreContactInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'For more information call:'**
+  String get forMoreContactInfo;
+
+  /// No description provided for @sampleLessonsMultiline.
+  ///
+  /// In en, this message translates to:
+  /// **'The Holy Quran and how to apply it in our daily life'**
+  String get sampleLessonsMultiline;
+
+  /// No description provided for @sampleProgramMultiline.
+  ///
+  /// In en, this message translates to:
+  /// **'Sunday from 2 to 4\nSunday from 2 to 4\nSunday from 2 to 4'**
+  String get sampleProgramMultiline;
+
+  /// No description provided for @sampleTeachersMultiline.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample Sheikh, preacher, imam'**
+  String get sampleTeachersMultiline;
+
+  /// No description provided for @sampleMaximumStudentsValue.
+  ///
+  /// In en, this message translates to:
+  /// **'12'**
+  String get sampleMaximumStudentsValue;
+
+  /// No description provided for @sampleRegistrationDateValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample date'**
+  String get sampleRegistrationDateValue;
+
+  /// No description provided for @sampleRegistrationDateSecondValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample date'**
+  String get sampleRegistrationDateSecondValue;
+
+  /// No description provided for @registrationFormTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration form'**
+  String get registrationFormTitle;
+
+  /// No description provided for @firstName.
+  ///
+  /// In en, this message translates to:
+  /// **'First name'**
+  String get firstName;
+
+  /// No description provided for @enterArabicName.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your name in Arabic'**
+  String get enterArabicName;
+
+  /// No description provided for @lastName.
+  ///
+  /// In en, this message translates to:
+  /// **'Last name'**
+  String get lastName;
+
+  /// No description provided for @enterArabicLastName.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your last name in Arabic'**
+  String get enterArabicLastName;
+
+  /// No description provided for @appUsername.
+  ///
+  /// In en, this message translates to:
+  /// **'Username'**
+  String get appUsername;
+
+  /// No description provided for @enterAppUsername.
+  ///
+  /// In en, this message translates to:
+  /// **'Your name in the app'**
+  String get enterAppUsername;
+
+  /// No description provided for @phoneNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number'**
+  String get phoneNumber;
+
+  /// No description provided for @enterPhoneNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your number starting with 09'**
+  String get enterPhoneNumber;
+
+  /// No description provided for @confirmRegistration.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm registration'**
+  String get confirmRegistration;
+
+  /// No description provided for @registrationAgreement.
+  ///
+  /// In en, this message translates to:
+  /// **'Please make sure the information in the form is accurate to complete the registration. Requests with incomplete data will not be approved.'**
+  String get registrationAgreement;
+
+  /// No description provided for @registrationSuccessTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration completed successfully!'**
+  String get registrationSuccessTitle;
+
+  /// No description provided for @registrationFailureTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration failed!'**
+  String get registrationFailureTitle;
+
+  /// No description provided for @registrationFailureMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Please review your information in the form'**
+  String get registrationFailureMessage;
+
+  /// No description provided for @searchTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get searchTitle;
+
+  /// No description provided for @suggestions.
+  ///
+  /// In en, this message translates to:
+  /// **'Suggestions'**
+  String get suggestions;
+
+  /// No description provided for @recentSearches.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent searches'**
+  String get recentSearches;
+
+  /// No description provided for @searchPlaceholderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Search here'**
+  String get searchPlaceholderTitle;
+
+  /// No description provided for @mosquesSuggestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Mosques'**
+  String get mosquesSuggestion;
+
+  /// No description provided for @academiesSuggestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Academies'**
+  String get academiesSuggestion;
+
+  /// No description provided for @shariaSuggestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Sharia sciences'**
+  String get shariaSuggestion;
+
+  /// No description provided for @quranSuggestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Holy Quran'**
+  String get quranSuggestion;
+
+  /// No description provided for @fiqhSuggestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Fiqh'**
+  String get fiqhSuggestion;
+
+  /// No description provided for @hadithSuggestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Hadith'**
+  String get hadithSuggestion;
+
+  /// No description provided for @sheikhSuggestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Sheikh'**
+  String get sheikhSuggestion;
+
+  /// No description provided for @sampleRecentSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Mosque'**
+  String get sampleRecentSearch;
 }
 
 class _AppLocalizationsDelegate

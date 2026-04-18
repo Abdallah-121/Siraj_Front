@@ -179,4 +179,309 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get back => 'رجوع';
+
+  @override
+  String get mosques => 'المساجد';
+
+  @override
+  String get academies => 'الأكاديميات';
+
+  @override
+  String get sheikhs => 'الشيوخ';
+
+  @override
+  String get showMosquesBy => 'إظهار المساجد بحسب';
+
+  @override
+  String get showAcademiesBy => 'إظهار الأكاديميات بحسب';
+
+  @override
+  String get area => 'المنطقة';
+
+  @override
+  String get quran => 'القرآن';
+
+  @override
+  String get shariaSciences => 'العلوم الشرعية';
+
+  @override
+  String get sheikh => 'الشيخ';
+
+  @override
+  String get nameLabel => 'الاسم';
+
+  @override
+  String get preacherLabel => 'الخطيب';
+
+  @override
+  String get imamLabel => 'الإمام';
+
+  @override
+  String get studyTypeLabel => 'نوع الدراسة';
+
+  @override
+  String get sampleName => 'اسم';
+
+  @override
+  String get samplePreacher => 'خطيب';
+
+  @override
+  String get sampleImam => 'إمام';
+
+  @override
+  String get sampleStudyType => 'قرآن أم علوم أم الاثنين';
+
+  @override
+  String get freeAcademy => 'أكاديمية مجانية';
+
+  @override
+  String get paidAcademy => 'أكاديمية غير مجانية';
+
+  @override
+  String get newUpdateAvailable => 'يوجد تعديل جديد';
+
+  @override
+  String get subjectBranchSelectionTitle => 'العلوم الشرعية';
+
+  @override
+  String get subjectPlacesTitle => 'القرآن الكريم';
+
+  @override
+  String get hadith => 'الحديث';
+
+  @override
+  String get tafsir => 'التفسير';
+
+  @override
+  String get fiqh => 'الفقه';
+
+  @override
+  String get aqeedah => 'العقيدة';
+
+  @override
+  String get arabicLanguage => 'اللغة العربية';
+
+  @override
+  String get tajweed => 'التجويد';
+
+  @override
+  String get showResultsBy => 'إظهار النتائج بحسب';
+
+  @override
+  String get mosqueDetails => 'تفاصيل المسجد';
+
+  @override
+  String get academyDetails => 'تفاصيل الأكاديمية';
+
+  @override
+  String get availableLessons => 'الدروس المتوفرة:';
+
+  @override
+  String get studyProgram => 'البرنامج الدراسي:';
+
+  @override
+  String get teachers => 'المدرسون:';
+
+  @override
+  String get notes => 'ملاحظات:';
+
+  @override
+  String get contactNumber => 'رقم التواصل:';
+
+  @override
+  String get numberOfStudents => 'عدد الطلاب:';
+
+  @override
+  String get registration => 'التسجيل';
+
+  @override
+  String get sampleLessonsValue => 'قرآن كريم - علوم شرعية - لغة عربية';
+
+  @override
+  String get sampleProgramValue => 'أيام الأحد والثلاثاء والخميس';
+
+  @override
+  String get sampleTeachersValue => 'الشيخ عبد الله - الشيخ محمود';
+
+  @override
+  String get sampleNotesValue => 'الحضور قبل الموعد بربع ساعة';
+
+  @override
+  String get sampleContactValue => '09XXXXXXXX';
+
+  @override
+  String get sampleStudentsValue => '120 طالب';
+
+  @override
+  String get sheikhDetails => 'تفاصيل الشيخ';
+
+  @override
+  String get specialization => 'التخصص:';
+
+  @override
+  String get teachingLocations => 'أماكن التدريس:';
+
+  @override
+  String get sampleSpecializationValue => 'الفقه - التفسير - علوم القرآن';
+
+  @override
+  String get sampleTeachingLocationsValue => 'مسجد كذا - أكاديمية كذا';
+
+  @override
+  String get showSheikhsBy => 'إظهار الشيوخ بحسب';
+
+  @override
+  String get registrationComingSoon => 'سيتم ربط التسجيل لاحقًا';
+
+  @override
+  String placesTeachingSubject(Object subject) {
+    return 'المساجد والأكاديميات التي تعلم $subject';
+  }
+
+  @override
+  String get sampleMosqueTitle => 'مسجد فلاني';
+
+  @override
+  String get sampleAcademyTitle => 'أكاديمية فلانية';
+
+  @override
+  String get sampleMosqueDescription =>
+      'يوجد في هذا المسجد حلقات قرآنية ودروس شرعية بإشراف نخبة من المدرسين.';
+
+  @override
+  String get sampleAcademyDescription =>
+      'أكاديمية تعليمية متخصصة بتدريس العلوم الشرعية واللغة العربية ضمن برنامج منظم.';
+
+  @override
+  String get registerInClass => 'التسجيل في الصف';
+
+  @override
+  String get registerInCourse => 'التسجيل في الكورس';
+
+  @override
+  String get sampleSheikhTitle => 'الشيخ الفلاني';
+
+  @override
+  String get sampleSheikhDescription =>
+      'شيخ متخصص في تدريس العلوم الشرعية وعلوم القرآن ضمن دروس منتظمة وبرنامج تعليمي واضح.';
+
+  @override
+  String get registerWithSheikh => 'التسجيل في الحلقة';
+
+  @override
+  String get teachersAndSheikhs => 'الشيوخ والمدرسون:';
+
+  @override
+  String get maximumStudents => 'أقصى عدد من الطلاب في الكورس:';
+
+  @override
+  String get registrationOpenFrom => 'استمارة التسجيل مفتوحة من تاريخ:';
+
+  @override
+  String get certificateAvailable => 'يوجد شهادة';
+
+  @override
+  String get noCertificateAvailable => 'لا يوجد شهادة لهذا الكورس';
+
+  @override
+  String get forMoreContactInfo => 'لمزيد من المعلومات اتصل على الرقم:';
+
+  @override
+  String get sampleLessonsMultiline =>
+      'القرآن الكريم وكيفية تطبيقه في حياتنا اليومية';
+
+  @override
+  String get sampleProgramMultiline =>
+      'يوم الأحد من الساعة 2 للساعة 4\nيوم الأحد من الساعة 2 للساعة 4\nيوم الأحد من الساعة 2 للساعة 4';
+
+  @override
+  String get sampleTeachersMultiline => 'الشيخ كذا، خطيب، إمام';
+
+  @override
+  String get sampleMaximumStudentsValue => '12';
+
+  @override
+  String get sampleRegistrationDateValue => 'كذا كذا';
+
+  @override
+  String get sampleRegistrationDateSecondValue => 'كذا كذا';
+
+  @override
+  String get registrationFormTitle => 'استمارة التسجيل';
+
+  @override
+  String get firstName => 'الاسم';
+
+  @override
+  String get enterArabicName => 'اكتب اسمك بالعربية';
+
+  @override
+  String get lastName => 'الكنية';
+
+  @override
+  String get enterArabicLastName => 'اكتب الكنية بالعربية';
+
+  @override
+  String get appUsername => 'اسم المستخدم';
+
+  @override
+  String get enterAppUsername => 'اسمك في التطبيق';
+
+  @override
+  String get phoneNumber => 'رقم الهاتف';
+
+  @override
+  String get enterPhoneNumber => 'اكتب رقمك بدءًا ب 09';
+
+  @override
+  String get confirmRegistration => 'تأكيد التسجيل';
+
+  @override
+  String get registrationAgreement =>
+      'يرجى الالتزام بالمعلومات المذكورة في الاستمارة لضمان إتمام التسجيل، ولن يتم اعتماد الطلب إذا لم تكتمل البيانات.';
+
+  @override
+  String get registrationSuccessTitle => 'تم التسجيل بنجاح!';
+
+  @override
+  String get registrationFailureTitle => 'فشل التسجيل!';
+
+  @override
+  String get registrationFailureMessage => 'يرجى مراجعة معلوماتك في الاستمارة';
+
+  @override
+  String get searchTitle => 'البحث';
+
+  @override
+  String get suggestions => 'اقتراحات';
+
+  @override
+  String get recentSearches => 'تاريخ البحث';
+
+  @override
+  String get searchPlaceholderTitle => 'ابحث هنا';
+
+  @override
+  String get mosquesSuggestion => 'المساجد';
+
+  @override
+  String get academiesSuggestion => 'الأكاديميات';
+
+  @override
+  String get shariaSuggestion => 'العلوم الشرعية';
+
+  @override
+  String get quranSuggestion => 'القرآن الكريم';
+
+  @override
+  String get fiqhSuggestion => 'الفقه';
+
+  @override
+  String get hadithSuggestion => 'الحديث';
+
+  @override
+  String get sheikhSuggestion => 'الشيخ';
+
+  @override
+  String get sampleRecentSearch => 'مسجد';
 }

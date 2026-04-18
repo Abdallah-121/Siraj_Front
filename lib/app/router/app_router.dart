@@ -15,6 +15,7 @@ import '../../features/explore/presentation/sheikhs/pages/sheikhs_page.dart';
 import '../../features/explore/presentation/subjects/pages/subject_branch_selection_page.dart';
 import '../../features/explore/presentation/subjects/pages/subject_places_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
+import '../../features/search/presentation/pages/search_page.dart';
 import 'route_names.dart';
 
 abstract final class AppRouter {
@@ -74,6 +75,8 @@ abstract final class AppRouter {
           settings: settings,
           child: const CourseRegistrationPage(),
         );
+      case RouteNames.search:
+        return _materialRoute(settings: settings, child: const SearchPage());
       default:
         return _materialRoute(settings: settings, child: const WelcomePage());
     }

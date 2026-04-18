@@ -39,9 +39,16 @@ class _HomePageState extends State<HomePage> {
   void _onBottomNavItemSelected(MainNavItem item) {
     if (_currentItem == item) return;
 
-    setState(() {
-      _currentItem = item;
-    });
+    switch (item) {
+      case MainNavItem.search:
+        Navigator.pushNamed(context, RouteNames.search);
+        break;
+      default:
+        setState(() {
+          _currentItem = item;
+        });
+        break;
+    }
   }
 
   void _onQuranPressed() {

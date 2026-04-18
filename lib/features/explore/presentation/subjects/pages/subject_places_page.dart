@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seraj/core/widgets/app_search_field.dart';
 import 'package:seraj/features/explore/presentation/shared/widgets/explore_listing_page_layout.dart';
 import 'package:seraj/features/explore/presentation/shared/widgets/new_update_badge.dart';
 import 'package:seraj/features/explore/presentation/shared/widgets/place_list_item.dart';
@@ -19,6 +20,8 @@ class _SubjectPlacesPageState extends State<SubjectPlacesPage> {
   MainNavItem _currentItem = MainNavItem.home;
   bool _isFilterExpanded = false;
   String _selectedFilter = '';
+  late final TextEditingController _searchController;
+  late final FocusNode _searchFocusNode;
 
   List<String> get _filterItems => [
     context.l10n.area,
@@ -27,11 +30,27 @@ class _SubjectPlacesPageState extends State<SubjectPlacesPage> {
     context.l10n.shariaSciences,
   ];
 
+  @override
+  void initState() {
+    super.initState();
+    _searchController = TextEditingController();
+    _searchFocusNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    _searchFocusNode.dispose();
+    super.dispose();
+  }
+
   void _onBackPressed() {
     Navigator.pop(context);
   }
 
-  void _onSearchPressed() {}
+  void _onSearchPressed() {
+    _searchFocusNode.requestFocus();
+  }
 
   void _toggleFilter() {
     setState(() {
@@ -85,7 +104,7 @@ class _SubjectPlacesPageState extends State<SubjectPlacesPage> {
       filterLabel: filterLabel,
       filterItems: _filterItems,
       isFilterExpanded: _isFilterExpanded,
-      showSearchBar: true,
+      showSearchBar: false,
       showFilter: true,
       compactHeader: true,
       onBackPressed: _onBackPressed,
@@ -94,24 +113,36 @@ class _SubjectPlacesPageState extends State<SubjectPlacesPage> {
       onFilterSelected: _onFilterSelected,
       currentNavItem: _currentItem,
       onNavItemSelected: _onBottomNavItemSelected,
-      content: ListView.separated(
-        itemCount: 4,
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        separatorBuilder: (_, __) => const SizedBox(height: AppSpacing.lg),
-        itemBuilder: (context, index) {
-          return PlaceListItem(
-            title: context.l10n.sampleName,
-            preacherName: context.l10n.samplePreacher,
-            imamName: context.l10n.sampleImam,
-            studyType: context.l10n.sampleStudyType,
-            imageLabel: subjectName,
-            isFavorite: index == 1,
-            onTap: _onPlacePressed,
-            onFavoritePressed: () {},
-            topBadge: index == 2 ? const NewUpdateBadge() : null,
-          );
-        },
+      content: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          AppSearchField(
+            controller: _searchController,
+            focusNode: _searchFocusNode,
+            hintText: context.l10n.searchPlaceholderTitle,
+            onChanged: (_) => setState(() {}),
+          ),
+          const SizedBox(height: AppSpacing.lg),
+          ListView.separated(
+            itemCount: 4,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            separatorBuilder: (_, __) => const SizedBox(height: AppSpacing.lg),
+            itemBuilder: (context, index) {
+              return PlaceListItem(
+                title: context.l10n.sampleName,
+                preacherName: context.l10n.samplePreacher,
+                imamName: context.l10n.sampleImam,
+                studyType: context.l10n.sampleStudyType,
+                imageLabel: subjectName,
+                isFavorite: index == 1,
+                onTap: _onPlacePressed,
+                onFavoritePressed: () {},
+                topBadge: index == 2 ? const NewUpdateBadge() : null,
+              );
+            },
+          ),
+        ],
       ),
     );
   }

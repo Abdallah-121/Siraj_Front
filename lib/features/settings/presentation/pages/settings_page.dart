@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:seraj/app/app.dart';
 import 'package:seraj/app/local/app_locale_scope.dart';
 import 'package:seraj/app/widgets/app_page_header.dart';
 import 'package:seraj/app/widgets/app_section_header.dart';
@@ -13,7 +12,6 @@ import '../../../../core/widgets/app_scaffold.dart';
 import '../widgets/logout_confirmation_dialog.dart';
 import '../widgets/settings_action_tile.dart';
 import '../widgets/settings_contact_block.dart';
-import '../widgets/settings_header.dart';
 import '../widgets/settings_logout_button.dart';
 import '../widgets/settings_section_title.dart';
 
@@ -162,7 +160,9 @@ class _SettingsPageState extends State<SettingsPage> {
                   SettingsActionTile(
                     leadingIcon: Icons.chat_bubble_outline_rounded,
                     title: context.l10n.technicalSupport,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteNames.technicalSupport);
+                    },
                     showChevron: false,
                   ),
                   AppGap.v16,

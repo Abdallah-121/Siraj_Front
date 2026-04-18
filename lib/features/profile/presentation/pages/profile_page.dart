@@ -142,7 +142,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   ProfileMenuTile(
                     title: context.l10n.technicalSupport,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteNames.technicalSupport);
+                    },
                   ),
                   const SizedBox(height: 56),
                   InkWell(

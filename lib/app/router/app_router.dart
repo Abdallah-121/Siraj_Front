@@ -21,6 +21,7 @@ import '../../features/profile/presentation/pages/edit_profile_page.dart';
 import '../../features/profile/presentation/pages/profile_page.dart';
 import '../../features/search/presentation/pages/search_page.dart';
 import '../../features/settings/presentation/pages/settings_page.dart';
+import '../../features/support/presentation/pages/technical_support_page.dart';
 import 'route_names.dart';
 
 abstract final class AppRouter {
@@ -100,6 +101,11 @@ abstract final class AppRouter {
         return _materialRoute(
           settings: settings,
           child: const CompletedCoursesPage(),
+        );
+      case RouteNames.technicalSupport:
+        return _materialRoute(
+          settings: settings,
+          child: const TechnicalSupportPage(),
         );
       default:
         return _materialRoute(settings: settings, child: const WelcomePage());

@@ -160,5 +160,22 @@
   "fiqhSuggestion": "الفقه",
   "hadithSuggestion": "الحديث",
   "sheikhSuggestion": "الشيخ",
-  "sampleRecentSearch": "مسجد"
+  "sampleRecentSearch": "مسجد",
+  "settingsTitle": "الإعدادات",
+  "accountSection": "الحساب",
+  "editProfile": "تعديل الحساب الشخصي",
+  "changePassword": "تغيير كلمة المرور",
+  "notificationsSection": "الإشعارات",
+  "latestNotifications": "آخر إشعاراتك",
+  "muteAppNotifications": "كتم إشعارات التطبيق",
+  "additionalSettingsSection": "إعدادات إضافية",
+  "changeAppLanguage": "تغيير لغة التطبيق",
+  "technicalSupport": "الدعم الفني",
+  "contactForSuggestions": "اتصل بنا للاقتراحات والشكاوى:",
+  "logoutFromApp": "الخروج من التطبيق",
+  "confirmLogoutTitle": "هل أنت متأكد من تسجيل خروجك؟",
+  "yes": "نعم",
+  "no": "لا",
+  "confirmAnswer": "تأكيد الجواب",
+  "logoutSuccessMessage": "تم تسجيل الخروج بنجاح"
 }

@@ -1033,6 +1033,108 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Mosque'**
   String get sampleRecentSearch;
+
+  /// No description provided for @settingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settingsTitle;
+
+  /// No description provided for @accountSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Account'**
+  String get accountSection;
+
+  /// No description provided for @editProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit profile'**
+  String get editProfile;
+
+  /// No description provided for @changePassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Change password'**
+  String get changePassword;
+
+  /// No description provided for @notificationsSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notificationsSection;
+
+  /// No description provided for @latestNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Latest notifications'**
+  String get latestNotifications;
+
+  /// No description provided for @muteAppNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Mute app notifications'**
+  String get muteAppNotifications;
+
+  /// No description provided for @additionalSettingsSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Additional settings'**
+  String get additionalSettingsSection;
+
+  /// No description provided for @changeAppLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Change app language'**
+  String get changeAppLanguage;
+
+  /// No description provided for @technicalSupport.
+  ///
+  /// In en, this message translates to:
+  /// **'Technical support'**
+  String get technicalSupport;
+
+  /// No description provided for @contactForSuggestions.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact us for suggestions and complaints:'**
+  String get contactForSuggestions;
+
+  /// No description provided for @logoutFromApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Log out from app'**
+  String get logoutFromApp;
+
+  /// No description provided for @confirmLogoutTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to log out?'**
+  String get confirmLogoutTitle;
+
+  /// No description provided for @yes.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes'**
+  String get yes;
+
+  /// No description provided for @no.
+  ///
+  /// In en, this message translates to:
+  /// **'No'**
+  String get no;
+
+  /// No description provided for @confirmAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm answer'**
+  String get confirmAnswer;
+
+  /// No description provided for @logoutSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Logged out successfully'**
+  String get logoutSuccessMessage;
 }
 
 class _AppLocalizationsDelegate

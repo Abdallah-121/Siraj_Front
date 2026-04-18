@@ -16,6 +16,7 @@ import '../../features/explore/presentation/subjects/pages/subject_branch_select
 import '../../features/explore/presentation/subjects/pages/subject_places_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/search/presentation/pages/search_page.dart';
+import '../../features/settings/presentation/pages/settings_page.dart';
 import 'route_names.dart';
 
 abstract final class AppRouter {
@@ -77,6 +78,8 @@ abstract final class AppRouter {
         );
       case RouteNames.search:
         return _materialRoute(settings: settings, child: const SearchPage());
+      case RouteNames.settings:
+        return _materialRoute(settings: settings, child: const SettingsPage());
       default:
         return _materialRoute(settings: settings, child: const WelcomePage());
     }

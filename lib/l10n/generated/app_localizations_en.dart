@@ -487,4 +487,56 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sampleRecentSearch => 'Mosque';
+
+  @override
+  String get settingsTitle => 'Settings';
+
+  @override
+  String get accountSection => 'Account';
+
+  @override
+  String get editProfile => 'Edit profile';
+
+  @override
+  String get changePassword => 'Change password';
+
+  @override
+  String get notificationsSection => 'Notifications';
+
+  @override
+  String get latestNotifications => 'Latest notifications';
+
+  @override
+  String get muteAppNotifications => 'Mute app notifications';
+
+  @override
+  String get additionalSettingsSection => 'Additional settings';
+
+  @override
+  String get changeAppLanguage => 'Change app language';
+
+  @override
+  String get technicalSupport => 'Technical support';
+
+  @override
+  String get contactForSuggestions =>
+      'Contact us for suggestions and complaints:';
+
+  @override
+  String get logoutFromApp => 'Log out from app';
+
+  @override
+  String get confirmLogoutTitle => 'Are you sure you want to log out?';
+
+  @override
+  String get yes => 'Yes';
+
+  @override
+  String get no => 'No';
+
+  @override
+  String get confirmAnswer => 'Confirm answer';
+
+  @override
+  String get logoutSuccessMessage => 'Logged out successfully';
 }

@@ -484,4 +484,55 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get sampleRecentSearch => 'مسجد';
+
+  @override
+  String get settingsTitle => 'الإعدادات';
+
+  @override
+  String get accountSection => 'الحساب';
+
+  @override
+  String get editProfile => 'تعديل الحساب الشخصي';
+
+  @override
+  String get changePassword => 'تغيير كلمة المرور';
+
+  @override
+  String get notificationsSection => 'الإشعارات';
+
+  @override
+  String get latestNotifications => 'آخر إشعاراتك';
+
+  @override
+  String get muteAppNotifications => 'كتم إشعارات التطبيق';
+
+  @override
+  String get additionalSettingsSection => 'إعدادات إضافية';
+
+  @override
+  String get changeAppLanguage => 'تغيير لغة التطبيق';
+
+  @override
+  String get technicalSupport => 'الدعم الفني';
+
+  @override
+  String get contactForSuggestions => 'اتصل بنا للاقتراحات والشكاوى:';
+
+  @override
+  String get logoutFromApp => 'الخروج من التطبيق';
+
+  @override
+  String get confirmLogoutTitle => 'هل أنت متأكد من تسجيل خروجك؟';
+
+  @override
+  String get yes => 'نعم';
+
+  @override
+  String get no => 'لا';
+
+  @override
+  String get confirmAnswer => 'تأكيد الجواب';
+
+  @override
+  String get logoutSuccessMessage => 'تم تسجيل الخروج بنجاح';
 }

@@ -161,5 +161,22 @@
   "fiqhSuggestion": "Fiqh",
   "hadithSuggestion": "Hadith",
   "sheikhSuggestion": "Sheikh",
-  "sampleRecentSearch": "Mosque"
+  "sampleRecentSearch": "Mosque",
+  "settingsTitle": "Settings",
+  "accountSection": "Account",
+  "editProfile": "Edit profile",
+  "changePassword": "Change password",
+  "notificationsSection": "Notifications",
+  "latestNotifications": "Latest notifications",
+  "muteAppNotifications": "Mute app notifications",
+  "additionalSettingsSection": "Additional settings",
+  "changeAppLanguage": "Change app language",
+  "technicalSupport": "Technical support",
+  "contactForSuggestions": "Contact us for suggestions and complaints:",
+  "logoutFromApp": "Log out from app",
+  "confirmLogoutTitle": "Are you sure you want to log out?",
+  "yes": "Yes",
+  "no": "No",
+  "confirmAnswer": "Confirm answer",
+  "logoutSuccessMessage": "Logged out successfully"
 }

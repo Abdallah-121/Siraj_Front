@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seraj/app/widgets/app_page_header.dart';
 
 import '../../../../app/router/route_names.dart';
 import '../../../../app/widgets/main_bottom_nav_bar.dart';
@@ -116,7 +117,7 @@ class _SearchPageState extends State<SearchPage> {
       ),
       body: Column(
         children: [
-          SearchHeader(onBackPressed: _onBackPressed),
+          AppPageHeader(onBackPressed: _onBackPressed),
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.fromLTRB(

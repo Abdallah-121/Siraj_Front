@@ -199,5 +199,12 @@
   "sendProblem": "Send issue",
   "problemSentSuccessfully": "Issue sent successfully!",
   "problemSendFailed": "Failed to send issue!",
-  "problemSendFailedMessage": "Please review your message and try again"
+  "problemSendFailedMessage": "Please review your message and try again",
+  "changeLanguageTitle": "Change app language",
+  "searchForDesiredLanguage": "Search for the desired language",
+  "arabicLanguage": "Arabic",
+  "englishLanguage": "English",
+  "germanLanguage": "German",
+  "languageUpdateNote": "More languages will be included in upcoming app updates",
+  "changeLanguageButton": "Change language"
 }

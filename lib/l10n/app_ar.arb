@@ -198,5 +198,12 @@
   "sendProblem": "إرسال المشكلة",
   "problemSentSuccessfully": "تم إرسال المشكلة بنجاح!",
   "problemSendFailed": "فشل إرسال المشكلة!",
-  "problemSendFailedMessage": "يرجى مراجعة رسالتك والمحاولة مرة أخرى"
+  "problemSendFailedMessage": "يرجى مراجعة رسالتك والمحاولة مرة أخرى",
+  "changeLanguageTitle": "تغيير لغة التطبيق",
+  "searchForDesiredLanguage": "ابحث عن اللغة المرادة",
+  "arabicLanguage": "العربية",
+  "englishLanguage": "الإنكليزية",
+  "germanLanguage": "الألمانية",
+  "languageUpdateNote": "سيتم تضمين باقي اللغات مع التحديثات القادمة للتطبيق",
+  "changeLanguageButton": "تغيير اللغة"
 }

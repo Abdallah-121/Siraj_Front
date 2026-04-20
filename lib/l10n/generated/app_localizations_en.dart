@@ -260,7 +260,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get aqeedah => 'Aqeedah';
 
   @override
-  String get arabicLanguage => 'Arabic Language';
+  String get arabicLanguage => 'Arabic';
 
   @override
   String get tajweed => 'Tajweed';
@@ -604,4 +604,23 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get problemSendFailedMessage =>
       'Please review your message and try again';
+
+  @override
+  String get changeLanguageTitle => 'Change app language';
+
+  @override
+  String get searchForDesiredLanguage => 'Search for the desired language';
+
+  @override
+  String get englishLanguage => 'English';
+
+  @override
+  String get germanLanguage => 'German';
+
+  @override
+  String get languageUpdateNote =>
+      'More languages will be included in upcoming app updates';
+
+  @override
+  String get changeLanguageButton => 'Change language';
 }

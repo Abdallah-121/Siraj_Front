@@ -259,7 +259,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get aqeedah => 'العقيدة';
 
   @override
-  String get arabicLanguage => 'اللغة العربية';
+  String get arabicLanguage => 'العربية';
 
   @override
   String get tajweed => 'التجويد';
@@ -600,4 +600,23 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get problemSendFailedMessage =>
       'يرجى مراجعة رسالتك والمحاولة مرة أخرى';
+
+  @override
+  String get changeLanguageTitle => 'تغيير لغة التطبيق';
+
+  @override
+  String get searchForDesiredLanguage => 'ابحث عن اللغة المرادة';
+
+  @override
+  String get englishLanguage => 'الإنكليزية';
+
+  @override
+  String get germanLanguage => 'الألمانية';
+
+  @override
+  String get languageUpdateNote =>
+      'سيتم تضمين باقي اللغات مع التحديثات القادمة للتطبيق';
+
+  @override
+  String get changeLanguageButton => 'تغيير اللغة';
 }

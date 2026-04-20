@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seraj/app/local/app_locale_scope.dart';
 import 'package:seraj/app/widgets/app_page_header.dart';
 import 'package:seraj/app/widgets/app_section_header.dart';
 
@@ -69,6 +70,10 @@ class _SettingsPageState extends State<SettingsPage> {
         );
       },
     );
+  }
+
+  void _onChangeLanguagePressed() {
+    AppLocaleScope.of(context).toggleLocale();
   }
 
   @override
@@ -149,17 +154,13 @@ class _SettingsPageState extends State<SettingsPage> {
                   SettingsActionTile(
                     leadingIcon: Icons.chevron_left_rounded,
                     title: context.l10n.changeAppLanguage,
-                    onTap: () {
-                      Navigator.pushNamed(context, RouteNames.changeLanguage);
-                    },
+                    onTap: _onChangeLanguagePressed,
                     showChevron: false,
                   ),
                   SettingsActionTile(
                     leadingIcon: Icons.chat_bubble_outline_rounded,
                     title: context.l10n.technicalSupport,
-                    onTap: () {
-                      Navigator.pushNamed(context, RouteNames.technicalSupport);
-                    },
+                    onTap: () {},
                     showChevron: false,
                   ),
                   AppGap.v16,

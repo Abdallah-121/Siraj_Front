@@ -18,6 +18,7 @@ abstract final class RouteNames {
 
   static const String search = '/search';
   static const String settings = '/settings';
+  static const String changeLanguage = '/settings/change-language';
 
   static const String profile = '/profile';
   static const String editProfile = '/profile/edit';

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seraj/features/settings/presentation/pages/change_language_page.dart';
 
 import '../../features/auth/presentation/pages/account_location_page.dart';
 import '../../features/auth/presentation/pages/forgot_password_page.dart';
@@ -106,6 +107,12 @@ abstract final class AppRouter {
         return _materialRoute(
           settings: settings,
           child: const TechnicalSupportPage(),
+        );
+
+      case RouteNames.changeLanguage:
+        return _materialRoute(
+          settings: settings,
+          child: const ChangeLanguagePage(),
         );
       default:
         return _materialRoute(settings: settings, child: const WelcomePage());

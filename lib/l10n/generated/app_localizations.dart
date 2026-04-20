@@ -6,6 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_ar.dart';
+import 'app_localizations_de.dart';
 import 'app_localizations_en.dart';
 
 // ignore_for_file: type=lint
@@ -95,6 +96,7 @@ abstract class AppLocalizations {
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('ar'),
+    Locale('de'),
     Locale('en'),
   ];
 
@@ -599,7 +601,7 @@ abstract class AppLocalizations {
   /// No description provided for @arabicLanguage.
   ///
   /// In en, this message translates to:
-  /// **'Arabic Language'**
+  /// **'Arabic'**
   String get arabicLanguage;
 
   /// No description provided for @tajweed.
@@ -1261,6 +1263,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please review your message and try again'**
   String get problemSendFailedMessage;
+
+  /// No description provided for @changeLanguageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Change app language'**
+  String get changeLanguageTitle;
+
+  /// No description provided for @searchForDesiredLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Search for the desired language'**
+  String get searchForDesiredLanguage;
+
+  /// No description provided for @englishLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get englishLanguage;
+
+  /// No description provided for @germanLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'German'**
+  String get germanLanguage;
+
+  /// No description provided for @languageUpdateNote.
+  ///
+  /// In en, this message translates to:
+  /// **'More languages will be included in upcoming app updates'**
+  String get languageUpdateNote;
+
+  /// No description provided for @changeLanguageButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Change language'**
+  String get changeLanguageButton;
 }
 
 class _AppLocalizationsDelegate
@@ -1274,7 +1312,7 @@ class _AppLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) =>
-      <String>['ar', 'en'].contains(locale.languageCode);
+      <String>['ar', 'de', 'en'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -1285,6 +1323,8 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   switch (locale.languageCode) {
     case 'ar':
       return AppLocalizationsAr();
+    case 'de':
+      return AppLocalizationsDe();
     case 'en':
       return AppLocalizationsEn();
   }

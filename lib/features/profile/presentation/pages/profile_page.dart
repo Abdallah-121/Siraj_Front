@@ -138,7 +138,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   ProfileMenuTile(
                     title: context.l10n.changeLanguage,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteNames.changeLanguage);
+                    },
                   ),
                   ProfileMenuTile(
                     title: context.l10n.technicalSupport,

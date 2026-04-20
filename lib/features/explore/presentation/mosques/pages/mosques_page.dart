@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:seraj/app/router/route_names.dart';
 import 'package:seraj/features/explore/presentation/shared/widgets/explore_filter_dropdown.dart';
 import 'package:seraj/features/explore/presentation/shared/widgets/explore_header.dart';
-import 'package:seraj/features/explore/presentation/shared/widgets/explore_listing_page_layout.dart';
 import 'package:seraj/features/explore/presentation/shared/widgets/explore_search_bar.dart';
 import 'package:seraj/features/explore/presentation/shared/widgets/explore_title_filter_header.dart';
 import 'package:seraj/features/explore/presentation/shared/widgets/new_update_badge.dart';
@@ -11,8 +10,6 @@ import 'package:seraj/features/explore/presentation/shared/widgets/place_list_it
 import '../../../../../app/widgets/main_bottom_nav_bar.dart';
 import '../../../../../core/utils/context_extensions.dart';
 import '../../../../../core/theme/app_spacing.dart';
-
-import 'package:flutter/material.dart';
 
 import '../../../../../core/widgets/app_scaffold.dart';
 

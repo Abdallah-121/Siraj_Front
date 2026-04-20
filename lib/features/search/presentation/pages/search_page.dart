@@ -9,7 +9,6 @@ import '../../../../core/widgets/app_gap.dart';
 import '../../../../core/widgets/app_scaffold.dart';
 import '../../../../core/widgets/app_search_field.dart';
 import '../widgets/recent_searches_section.dart';
-import '../widgets/search_header.dart';
 import '../widgets/search_section_title.dart';
 import '../widgets/search_suggestions_wrap.dart';
 

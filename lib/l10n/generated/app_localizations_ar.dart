@@ -619,4 +619,38 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get changeLanguageButton => 'تغيير اللغة';
+
+  @override
+  String get retry => 'إعادة المحاولة';
+
+  @override
+  String get noMosquesFound => 'لا توجد مساجد مطابقة';
+
+  @override
+  String get loading => 'جاري التحميل';
+
+  @override
+  String get unknown => 'غير معروف';
+
+  @override
+  String get enterFirstName => 'اكتب الاسم الأول';
+
+  @override
+  String get enterLastName => 'اكتب الاسم الأخير';
+
+  @override
+  String get birthDate => 'تاريخ الميلاد';
+
+  @override
+  String get enterBirthDate => 'اختر تاريخ الميلاد';
+
+  @override
+  String get pleaseFillRequiredFields => 'يرجى تعبئة الحقول المطلوبة';
+
+  @override
+  String get passwordsDoNotMatch => 'كلمتا المرور غير متطابقتين';
+
+  @override
+  String get pleaseChooseCityAndNeighborhood =>
+      'يرجى اختيار المدينة وكتابة الحي';
 }

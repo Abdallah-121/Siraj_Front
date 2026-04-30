@@ -204,5 +204,17 @@
   "englishLanguage": "Englisch",
   "germanLanguage": "Deutsch",
   "languageUpdateNote": "Weitere Sprachen werden in kommenden App-Updates hinzugefügt",
-  "changeLanguageButton": "Sprache ändern"
+  "changeLanguageButton": "Sprache ändern",
+  "retry": "Erneut versuchen",
+  "noMosquesFound": "Keine passenden Moscheen gefunden",
+  "loading": "Wird geladen",
+  "unknown": "Unbekannt",
+  "enterFirstName": "Geben Sie den Vornamen ein",
+  "enterLastName": "Geben Sie den Nachnamen ein",
+  "birthDate": "Geburtsdatum",
+  "enterBirthDate": "Wählen Sie das Geburtsdatum",
+  "pleaseFillRequiredFields": "Bitte füllen Sie die erforderlichen Felder aus",
+  "passwordsDoNotMatch": "Die Passwörter stimmen nicht überein",
+  "pleaseChooseCityAndNeighborhood": "Bitte wählen Sie die Stadt und geben Sie das Viertel ein"
+
 }

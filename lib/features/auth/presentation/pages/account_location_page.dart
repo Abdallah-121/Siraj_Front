@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:seraj/app/di/service_locator.dart';
+import 'package:seraj/features/auth/presentation/cubit/register_cubit.dart';
+import 'package:seraj/features/auth/presentation/cubit/register_state.dart';
 
 import '../../../../app/router/route_names.dart';
 import '../../../../core/constants/app_assets.dart';
@@ -44,79 +46,109 @@ class _AccountLocationPageState extends State<AccountLocationPage> {
     Navigator.pop(context);
   }
 
-  void _onNextPressed(BuildContext context) {
+  Future<void> _onNextPressed(BuildContext context) async {
+    debugPrint('NEXT BUTTON PRESSED');
+    debugPrint('Selected city id: ${_selectedCity?.id}');
+    debugPrint('Neighborhood: ${_neighborhoodController.text.trim()}');
+    debugPrint(
+      'Draft email: ${context.read<RegisterCubit>().state.draft?.email}',
+    );
+
     if (_selectedCity == null || _neighborhoodController.text.trim().isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('يرجى اختيار المدينة وكتابة الحي')),
+        SnackBar(content: Text(context.l10n.pleaseChooseCityAndNeighborhood)),
       );
       return;
     }
 
-    Navigator.pushReplacementNamed(context, RouteNames.home);
+    await context.read<RegisterCubit>().submitRegister(
+      cityId: _selectedCity!.id,
+      neighborhood: _neighborhoodController.text.trim(),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => sl<CitiesCubit>()..loadCities(),
-      child: AppScaffold(
-        resizeToAvoidBottomInset: true,
-        useSafeArea: false,
-        body: Column(
-          children: [
-            AuthLogoPanel(
-              appName: context.l10n.appName,
-              padding: const EdgeInsets.fromLTRB(
-                AppSpacing.xl,
-                32,
-                AppSpacing.xl,
-                18,
-              ),
-              maxLogoWidth: 150,
-              bottomRadius: 28,
-              logo: Image.asset(AppAssets.logo, fit: BoxFit.contain),
-            ),
-            Expanded(
-              child: ResponsiveWrapper(
-                maxWidth: ResponsiveConstraints.formMaxWidth,
-                padding: const EdgeInsets.fromLTRB(
-                  AppSpacing.xl,
-                  AppSpacing.xxl,
-                  AppSpacing.xl,
-                  AppSpacing.lg,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => sl<CitiesCubit>()..loadCities()),
+        BlocProvider.value(value: sl<RegisterCubit>()),
+      ],
+      child: BlocConsumer<RegisterCubit, RegisterState>(
+        listener: (context, state) {
+          if (state.isSuccess) {
+            Navigator.pushReplacementNamed(context, RouteNames.home);
+          }
+
+          if (state.errorMessage != null) {
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text(state.errorMessage!)));
+          }
+        },
+        builder: (context, registerState) {
+          return AppScaffold(
+            resizeToAvoidBottomInset: true,
+            useSafeArea: false,
+            body: Column(
+              children: [
+                AuthLogoPanel(
+                  appName: context.l10n.appName,
+                  padding: const EdgeInsets.fromLTRB(
+                    AppSpacing.xl,
+                    32,
+                    AppSpacing.xl,
+                    18,
+                  ),
+                  maxLogoWidth: 150,
+                  bottomRadius: 28,
+                  logo: Image.asset(AppAssets.logo, fit: BoxFit.contain),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    AuthTitleText(
-                      title: context.l10n.accountLocationTitle,
-                      textAlign: TextAlign.center,
+                Expanded(
+                  child: ResponsiveWrapper(
+                    maxWidth: ResponsiveConstraints.formMaxWidth,
+                    padding: const EdgeInsets.fromLTRB(
+                      AppSpacing.xl,
+                      AppSpacing.xxl,
+                      AppSpacing.xl,
+                      AppSpacing.lg,
                     ),
-                    AppGap.v24,
-                    Expanded(
-                      child: SingleChildScrollView(
-                        child: AccountLocationForm(
-                          neighborhoodController: _neighborhoodController,
-                          selectedCity: _selectedCity,
-                          onCitySelected: (city) {
-                            setState(() {
-                              _selectedCity = city;
-                            });
-                          },
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        AuthTitleText(
+                          title: context.l10n.accountLocationTitle,
+                          textAlign: TextAlign.center,
                         ),
-                      ),
+                        AppGap.v24,
+                        Expanded(
+                          child: SingleChildScrollView(
+                            child: AccountLocationForm(
+                              neighborhoodController: _neighborhoodController,
+                              selectedCity: _selectedCity,
+                              onCitySelected: (city) {
+                                setState(() {
+                                  _selectedCity = city;
+                                });
+                              },
+                            ),
+                          ),
+                        ),
+                        AppGap.v16,
+                        AuthFlowActions(
+                          onBackPressed: () => _onBackPressed(context),
+                          onNextPressed: registerState.isLoading
+                              ? () {}
+                              : () => _onNextPressed(context),
+                        ),
+                      ],
                     ),
-                    AppGap.v16,
-                    AuthFlowActions(
-                      onBackPressed: () => _onBackPressed(context),
-                      onNextPressed: () => _onNextPressed(context),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

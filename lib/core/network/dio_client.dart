@@ -16,5 +16,35 @@ class DioClient {
             'Accept': 'application/json',
           },
         ),
-      );
+      ) {
+    dio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) {
+          print('=== DIO REQUEST ===');
+          print('Method: ${options.method}');
+          print('URI: ${options.uri}');
+          print('Headers: ${options.headers}');
+          print('Query: ${options.queryParameters}');
+          print('Data: ${options.data}');
+          handler.next(options);
+        },
+        onResponse: (response, handler) {
+          print('=== DIO RESPONSE ===');
+          print('Status code: ${response.statusCode}');
+          print('URI: ${response.requestOptions.uri}');
+          print('Data: ${response.data}');
+          handler.next(response);
+        },
+        onError: (error, handler) {
+          print('=== DIO ERROR ===');
+          print('Type: ${error.type}');
+          print('Message: ${error.message}');
+          print('URI: ${error.requestOptions.uri}');
+          print('Response code: ${error.response?.statusCode}');
+          print('Response data: ${error.response?.data}');
+          handler.next(error);
+        },
+      ),
+    );
+  }
 }

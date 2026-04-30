@@ -205,5 +205,16 @@
   "englishLanguage": "الإنكليزية",
   "germanLanguage": "الألمانية",
   "languageUpdateNote": "سيتم تضمين باقي اللغات مع التحديثات القادمة للتطبيق",
-  "changeLanguageButton": "تغيير اللغة"
+  "changeLanguageButton": "تغيير اللغة",
+  "retry": "إعادة المحاولة",
+  "noMosquesFound": "لا توجد مساجد مطابقة",
+  "loading": "جاري التحميل",
+  "unknown": "غير معروف",
+  "enterFirstName": "اكتب الاسم الأول",
+  "enterLastName": "اكتب الاسم الأخير",
+  "birthDate": "تاريخ الميلاد",
+  "enterBirthDate": "اختر تاريخ الميلاد",
+  "pleaseFillRequiredFields": "يرجى تعبئة الحقول المطلوبة",
+  "passwordsDoNotMatch": "كلمتا المرور غير متطابقتين",
+  "pleaseChooseCityAndNeighborhood": "يرجى اختيار المدينة وكتابة الحي"
 }

@@ -623,4 +623,38 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get changeLanguageButton => 'Change language';
+
+  @override
+  String get retry => 'Retry';
+
+  @override
+  String get noMosquesFound => 'No matching mosques found';
+
+  @override
+  String get loading => 'Loading';
+
+  @override
+  String get unknown => 'Unknown';
+
+  @override
+  String get enterFirstName => 'Enter first name';
+
+  @override
+  String get enterLastName => 'Enter last name';
+
+  @override
+  String get birthDate => 'Birth date';
+
+  @override
+  String get enterBirthDate => 'Choose birth date';
+
+  @override
+  String get pleaseFillRequiredFields => 'Please fill in the required fields';
+
+  @override
+  String get passwordsDoNotMatch => 'Passwords do not match';
+
+  @override
+  String get pleaseChooseCityAndNeighborhood =>
+      'Please choose a city and enter a neighborhood';
 }

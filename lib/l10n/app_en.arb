@@ -206,5 +206,16 @@
   "englishLanguage": "English",
   "germanLanguage": "German",
   "languageUpdateNote": "More languages will be included in upcoming app updates",
-  "changeLanguageButton": "Change language"
+  "changeLanguageButton": "Change language",
+  "retry": "Retry",
+  "noMosquesFound": "No matching mosques found",
+  "loading": "Loading",
+  "unknown": "Unknown",
+  "enterFirstName": "Enter first name",
+  "enterLastName": "Enter last name",
+  "birthDate": "Birth date",
+  "enterBirthDate": "Choose birth date",
+  "pleaseFillRequiredFields": "Please fill in the required fields",
+  "passwordsDoNotMatch": "Passwords do not match",
+  "pleaseChooseCityAndNeighborhood": "Please choose a city and enter a neighborhood"
 }

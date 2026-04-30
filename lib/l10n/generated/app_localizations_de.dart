@@ -629,4 +629,39 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get changeLanguageButton => 'Sprache ändern';
+
+  @override
+  String get retry => 'Erneut versuchen';
+
+  @override
+  String get noMosquesFound => 'Keine passenden Moscheen gefunden';
+
+  @override
+  String get loading => 'Wird geladen';
+
+  @override
+  String get unknown => 'Unbekannt';
+
+  @override
+  String get enterFirstName => 'Geben Sie den Vornamen ein';
+
+  @override
+  String get enterLastName => 'Geben Sie den Nachnamen ein';
+
+  @override
+  String get birthDate => 'Geburtsdatum';
+
+  @override
+  String get enterBirthDate => 'Wählen Sie das Geburtsdatum';
+
+  @override
+  String get pleaseFillRequiredFields =>
+      'Bitte füllen Sie die erforderlichen Felder aus';
+
+  @override
+  String get passwordsDoNotMatch => 'Die Passwörter stimmen nicht überein';
+
+  @override
+  String get pleaseChooseCityAndNeighborhood =>
+      'Bitte wählen Sie die Stadt und geben Sie das Viertel ein';
 }

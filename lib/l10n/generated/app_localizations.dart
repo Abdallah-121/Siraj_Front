@@ -1299,6 +1299,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Change language'**
   String get changeLanguageButton;
+
+  /// No description provided for @retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get retry;
+
+  /// No description provided for @noMosquesFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No matching mosques found'**
+  String get noMosquesFound;
+
+  /// No description provided for @loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading'**
+  String get loading;
+
+  /// No description provided for @unknown.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown'**
+  String get unknown;
+
+  /// No description provided for @enterFirstName.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter first name'**
+  String get enterFirstName;
+
+  /// No description provided for @enterLastName.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter last name'**
+  String get enterLastName;
+
+  /// No description provided for @birthDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Birth date'**
+  String get birthDate;
+
+  /// No description provided for @enterBirthDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose birth date'**
+  String get enterBirthDate;
+
+  /// No description provided for @pleaseFillRequiredFields.
+  ///
+  /// In en, this message translates to:
+  /// **'Please fill in the required fields'**
+  String get pleaseFillRequiredFields;
+
+  /// No description provided for @passwordsDoNotMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match'**
+  String get passwordsDoNotMatch;
+
+  /// No description provided for @pleaseChooseCityAndNeighborhood.
+  ///
+  /// In en, this message translates to:
+  /// **'Please choose a city and enter a neighborhood'**
+  String get pleaseChooseCityAndNeighborhood;
 }
 
 class _AppLocalizationsDelegate

@@ -216,5 +216,15 @@
   "enterBirthDate": "اختر تاريخ الميلاد",
   "pleaseFillRequiredFields": "يرجى تعبئة الحقول المطلوبة",
   "passwordsDoNotMatch": "كلمتا المرور غير متطابقتين",
-  "pleaseChooseCityAndNeighborhood": "يرجى اختيار المدينة وكتابة الحي"
+  "pleaseChooseCityAndNeighborhood": "يرجى اختيار المدينة وكتابة الحي",
+  "noLessonsAvailable": "لا توجد دروس متاحة حالياً",
+  "completeCourse": "كورس كامل",
+  "singleLesson": "درس منفرد",
+  "cityNameLabel": "المدينة",
+  "addLesson": "إضافة درس",
+  "categoryIdLabel": "معرف التصنيف",
+  "teacherIdLabel": "معرف المدرس",
+  "lessonNameLabel": "اسم الدرس",
+  "descriptionLabel": "الوصف",
+  "liveStreamingCapabilityLabel": "إمكانية البث المباشر"
 }

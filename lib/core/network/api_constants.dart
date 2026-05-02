@@ -6,4 +6,5 @@ abstract final class ApiConstants {
   static const String academies = '/api/academies';
   static const String login = '/api/auth/login';
   static const String register = '/api/auth/register';
+  static const String lessons = '/api/Lessons';
 }

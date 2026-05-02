@@ -6,14 +6,17 @@ import '../../domain/entities/auth_session_entity.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../../domain/usecases/login_usecase.dart';
 import '../../domain/usecases/register_usecase.dart';
+import '../datasources/auth_local_data_source.dart';
 import '../datasources/auth_remote_data_source.dart';
+import '../models/auth_session_model.dart';
 import '../models/login_request_model.dart';
 import '../models/register_request_model.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource remoteDataSource;
+  final AuthLocalDataSource localDataSource;
 
-  AuthRepositoryImpl(this.remoteDataSource);
+  AuthRepositoryImpl(this.remoteDataSource, this.localDataSource);
 
   @override
   Future<Either<Failure, AuthSessionEntity>> login(LoginParams params) async {
@@ -58,5 +61,35 @@ class AuthRepositoryImpl implements AuthRepository {
     } on UnexpectedException catch (e) {
       return Left(UnexpectedFailure(e.message));
     }
+  }
+
+  @override
+  Future<void> saveSession(AuthSessionEntity session) async {
+    await localDataSource.saveSession(
+      AuthSessionModel(
+        userId: session.userId,
+        fullName: session.fullName,
+        email: session.email,
+        roleId: session.roleId,
+        roleName: session.roleName,
+        token: session.token,
+        teacherId: session.teacherId,
+      ),
+    );
+  }
+
+  @override
+  Future<AuthSessionEntity?> getSavedSession() async {
+    return localDataSource.getSession();
+  }
+
+  @override
+  Future<void> clearSession() async {
+    await localDataSource.clearSession();
+  }
+
+  @override
+  Future<String?> getToken() async {
+    return localDataSource.getToken();
   }
 }

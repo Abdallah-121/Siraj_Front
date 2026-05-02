@@ -25,9 +25,14 @@ class LoginCubit extends Cubit<LoginState> {
           ),
         );
       },
-      (_) {
+      (session) {
         emit(
-          state.copyWith(isLoading: false, isSuccess: true, clearError: true),
+          state.copyWith(
+            isLoading: false,
+            isSuccess: true,
+            session: session,
+            clearError: true,
+          ),
         );
       },
     );

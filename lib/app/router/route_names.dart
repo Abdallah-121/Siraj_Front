@@ -26,4 +26,6 @@ abstract final class RouteNames {
   static const String completedCourses = '/profile/completed-courses';
 
   static const String technicalSupport = '/support/technical';
+
+  static const String createLesson = '/createLesson';
 }

@@ -20,7 +20,7 @@ class MosqueModel extends MosqueEntity {
   factory MosqueModel.fromJson(Map<String, dynamic> json) {
     return MosqueModel(
       id: json['id'] as int,
-      managerUserId: json['managerUserId'] as int?,
+      managerUserId: json['managerUserId']?.toString(),
       managerName: json['managerName'] as String?,
       regionId: json['regionId'] as int,
       regionName: json['regionName'] as String? ?? '',

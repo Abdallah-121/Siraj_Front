@@ -664,4 +664,34 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get pleaseChooseCityAndNeighborhood =>
       'Bitte wählen Sie die Stadt und geben Sie das Viertel ein';
+
+  @override
+  String get noLessonsAvailable => 'Derzeit sind keine Lektionen verfügbar';
+
+  @override
+  String get completeCourse => 'Kompletter Kurs';
+
+  @override
+  String get singleLesson => 'Einzelne Lektion';
+
+  @override
+  String get cityNameLabel => 'Stadt';
+
+  @override
+  String get addLesson => 'Lektion hinzufügen';
+
+  @override
+  String get categoryIdLabel => 'Kategorie-ID';
+
+  @override
+  String get teacherIdLabel => 'Lehrer-ID';
+
+  @override
+  String get lessonNameLabel => 'Lektionsname';
+
+  @override
+  String get descriptionLabel => 'Beschreibung';
+
+  @override
+  String get liveStreamingCapabilityLabel => 'Live-Streaming-Funktion';
 }

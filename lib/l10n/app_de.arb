@@ -215,6 +215,15 @@
   "enterBirthDate": "Wählen Sie das Geburtsdatum",
   "pleaseFillRequiredFields": "Bitte füllen Sie die erforderlichen Felder aus",
   "passwordsDoNotMatch": "Die Passwörter stimmen nicht überein",
-  "pleaseChooseCityAndNeighborhood": "Bitte wählen Sie die Stadt und geben Sie das Viertel ein"
-
+  "pleaseChooseCityAndNeighborhood": "Bitte wählen Sie die Stadt und geben Sie das Viertel ein",
+  "noLessonsAvailable": "Derzeit sind keine Lektionen verfügbar",
+  "completeCourse": "Kompletter Kurs",
+  "singleLesson": "Einzelne Lektion",
+  "cityNameLabel": "Stadt", 
+  "addLesson": "Lektion hinzufügen",
+  "categoryIdLabel": "Kategorie-ID",
+  "teacherIdLabel": "Lehrer-ID",
+  "lessonNameLabel": "Lektionsname",
+  "descriptionLabel": "Beschreibung",
+  "liveStreamingCapabilityLabel": "Live-Streaming-Funktion"
 }

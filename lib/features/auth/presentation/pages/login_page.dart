@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:seraj/app/di/service_locator.dart';
+import 'package:seraj/features/auth/presentation/cubit/auth_session_cubit.dart';
 import 'package:seraj/features/auth/presentation/cubit/login_cubit.dart';
 import 'package:seraj/features/auth/presentation/cubit/login_state.dart';
 
@@ -29,11 +30,14 @@ class LoginPage extends StatelessWidget {
     return BlocProvider(
       create: (_) => sl<LoginCubit>(),
       child: BlocConsumer<LoginCubit, LoginState>(
-        listener: (context, state) {
-          if (state.isSuccess) {
-            Navigator.pushReplacementNamed(context, RouteNames.home);
-          }
+        listener: (context, state) async {
+          if (state.isSuccess && state.session != null) {
+            await context.read<AuthSessionCubit>().setSession(state.session!);
 
+            if (context.mounted) {
+              Navigator.pushReplacementNamed(context, RouteNames.home);
+            }
+          }
           if (state.errorMessage != null) {
             ScaffoldMessenger.of(
               context,

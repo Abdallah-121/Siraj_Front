@@ -653,4 +653,34 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get pleaseChooseCityAndNeighborhood =>
       'يرجى اختيار المدينة وكتابة الحي';
+
+  @override
+  String get noLessonsAvailable => 'لا توجد دروس متاحة حالياً';
+
+  @override
+  String get completeCourse => 'كورس كامل';
+
+  @override
+  String get singleLesson => 'درس منفرد';
+
+  @override
+  String get cityNameLabel => 'المدينة';
+
+  @override
+  String get addLesson => 'إضافة درس';
+
+  @override
+  String get categoryIdLabel => 'معرف التصنيف';
+
+  @override
+  String get teacherIdLabel => 'معرف المدرس';
+
+  @override
+  String get lessonNameLabel => 'اسم الدرس';
+
+  @override
+  String get descriptionLabel => 'الوصف';
+
+  @override
+  String get liveStreamingCapabilityLabel => 'إمكانية البث المباشر';
 }

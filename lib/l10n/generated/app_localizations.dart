@@ -1365,6 +1365,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please choose a city and enter a neighborhood'**
   String get pleaseChooseCityAndNeighborhood;
+
+  /// No description provided for @noLessonsAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No lessons available حاليا'**
+  String get noLessonsAvailable;
+
+  /// No description provided for @completeCourse.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete course'**
+  String get completeCourse;
+
+  /// No description provided for @singleLesson.
+  ///
+  /// In en, this message translates to:
+  /// **'Single lesson'**
+  String get singleLesson;
+
+  /// No description provided for @cityNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'City'**
+  String get cityNameLabel;
+
+  /// No description provided for @addLesson.
+  ///
+  /// In en, this message translates to:
+  /// **'Add lesson'**
+  String get addLesson;
+
+  /// No description provided for @categoryIdLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Category ID'**
+  String get categoryIdLabel;
+
+  /// No description provided for @teacherIdLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher ID'**
+  String get teacherIdLabel;
+
+  /// No description provided for @lessonNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Lesson name'**
+  String get lessonNameLabel;
+
+  /// No description provided for @descriptionLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get descriptionLabel;
+
+  /// No description provided for @liveStreamingCapabilityLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Live streaming capability'**
+  String get liveStreamingCapabilityLabel;
 }
 
 class _AppLocalizationsDelegate

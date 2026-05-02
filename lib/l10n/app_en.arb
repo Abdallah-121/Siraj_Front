@@ -217,5 +217,15 @@
   "enterBirthDate": "Choose birth date",
   "pleaseFillRequiredFields": "Please fill in the required fields",
   "passwordsDoNotMatch": "Passwords do not match",
-  "pleaseChooseCityAndNeighborhood": "Please choose a city and enter a neighborhood"
+  "pleaseChooseCityAndNeighborhood": "Please choose a city and enter a neighborhood",
+  "noLessonsAvailable": "No lessons available حاليا",
+  "completeCourse": "Complete course",
+  "singleLesson": "Single lesson",
+  "cityNameLabel": "City",
+  "addLesson": "Add lesson",
+  "categoryIdLabel": "Category ID",
+  "teacherIdLabel": "Teacher ID",
+  "lessonNameLabel": "Lesson name",
+  "descriptionLabel": "Description",
+  "liveStreamingCapabilityLabel": "Live streaming capability"
 }

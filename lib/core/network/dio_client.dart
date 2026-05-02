@@ -1,11 +1,15 @@
+// ignore_for_file: avoid_print
+
 import 'package:dio/dio.dart';
 
+import '../../features/auth/data/datasources/auth_local_data_source.dart';
 import 'api_constants.dart';
 
 class DioClient {
   final Dio dio;
+  final AuthLocalDataSource authLocalDataSource;
 
-  DioClient()
+  DioClient(this.authLocalDataSource)
     : dio = Dio(
         BaseOptions(
           baseUrl: ApiConstants.baseUrl,
@@ -19,7 +23,13 @@ class DioClient {
       ) {
     dio.interceptors.add(
       InterceptorsWrapper(
-        onRequest: (options, handler) {
+        onRequest: (options, handler) async {
+          final String? token = await authLocalDataSource.getToken();
+
+          if (token != null && token.trim().isNotEmpty) {
+            options.headers['Authorization'] = 'Bearer $token';
+          }
+
           print('=== DIO REQUEST ===');
           print('Method: ${options.method}');
           print('URI: ${options.uri}');

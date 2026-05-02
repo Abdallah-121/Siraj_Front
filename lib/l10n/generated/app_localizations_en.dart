@@ -657,4 +657,34 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get pleaseChooseCityAndNeighborhood =>
       'Please choose a city and enter a neighborhood';
+
+  @override
+  String get noLessonsAvailable => 'No lessons available حاليا';
+
+  @override
+  String get completeCourse => 'Complete course';
+
+  @override
+  String get singleLesson => 'Single lesson';
+
+  @override
+  String get cityNameLabel => 'City';
+
+  @override
+  String get addLesson => 'Add lesson';
+
+  @override
+  String get categoryIdLabel => 'Category ID';
+
+  @override
+  String get teacherIdLabel => 'Teacher ID';
+
+  @override
+  String get lessonNameLabel => 'Lesson name';
+
+  @override
+  String get descriptionLabel => 'Description';
+
+  @override
+  String get liveStreamingCapabilityLabel => 'Live streaming capability';
 }

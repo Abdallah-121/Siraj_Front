@@ -82,8 +82,8 @@ class _MosquesPageState extends State<MosquesPage> {
     }
   }
 
-  void _onMosquePressed() {
-    Navigator.pushNamed(context, RouteNames.mosqueDetail);
+  void _onMosquePressed(MosqueEntity mosque) {
+    Navigator.pushNamed(context, RouteNames.mosqueDetail, arguments: mosque);
   }
 
   @override
@@ -184,7 +184,7 @@ class _MosquesPageState extends State<MosquesPage> {
                                   : context.l10n.unknown,
                               imageLabel: mosque.name,
                               isFavorite: false,
-                              onTap: _onMosquePressed,
+                              onTap: () => _onMosquePressed(mosque),
                               onFavoritePressed: () {},
                               topBadge: index == 2
                                   ? const NewUpdateBadge()

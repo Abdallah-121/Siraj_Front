@@ -1,6 +1,6 @@
 class MosqueEntity {
   final int id;
-  final int? managerUserId;
+  final String? managerUserId;
   final String? managerName;
   final int regionId;
   final String regionName;

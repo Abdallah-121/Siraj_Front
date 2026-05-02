@@ -1,11 +1,18 @@
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:seraj/core/network/dio_client.dart';
+import 'package:seraj/features/auth/data/datasources/auth_local_data_source.dart';
+import 'package:seraj/features/auth/data/datasources/auth_local_data_source_impl.dart';
 import 'package:seraj/features/auth/data/datasources/auth_remote_data_source.dart';
 import 'package:seraj/features/auth/data/datasources/auth_remote_data_source_impl.dart';
 import 'package:seraj/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:seraj/features/auth/domain/repositories/auth_repository.dart';
+import 'package:seraj/features/auth/domain/usecases/clear_auth_session_usecase.dart';
+import 'package:seraj/features/auth/domain/usecases/get_auth_session_usecase.dart';
 import 'package:seraj/features/auth/domain/usecases/login_usecase.dart';
 import 'package:seraj/features/auth/domain/usecases/register_usecase.dart';
+import 'package:seraj/features/auth/domain/usecases/save_auth_session_usecase.dart';
+import 'package:seraj/features/auth/presentation/cubit/auth_session_cubit.dart';
 import 'package:seraj/features/auth/presentation/cubit/login_cubit.dart';
 import 'package:seraj/features/auth/presentation/cubit/register_cubit.dart';
 import 'package:seraj/features/explore/presentation/academies/data/datasources/academies_remote_data_source.dart';
@@ -20,6 +27,14 @@ import 'package:seraj/features/explore/presentation/mosques/data/repositories/mo
 import 'package:seraj/features/explore/presentation/mosques/domain/repositories/mosques_repository.dart';
 import 'package:seraj/features/explore/presentation/mosques/domain/usecases/get_mosques_usecase.dart';
 import 'package:seraj/features/explore/presentation/mosques/presentation/cubit/mosques_cubit.dart';
+import 'package:seraj/features/lessons/data/datasources/lessons_remote_datasource.dart';
+import 'package:seraj/features/lessons/data/datasources/lessons_remote_datasource_impl.dart';
+import 'package:seraj/features/lessons/data/repositories/lessons_repositoryI_impl.dart';
+import 'package:seraj/features/lessons/domain/repositories/lessons_repository.dart';
+import 'package:seraj/features/lessons/domain/usecases/create_lesson_usecase.dart';
+import 'package:seraj/features/lessons/domain/usecases/get_lessons_usecase.dart';
+import 'package:seraj/features/lessons/presentation/cubit/create_lesson_cubit.dart';
+import 'package:seraj/features/lessons/presentation/cubit/lessons_cubit.dart';
 
 import '../../features/location/data/datasources/location_remote_data_source.dart';
 import '../../features/location/data/datasources/location_remote_data_source_impl.dart';
@@ -31,7 +46,15 @@ import '../../features/location/presentation/cubit/cities_cubit.dart';
 final GetIt sl = GetIt.instance;
 
 Future<void> initDependencies() async {
-  sl.registerLazySingleton<DioClient>(() => DioClient());
+  sl.registerLazySingleton<FlutterSecureStorage>(
+    () => const FlutterSecureStorage(),
+  );
+
+  sl.registerLazySingleton<AuthLocalDataSource>(
+    () => AuthLocalDataSourceImpl(sl()),
+  );
+
+  sl.registerLazySingleton<DioClient>(() => DioClient(sl()));
 
   sl.registerLazySingleton<LocationRemoteDataSource>(
     () => LocationRemoteDataSourceImpl(sl()),
@@ -42,7 +65,6 @@ Future<void> initDependencies() async {
   );
 
   sl.registerLazySingleton<GetCitiesUseCase>(() => GetCitiesUseCase(sl()));
-
   sl.registerFactory<CitiesCubit>(() => CitiesCubit(sl()));
 
   sl.registerLazySingleton<MosquesRemoteDataSource>(
@@ -54,7 +76,6 @@ Future<void> initDependencies() async {
   );
 
   sl.registerLazySingleton<GetMosquesUseCase>(() => GetMosquesUseCase(sl()));
-
   sl.registerFactory<MosquesCubit>(() => MosquesCubit(sl()));
 
   sl.registerLazySingleton<AcademiesRemoteDataSource>(
@@ -68,20 +89,55 @@ Future<void> initDependencies() async {
   sl.registerLazySingleton<GetAcademiesUseCase>(
     () => GetAcademiesUseCase(sl()),
   );
-
   sl.registerFactory<AcademiesCubit>(() => AcademiesCubit(sl()));
 
   sl.registerLazySingleton<AuthRemoteDataSource>(
     () => AuthRemoteDataSourceImpl(sl()),
   );
 
-  sl.registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(sl()));
+  sl.registerLazySingleton<AuthRepository>(
+    () => AuthRepositoryImpl(sl(), sl()),
+  );
 
   sl.registerLazySingleton<LoginUseCase>(() => LoginUseCase(sl()));
-
   sl.registerLazySingleton<RegisterUseCase>(() => RegisterUseCase(sl()));
-
   sl.registerFactory<LoginCubit>(() => LoginCubit(sl()));
-
   sl.registerLazySingleton<RegisterCubit>(() => RegisterCubit(sl()));
+
+  sl.registerLazySingleton<SaveAuthSessionUseCase>(
+    () => SaveAuthSessionUseCase(sl()),
+  );
+
+  sl.registerLazySingleton<GetAuthSessionUseCase>(
+    () => GetAuthSessionUseCase(sl()),
+  );
+
+  sl.registerLazySingleton<ClearAuthSessionUseCase>(
+    () => ClearAuthSessionUseCase(sl()),
+  );
+
+  sl.registerLazySingleton<AuthSessionCubit>(
+    () => AuthSessionCubit(
+      saveAuthSessionUseCase: sl(),
+      getAuthSessionUseCase: sl(),
+      clearAuthSessionUseCase: sl(),
+    ),
+  );
+
+  sl.registerLazySingleton<LessonsRemoteDataSource>(
+    () => LessonsRemoteDataSourceImpl(sl()),
+  );
+
+  sl.registerLazySingleton<LessonsRepository>(
+    () => LessonsRepositoryImpl(sl()),
+  );
+
+  sl.registerLazySingleton<GetLessonsUseCase>(() => GetLessonsUseCase(sl()));
+  sl.registerFactory<LessonsCubit>(() => LessonsCubit(sl()));
+
+  sl.registerLazySingleton<CreateLessonUseCase>(
+    () => CreateLessonUseCase(sl()),
+  );
+
+  sl.registerFactory<CreateLessonCubit>(() => CreateLessonCubit(sl()));
 }

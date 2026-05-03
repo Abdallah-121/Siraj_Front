@@ -15,6 +15,8 @@ class AcademiesCubit extends Cubit<AcademiesState> {
     int pageSize = 20,
     String? search,
   }) async {
+    if (isClosed) return;
+
     emit(
       state.copyWith(
         isLoading: true,
@@ -31,8 +33,12 @@ class AcademiesCubit extends Cubit<AcademiesState> {
       ),
     );
 
+    if (isClosed) return;
+
     result.fold(
       (failure) {
+        if (isClosed) return;
+
         emit(
           state.copyWith(
             isLoading: false,
@@ -41,6 +47,8 @@ class AcademiesCubit extends Cubit<AcademiesState> {
         );
       },
       (academiesPage) {
+        if (isClosed) return;
+
         final List<AcademyEntity> activeAcademies = academiesPage.items
             .where((academy) => academy.isActive)
             .toList();

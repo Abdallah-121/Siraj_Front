@@ -26,16 +26,15 @@ class AuthSessionModel extends AuthSessionEntity {
     );
 
     return AuthSessionModel(
-      userId: parsed.userId,
-      fullName: parsed.fullName,
-      email: parsed.email,
-      roleId: parsed.roleId,
-      roleName: parsed.roleName,
-      token: parsed.token,
+      userId: json['userId'] as String? ?? parsed.userId,
+      fullName: json['fullName'] as String? ?? parsed.fullName,
+      email: json['email'] as String? ?? parsed.email,
+      roleId: json['roleId'] as int? ?? parsed.roleId,
+      roleName: json['roleName'] as String? ?? parsed.roleName,
+      token: token,
       teacherId: parsed.teacherId,
     );
   }
-
   factory AuthSessionModel.fromStorageJson(Map<String, dynamic> json) {
     return AuthSessionModel(
       userId: json['userId'] as String? ?? '',

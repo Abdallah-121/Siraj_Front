@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../app/router/route_names.dart';
 import '../../../../app/widgets/main_bottom_nav_bar.dart';
@@ -7,6 +8,7 @@ import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/context_extensions.dart';
 import '../../../../core/widgets/app_gap.dart';
 import '../../../../core/widgets/app_scaffold.dart';
+import '../../../auth/presentation/cubit/auth_session_cubit.dart';
 import '../../../settings/presentation/widgets/logout_confirmation_dialog.dart';
 import '../widgets/profile_header_card.dart';
 import '../widgets/profile_menu_tile.dart';
@@ -65,8 +67,13 @@ class _ProfilePageState extends State<ProfilePage> {
           noLabel: context.l10n.no,
           onClose: () => Navigator.pop(context),
           onCancel: () => Navigator.pop(context),
-          onConfirm: () {
+          onConfirm: () async {
             Navigator.pop(context);
+
+            await context.read<AuthSessionCubit>().logout();
+
+            if (!mounted) return;
+
             Navigator.pushNamedAndRemoveUntil(
               context,
               RouteNames.welcome,
@@ -81,6 +88,17 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    final authState = context.watch<AuthSessionCubit>().state;
+    final session = authState.session;
+
+    final String userName = session?.fullName.trim().isNotEmpty == true
+        ? session!.fullName
+        : context.l10n.sampleUserName;
+
+    final String email = session?.email.trim().isNotEmpty == true
+        ? session!.email
+        : context.l10n.sampleUserEmail;
+
     return AppScaffold(
       useSafeArea: true,
       bodyPadding: EdgeInsets.zero,
@@ -116,8 +134,8 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ),
           ProfileHeaderCard(
-            userName: context.l10n.sampleUserName,
-            email: context.l10n.sampleUserEmail,
+            userName: userName,
+            email: email,
             buttonLabel: context.l10n.editProfileButton,
             onEditPressed: _onEditProfilePressed,
             onPickImage: () {},

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:seraj/app/di/service_locator.dart';
 import 'package:seraj/app/router/route_names.dart';
+import 'package:seraj/features/auth/presentation/cubit/auth_session_cubit.dart';
 import 'package:seraj/features/explore/presentation/mosques/domain/entites/mosque_entity.dart';
 import 'package:seraj/features/explore/presentation/mosques/presentation/cubit/mosques_cubit.dart';
 import 'package:seraj/features/explore/presentation/mosques/presentation/cubit/mosques_state.dart';
@@ -43,17 +44,6 @@ class _MosquesPageState extends State<MosquesPage> {
     Navigator.pop(context);
   }
 
-  void _onSearchPressed() {
-    showSearch(
-      context: context,
-      delegate: _ExploreSearchDelegate(
-        onQueryChanged: (query) {
-          context.read<MosquesCubit>().searchMosques(query);
-        },
-      ),
-    );
-  }
-
   void _toggleFilter() {
     setState(() {
       _isFilterExpanded = !_isFilterExpanded;
@@ -92,114 +82,151 @@ class _MosquesPageState extends State<MosquesPage> {
         ? context.l10n.area
         : _selectedFilter;
 
+    final session = context.watch<AuthSessionCubit>().state.session;
+    final bool isAdmin = session?.roleName.trim().toLowerCase() == 'admin';
+
     return BlocProvider(
       create: (_) => sl<MosquesCubit>()..loadMosques(),
-      child: AppScaffold(
-        useSafeArea: true,
-        bodyPadding: EdgeInsets.zero,
-        bottomNavigationBar: MainBottomNavBar(
-          currentItem: _currentItem,
-          onItemSelected: _onBottomNavItemSelected,
-        ),
-        body: Column(
-          children: [
-            ExploreHeader(onBackPressed: _onBackPressed, compact: true),
-            Expanded(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.fromLTRB(
-                  AppSpacing.lg,
-                  AppSpacing.md,
-                  AppSpacing.lg,
-                  AppSpacing.xl,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    ExploreTitleFilterHeader(
-                      leadingSearchIcon: ExploreSearchBar(
-                        mode: ExploreSearchBarMode.iconOnly,
-                        onTap: _onSearchPressed,
-                      ),
-                      titleIcon: const Icon(Icons.mosque_outlined, size: 34),
-                      title: context.l10n.mosques,
-                      filterWidget: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(
-                            context.l10n.showMosquesBy,
-                            textAlign: TextAlign.end,
-                          ),
-                          const SizedBox(height: AppSpacing.xs),
-                          ExploreFilterDropdown(
-                            label: filterLabel,
-                            items: _filterItems,
-                            isExpanded: _isFilterExpanded,
-                            onPressed: _toggleFilter,
-                            onItemSelected: _onFilterSelected,
-                          ),
-                        ],
-                      ),
+      child: Builder(
+        builder: (providerContext) {
+          void onSearchPressed() {
+            showSearch(
+              context: providerContext,
+              delegate: _ExploreSearchDelegate(
+                onQueryChanged: (query) {
+                  providerContext.read<MosquesCubit>().searchMosques(query);
+                },
+              ),
+            );
+          }
+
+          return AppScaffold(
+            useSafeArea: true,
+            bodyPadding: EdgeInsets.zero,
+            bottomNavigationBar: MainBottomNavBar(
+              currentItem: _currentItem,
+              onItemSelected: _onBottomNavItemSelected,
+            ),
+            floatingActionButton: isAdmin
+                ? FloatingActionButton(
+                    onPressed: () async {
+                      final result = await Navigator.pushNamed(
+                        providerContext,
+                        RouteNames.createMosque,
+                      );
+
+                      if (result == true && providerContext.mounted) {
+                        providerContext.read<MosquesCubit>().loadMosques();
+                      }
+                    },
+                    child: const Icon(Icons.add_rounded),
+                  )
+                : null,
+            body: Column(
+              children: [
+                ExploreHeader(onBackPressed: _onBackPressed, compact: true),
+                Expanded(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.fromLTRB(
+                      AppSpacing.lg,
+                      AppSpacing.md,
+                      AppSpacing.lg,
+                      AppSpacing.xl,
                     ),
-                    const SizedBox(height: AppSpacing.lg),
-                    BlocBuilder<MosquesCubit, MosquesState>(
-                      builder: (context, state) {
-                        if (state.isLoading) {
-                          return const _MosquesLoadingState();
-                        }
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        ExploreTitleFilterHeader(
+                          leadingSearchIcon: ExploreSearchBar(
+                            mode: ExploreSearchBarMode.iconOnly,
+                            onTap: onSearchPressed,
+                          ),
+                          titleIcon: const Icon(
+                            Icons.mosque_outlined,
+                            size: 34,
+                          ),
+                          title: context.l10n.mosques,
+                          filterWidget: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text(
+                                context.l10n.showMosquesBy,
+                                textAlign: TextAlign.end,
+                              ),
+                              const SizedBox(height: AppSpacing.xs),
+                              ExploreFilterDropdown(
+                                label: filterLabel,
+                                items: _filterItems,
+                                isExpanded: _isFilterExpanded,
+                                onPressed: _toggleFilter,
+                                onItemSelected: _onFilterSelected,
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: AppSpacing.lg),
+                        BlocBuilder<MosquesCubit, MosquesState>(
+                          builder: (context, state) {
+                            if (state.isLoading) {
+                              return const _MosquesLoadingState();
+                            }
 
-                        if (state.errorMessage != null) {
-                          return _MosquesErrorState(
-                            message: state.errorMessage!,
-                            onRetry: () {
-                              context.read<MosquesCubit>().loadMosques();
-                            },
-                          );
-                        }
+                            if (state.errorMessage != null) {
+                              return _MosquesErrorState(
+                                message: state.errorMessage!,
+                                onRetry: () {
+                                  context.read<MosquesCubit>().loadMosques();
+                                },
+                              );
+                            }
 
-                        if (state.mosques.isEmpty) {
-                          return _MosquesEmptyState(
-                            message: context.l10n.noMosquesFound,
-                          );
-                        }
+                            if (state.mosques.isEmpty) {
+                              return _MosquesEmptyState(
+                                message: context.l10n.noMosquesFound,
+                              );
+                            }
 
-                        return ListView.separated(
-                          itemCount: state.mosques.length,
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          separatorBuilder: (_, __) =>
-                              const SizedBox(height: AppSpacing.lg),
-                          itemBuilder: (context, index) {
-                            final MosqueEntity mosque = state.mosques[index];
+                            return ListView.separated(
+                              itemCount: state.mosques.length,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              separatorBuilder: (_, __) =>
+                                  const SizedBox(height: AppSpacing.lg),
+                              itemBuilder: (context, index) {
+                                final MosqueEntity mosque =
+                                    state.mosques[index];
 
-                            return PlaceListItem(
-                              title: mosque.name,
-                              preacherName: mosque.khatibName.isNotEmpty
-                                  ? mosque.khatibName
-                                  : context.l10n.unknown,
-                              imamName: mosque.imamName.isNotEmpty
-                                  ? mosque.imamName
-                                  : context.l10n.unknown,
-                              studyType: mosque.cityName.isNotEmpty
-                                  ? mosque.cityName
-                                  : context.l10n.unknown,
-                              imageLabel: mosque.name,
-                              isFavorite: false,
-                              onTap: () => _onMosquePressed(mosque),
-                              onFavoritePressed: () {},
-                              topBadge: index == 2
-                                  ? const NewUpdateBadge()
-                                  : null,
+                                return PlaceListItem(
+                                  title: mosque.name,
+                                  preacherName: mosque.khatibName.isNotEmpty
+                                      ? mosque.khatibName
+                                      : context.l10n.unknown,
+                                  imamName: mosque.imamName.isNotEmpty
+                                      ? mosque.imamName
+                                      : context.l10n.unknown,
+                                  studyType: mosque.cityName.isNotEmpty
+                                      ? mosque.cityName
+                                      : context.l10n.unknown,
+                                  imageLabel: mosque.name,
+                                  isFavorite: false,
+                                  onTap: () => _onMosquePressed(mosque),
+                                  onFavoritePressed: () {},
+                                  topBadge: index == 2
+                                      ? const NewUpdateBadge()
+                                      : null,
+                                );
+                              },
                             );
                           },
-                        );
-                      },
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

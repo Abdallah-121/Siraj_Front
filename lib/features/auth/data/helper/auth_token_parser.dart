@@ -18,6 +18,7 @@ abstract final class AuthTokenParser {
           'sub',
           'userId',
           'nameid',
+          'uid',
           'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier',
         ]) ??
         fallbackUserId;
@@ -39,10 +40,16 @@ abstract final class AuthTokenParser {
         fallbackEmail;
 
     final int roleId =
-        _readInt(claims, const ['roleId', 'role_id']) ?? fallbackRoleId;
+        _readInt(claims, const ['roleId', 'role_id', 'RoleId']) ??
+        fallbackRoleId;
 
     final String roleName =
-        _readString(claims, const ['roleName', 'role', 'roles']) ??
+        _readString(claims, const [
+          'roleName',
+          'role',
+          'roles',
+          'http://schemas.microsoft.com/ws/2008/06/identity/claims/role',
+        ]) ??
         fallbackRoleName;
 
     final int? teacherId = _readInt(claims, const [
@@ -66,6 +73,12 @@ abstract final class AuthTokenParser {
     for (final key in keys) {
       final value = map[key];
       if (value == null) continue;
+
+      if (value is List && value.isNotEmpty) {
+        final first = value.first.toString().trim();
+        if (first.isNotEmpty) return first;
+      }
+
       final text = value.toString().trim();
       if (text.isNotEmpty) return text;
     }
@@ -76,7 +89,9 @@ abstract final class AuthTokenParser {
     for (final key in keys) {
       final value = map[key];
       if (value == null) continue;
+
       if (value is int) return value;
+
       final parsed = int.tryParse(value.toString());
       if (parsed != null) return parsed;
     }

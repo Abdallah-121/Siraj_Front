@@ -37,15 +37,21 @@ class HomeHeader extends StatelessWidget {
       child: Row(
         children: [
           _HeaderCircleButton(
-            icon: Icons.arrow_back_rounded,
+            icon: Icons.menu_rounded,
             onPressed: onBackPressed,
           ),
           const Spacer(),
-          Text(
-            userName,
-            style: AppTextStyles.titleLarge.copyWith(
-              color: AppColors.white,
-              fontWeight: FontWeight.w500,
+          Expanded(
+            flex: 2,
+            child: Text(
+              userName,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.end,
+              style: AppTextStyles.titleLarge.copyWith(
+                color: AppColors.white,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
           const SizedBox(width: AppSpacing.md),

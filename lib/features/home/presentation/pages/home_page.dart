@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:seraj/features/home/presentation/widgets/home_app_drawer.dart';
 
 import '../../../../app/router/route_names.dart';
 import '../../../../app/widgets/main_bottom_nav_bar.dart';
@@ -6,6 +8,7 @@ import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/context_extensions.dart';
 import '../../../../core/widgets/app_gap.dart';
 import '../../../../core/widgets/app_scaffold.dart';
+import '../../../auth/presentation/cubit/auth_session_cubit.dart';
 import '../widgets/home_header.dart';
 import '../widgets/home_horizontal_section.dart';
 import '../widgets/home_search_bar.dart';
@@ -20,10 +23,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   MainNavItem _currentItem = MainNavItem.home;
 
-  void _onBackPressed() {
-    Navigator.maybePop(context);
+  void _onMenuPressed() {
+    _scaffoldKey.currentState?.openDrawer();
   }
 
   void _onSearchPressed() {}
@@ -67,14 +71,23 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final authState = context.watch<AuthSessionCubit>().state;
+    final session = authState.session;
+
+    final String userName = session?.fullName.trim().isNotEmpty == true
+        ? session!.fullName
+        : context.l10n.username;
+
     final List<String> lessonItems = [
       context.l10n.quranCategory,
       context.l10n.islamicSciencesCategory,
     ];
 
     return AppScaffold(
+      scaffoldKey: _scaffoldKey,
       useSafeArea: true,
       bodyPadding: EdgeInsets.zero,
+      drawer: const HomeAppDrawer(),
       bottomNavigationBar: MainBottomNavBar(
         currentItem: _currentItem,
         onItemSelected: _onBottomNavItemSelected,
@@ -82,8 +95,11 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         children: [
           HomeHeader(
-            userName: context.l10n.username,
-            onBackPressed: _onBackPressed,
+            userName: userName,
+            onBackPressed: _onMenuPressed,
+            onAvatarPressed: () {
+              Navigator.pushNamed(context, RouteNames.profile);
+            },
           ),
           Expanded(
             child: SingleChildScrollView(

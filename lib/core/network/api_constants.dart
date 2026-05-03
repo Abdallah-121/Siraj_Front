@@ -7,4 +7,8 @@ abstract final class ApiConstants {
   static const String login = '/api/auth/login';
   static const String register = '/api/auth/register';
   static const String lessons = '/api/Lessons';
+  static const String createMosqueManagerInvitationCode =
+      '/api/invitation-codes/mosque-manager';
+
+  static const String redeemInvitationCode = '/api/invitation-codes/redeem';
 }

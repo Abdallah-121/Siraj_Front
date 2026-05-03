@@ -4,10 +4,12 @@ import '../theme/app_colors.dart';
 import '../theme/app_spacing.dart';
 
 class AppScaffold extends StatelessWidget {
+  final Key? scaffoldKey;
   final PreferredSizeWidget? appBar;
   final Widget body;
   final Widget? bottomNavigationBar;
   final Widget? floatingActionButton;
+  final Widget? drawer;
   final Color? backgroundColor;
   final bool resizeToAvoidBottomInset;
   final bool useSafeArea;
@@ -15,10 +17,12 @@ class AppScaffold extends StatelessWidget {
 
   const AppScaffold({
     super.key,
+    this.scaffoldKey,
     this.appBar,
     required this.body,
     this.bottomNavigationBar,
     this.floatingActionButton,
+    this.drawer,
     this.backgroundColor,
     this.resizeToAvoidBottomInset = true,
     this.useSafeArea = true,
@@ -32,7 +36,9 @@ class AppScaffold extends StatelessWidget {
         : Padding(padding: bodyPadding!, child: body);
 
     return Scaffold(
+      key: scaffoldKey,
       appBar: appBar,
+      drawer: drawer,
       backgroundColor: backgroundColor ?? AppColors.background,
       resizeToAvoidBottomInset: resizeToAvoidBottomInset,
       bottomNavigationBar: bottomNavigationBar,

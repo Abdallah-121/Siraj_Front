@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../app/widgets/app_page_header.dart';
 import '../../../../core/theme/app_spacing.dart';
@@ -6,6 +7,7 @@ import '../../../../core/utils/context_extensions.dart';
 import '../../../../core/widgets/app_button.dart';
 import '../../../../core/widgets/app_gap.dart';
 import '../../../../core/widgets/app_scaffold.dart';
+import '../../../auth/presentation/cubit/auth_session_cubit.dart';
 import '../widgets/edit_profile_form.dart';
 import '../widgets/profile_avatar_picker.dart';
 
@@ -23,6 +25,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
   late final TextEditingController _confirmPasswordController;
   late final TextEditingController _phoneController;
 
+  bool _didFillInitialData = false;
+
   @override
   void initState() {
     super.initState();
@@ -31,6 +35,21 @@ class _EditProfilePageState extends State<EditProfilePage> {
     _passwordController = TextEditingController();
     _confirmPasswordController = TextEditingController();
     _phoneController = TextEditingController();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    if (_didFillInitialData) return;
+
+    final session = context.read<AuthSessionCubit>().state.session;
+
+    _usernameController.text = session?.fullName ?? '';
+    _emailController.text = session?.email ?? '';
+    _phoneController.text = '';
+
+    _didFillInitialData = true;
   }
 
   @override

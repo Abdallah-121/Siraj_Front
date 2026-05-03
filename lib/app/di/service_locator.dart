@@ -25,8 +25,18 @@ import 'package:seraj/features/explore/presentation/mosques/data/datasources/mos
 import 'package:seraj/features/explore/presentation/mosques/data/datasources/mosques_remote_data_source_impl.dart';
 import 'package:seraj/features/explore/presentation/mosques/data/repositories/mosques_repository_impl.dart';
 import 'package:seraj/features/explore/presentation/mosques/domain/repositories/mosques_repository.dart';
+import 'package:seraj/features/explore/presentation/mosques/domain/usecases/create_mosque_usecase.dart';
 import 'package:seraj/features/explore/presentation/mosques/domain/usecases/get_mosques_usecase.dart';
+import 'package:seraj/features/explore/presentation/mosques/presentation/cubit/create_mosque_cubit.dart';
 import 'package:seraj/features/explore/presentation/mosques/presentation/cubit/mosques_cubit.dart';
+import 'package:seraj/features/invitation_codes/data/datasources/invitation_codes_remote_data_source.dart';
+import 'package:seraj/features/invitation_codes/data/datasources/invitation_codes_remote_data_source_impl.dart';
+import 'package:seraj/features/invitation_codes/data/repositories/invitation_codes_repository_impl.dart';
+import 'package:seraj/features/invitation_codes/domain/repositories/invitation_codes_repository.dart';
+import 'package:seraj/features/invitation_codes/domain/usecaases/create_mosque_manager_invitation_code_usecase.dart';
+import 'package:seraj/features/invitation_codes/domain/usecaases/redeem_invitation_code_usecase.dart';
+import 'package:seraj/features/invitation_codes/presentation/cubit/create_invitation_code_cubit.dart';
+import 'package:seraj/features/invitation_codes/presentation/cubit/redeem_invitation_code_cubit.dart';
 import 'package:seraj/features/lessons/data/datasources/lessons_remote_datasource.dart';
 import 'package:seraj/features/lessons/data/datasources/lessons_remote_datasource_impl.dart';
 import 'package:seraj/features/lessons/data/repositories/lessons_repositoryI_impl.dart';
@@ -140,4 +150,34 @@ Future<void> initDependencies() async {
   );
 
   sl.registerFactory<CreateLessonCubit>(() => CreateLessonCubit(sl()));
+
+  sl.registerLazySingleton<InvitationCodesRemoteDataSource>(
+    () => InvitationCodesRemoteDataSourceImpl(sl()),
+  );
+
+  sl.registerLazySingleton<InvitationCodesRepository>(
+    () => InvitationCodesRepositoryImpl(sl()),
+  );
+
+  sl.registerLazySingleton<CreateMosqueManagerInvitationCodeUseCase>(
+    () => CreateMosqueManagerInvitationCodeUseCase(sl()),
+  );
+
+  sl.registerLazySingleton<RedeemInvitationCodeUseCase>(
+    () => RedeemInvitationCodeUseCase(sl()),
+  );
+
+  sl.registerFactory<CreateInvitationCodeCubit>(
+    () => CreateInvitationCodeCubit(sl()),
+  );
+
+  sl.registerFactory<RedeemInvitationCodeCubit>(
+    () => RedeemInvitationCodeCubit(sl()),
+  );
+
+  sl.registerLazySingleton<CreateMosqueUseCase>(
+    () => CreateMosqueUseCase(sl()),
+  );
+
+  sl.registerFactory<CreateMosqueCubit>(() => CreateMosqueCubit(sl()));
 }

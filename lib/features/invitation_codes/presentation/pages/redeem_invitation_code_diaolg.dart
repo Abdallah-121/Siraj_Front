@@ -49,15 +49,17 @@ class _RedeemInvitationCodeDialogBodyState
 
   Future<void> _onRedeemPressed() async {
     final code = _codeController.text.trim();
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
+    final redeemInvitationCodeCubit = context.read<RedeemInvitationCodeCubit>();
 
     if (code.isEmpty) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text('يرجى إدخال الكود')));
+      scaffoldMessenger.showSnackBar(
+        const SnackBar(content: Text('يرجى إدخال الكود')),
+      );
       return;
     }
 
-    await context.read<RedeemInvitationCodeCubit>().redeemCode(code: code);
+    await redeemInvitationCodeCubit.redeemCode(code: code);
   }
 
   @override
@@ -68,17 +70,20 @@ class _RedeemInvitationCodeDialogBodyState
       ),
       child: BlocConsumer<RedeemInvitationCodeCubit, RedeemInvitationCodeState>(
         listener: (context, state) async {
+          final scaffoldMessenger = ScaffoldMessenger.of(context);
+          final navigator = Navigator.of(context);
+          final authSessionCubit = context.read<AuthSessionCubit>();
+
           if (state.errorMessage != null) {
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(SnackBar(content: Text(state.errorMessage!)));
+            scaffoldMessenger.showSnackBar(
+              SnackBar(content: Text(state.errorMessage!)),
+            );
           }
 
-          if (state.result != null) {
-            final currentSession = context
-                .read<AuthSessionCubit>()
-                .state
-                .session;
+          final result = state.result;
+
+          if (result != null) {
+            final currentSession = authSessionCubit.state.session;
 
             if (currentSession != null) {
               final updatedSession = AuthSessionEntity(
@@ -87,20 +92,20 @@ class _RedeemInvitationCodeDialogBodyState
                 email: currentSession.email,
                 token: currentSession.token,
                 teacherId: currentSession.teacherId,
-                roleId: state.result!.roleId,
-                roleName: state.result!.roleName,
+                roleId: result.roleId,
+                roleName: result.roleName,
               );
 
-              await context.read<AuthSessionCubit>().setSession(updatedSession);
+              await authSessionCubit.setSession(updatedSession);
             }
 
-            if (!mounted) return;
+            if (!context.mounted) return;
 
-            Navigator.pop(context);
+            navigator.pop();
 
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(SnackBar(content: Text(state.result!.message)));
+            scaffoldMessenger.showSnackBar(
+              SnackBar(content: Text(result.message)),
+            );
           }
         },
         builder: (context, state) {

@@ -85,7 +85,7 @@ class _WelcomePageState extends State<WelcomePage> {
               Column(
                 children: [
                   Align(
-                    alignment: AlignmentDirectional.topEnd,
+                    alignment: AlignmentDirectional.topStart,
                     child: LanguageIconButton(
                       onPressed: () => _onChangeLanguagePressed(context),
                     ),

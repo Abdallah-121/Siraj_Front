@@ -13,16 +13,19 @@ class SettingsSectionTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      textDirection: Directionality.of(context),
       children: [
         icon,
         const SizedBox(width: 8),
-        Text(
-          title,
-          style: Theme.of(
-            context,
-          ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
+        Expanded(
+          child: Text(
+            title,
+            textAlign: TextAlign.start,
+            style: Theme.of(
+              context,
+            ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
+          ),
         ),
-        const Spacer(),
       ],
     );
   }

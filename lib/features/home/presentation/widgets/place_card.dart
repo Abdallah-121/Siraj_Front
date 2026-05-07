@@ -7,9 +7,8 @@ import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_text_styles.dart';
 
 class PlaceCard extends StatelessWidget {
-  static const double cardWidth = 186;
-  static const double cardHeight = 186;
-  static const double imageHeight = 108;
+  static const double cardWidth = 280;
+  static const double cardHeight = 136;
 
   final String title;
   final bool isFavorite;
@@ -33,53 +32,83 @@ class PlaceCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.surface,
         borderRadius: BorderRadius.circular(AppRadius.xl),
-        border: Border.all(color: AppColors.border, width: 0.9),
-        boxShadow: AppShadows.subtle,
+        border: Border.all(color: AppColors.divider),
+        boxShadow: AppShadows.card,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+      child: Row(
+        textDirection: Directionality.of(context),
         children: [
-          Stack(
-            children: [
-              Container(
-                height: imageHeight,
-                decoration: BoxDecoration(
-                  color: AppColors.border,
-                  borderRadius: BorderRadius.circular(AppRadius.lg),
-                ),
-              ),
-              PositionedDirectional(
-                top: 8,
-                end: 8,
-                child: _FavoriteButton(
-                  isFavorite: isFavorite,
-                  onPressed: onFavoritePressed,
-                ),
-              ),
-            ],
+          Container(
+            width: 104,
+            height: double.infinity,
+            decoration: BoxDecoration(
+              color: AppColors.primary.withValues(alpha: 0.10),
+              borderRadius: BorderRadius.circular(AppRadius.lg),
+            ),
+            child: const Icon(
+              Icons.mosque_rounded,
+              color: AppColors.primary,
+              size: 38,
+            ),
           ),
-          const SizedBox(height: AppSpacing.md),
+          const SizedBox(width: AppSpacing.md),
           Expanded(
-            child: Center(
-              child: Text(
-                title,
-                textAlign: TextAlign.center,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: AppTextStyles.titleMedium.copyWith(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  textAlign: TextAlign.start,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyles.titleMedium.copyWith(
+                    fontWeight: FontWeight.w800,
+                  ),
                 ),
-              ),
+                const SizedBox(height: AppSpacing.xs),
+                Text(
+                  'دروس قرآنية وشرعية',
+                  textAlign: TextAlign.start,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyles.bodySmall.copyWith(
+                    color: AppColors.textSecondary,
+                  ),
+                ),
+                const Spacer(),
+                Row(
+                  textDirection: Directionality.of(context),
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.md,
+                        vertical: AppSpacing.xs,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppColors.primary.withValues(alpha: 0.08),
+                        borderRadius: BorderRadius.circular(AppRadius.pill),
+                      ),
+                      child: Text(
+                        'عرض التفاصيل',
+                        style: AppTextStyles.bodySmall.copyWith(
+                          color: AppColors.primary,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                    const Spacer(),
+                    _FavoriteButton(
+                      isFavorite: isFavorite,
+                      onPressed: onFavoritePressed,
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         ],
       ),
     );
-
-    if (onTap == null) {
-      return content;
-    }
 
     return InkWell(
       onTap: onTap,
@@ -97,17 +126,22 @@ class _FavoriteButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 28,
-      height: 28,
-      child: IconButton(
-        onPressed: onPressed,
-        padding: EdgeInsets.zero,
-        visualDensity: VisualDensity.compact,
-        icon: Icon(
-          isFavorite ? Icons.favorite_rounded : Icons.favorite_border_rounded,
-          size: 24,
-          color: isFavorite ? AppColors.error : AppColors.textPrimary,
+    return Material(
+      color: isFavorite
+          ? AppColors.error.withValues(alpha: 0.10)
+          : AppColors.surfaceSoft,
+      shape: const CircleBorder(),
+      child: InkWell(
+        onTap: onPressed,
+        customBorder: const CircleBorder(),
+        child: SizedBox(
+          width: 36,
+          height: 36,
+          child: Icon(
+            isFavorite ? Icons.favorite_rounded : Icons.favorite_border_rounded,
+            size: 21,
+            color: isFavorite ? AppColors.error : AppColors.textSecondary,
+          ),
         ),
       ),
     );

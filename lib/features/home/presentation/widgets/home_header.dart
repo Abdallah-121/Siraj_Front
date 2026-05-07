@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_colors.dart';
-import '../../../../core/theme/app_radius.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_text_styles.dart';
 
@@ -20,49 +19,74 @@ class HomeHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.fromLTRB(
+      padding: const EdgeInsetsDirectional.fromSTEB(
         AppSpacing.lg,
         AppSpacing.lg,
         AppSpacing.lg,
-        AppSpacing.xxl,
+        AppSpacing.xxxl,
       ),
       decoration: const BoxDecoration(
-        color: AppColors.primary,
+        gradient: LinearGradient(
+          colors: [AppColors.primaryDark, AppColors.primary],
+          begin: AlignmentDirectional.topStart,
+          end: AlignmentDirectional.bottomEnd,
+        ),
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(AppRadius.xxl),
-          bottomRight: Radius.circular(AppRadius.xxl),
+          bottomLeft: Radius.circular(38),
+          bottomRight: Radius.circular(38),
         ),
       ),
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _HeaderCircleButton(
-            icon: Icons.menu_rounded,
-            onPressed: onBackPressed,
+          Row(
+            textDirection: Directionality.of(context),
+            children: [
+              _CircleButton(icon: Icons.menu_rounded, onPressed: onBackPressed),
+              const Spacer(),
+              GestureDetector(
+                onTap: onAvatarPressed,
+                child: Container(
+                  width: 58,
+                  height: 58,
+                  decoration: BoxDecoration(
+                    color: AppColors.white.withValues(alpha: 0.16),
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: AppColors.white.withValues(alpha: 0.35),
+                    ),
+                  ),
+                  child: const Icon(
+                    Icons.person_rounded,
+                    color: AppColors.white,
+                    size: 30,
+                  ),
+                ),
+              ),
+            ],
           ),
-          const Spacer(),
-          Expanded(
-            flex: 2,
+          const SizedBox(height: AppSpacing.xl),
+          Align(
+            alignment: AlignmentDirectional.centerStart,
             child: Text(
-              userName,
+              'أهلًا، $userName',
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              textAlign: TextAlign.end,
-              style: AppTextStyles.titleLarge.copyWith(
+              textAlign: TextAlign.start,
+              style: AppTextStyles.headlineMedium.copyWith(
                 color: AppColors.white,
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w800,
               ),
             ),
           ),
-          const SizedBox(width: AppSpacing.md),
-          GestureDetector(
-            onTap: onAvatarPressed,
-            child: Container(
-              width: 60,
-              height: 60,
-              decoration: const BoxDecoration(
-                color: AppColors.border,
-                shape: BoxShape.circle,
+          const SizedBox(height: AppSpacing.sm),
+          Align(
+            alignment: AlignmentDirectional.centerStart,
+            child: Text(
+              'ماذا تحب أن تتعلم اليوم؟',
+              textAlign: TextAlign.start,
+              style: AppTextStyles.bodyMedium.copyWith(
+                color: AppColors.white.withValues(alpha: 0.82),
               ),
             ),
           ),
@@ -72,25 +96,24 @@ class HomeHeader extends StatelessWidget {
   }
 }
 
-class _HeaderCircleButton extends StatelessWidget {
+class _CircleButton extends StatelessWidget {
   final IconData icon;
   final VoidCallback? onPressed;
 
-  const _HeaderCircleButton({required this.icon, required this.onPressed});
+  const _CircleButton({required this.icon, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 44,
-      height: 44,
-      child: DecoratedBox(
-        decoration: const BoxDecoration(
-          color: AppColors.white,
-          shape: BoxShape.circle,
-        ),
-        child: IconButton(
-          onPressed: onPressed,
-          icon: Icon(icon, color: AppColors.primary, size: 24),
+    return Material(
+      color: AppColors.white,
+      shape: const CircleBorder(),
+      child: InkWell(
+        onTap: onPressed,
+        customBorder: const CircleBorder(),
+        child: SizedBox(
+          width: 46,
+          height: 46,
+          child: Icon(icon, color: AppColors.primary, size: 26),
         ),
       ),
     );

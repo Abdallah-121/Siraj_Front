@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:seraj/app/di/service_locator.dart';
@@ -10,6 +12,7 @@ import '../../../../../../core/widgets/app_scaffold.dart';
 import '../cubit/create_mosque_cubit.dart';
 import '../cubit/create_mosque_state.dart';
 import '../widgets/create_mosque_form.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CreateMosquePage extends StatefulWidget {
   const CreateMosquePage({super.key});
@@ -30,6 +33,9 @@ class _CreateMosquePageState extends State<CreateMosquePage> {
   late final TextEditingController _timezoneController;
   late final TextEditingController _calculationMethodController;
   late final TextEditingController _madhabController;
+  late final TextEditingController _imageUrlController;
+  File? _selectedImage;
+  final ImagePicker _imagePicker = ImagePicker();
 
   @override
   void initState() {
@@ -45,6 +51,7 @@ class _CreateMosquePageState extends State<CreateMosquePage> {
     _timezoneController = TextEditingController(text: 'Asia/Damascus');
     _calculationMethodController = TextEditingController(text: '1');
     _madhabController = TextEditingController(text: '1');
+    _imageUrlController = TextEditingController();
   }
 
   @override
@@ -60,7 +67,21 @@ class _CreateMosquePageState extends State<CreateMosquePage> {
     _timezoneController.dispose();
     _calculationMethodController.dispose();
     _madhabController.dispose();
+    _imageUrlController.dispose();
     super.dispose();
+  }
+
+  Future<void> _pickImage() async {
+    final XFile? pickedImage = await _imagePicker.pickImage(
+      source: ImageSource.gallery,
+      imageQuality: 80,
+    );
+
+    if (pickedImage == null) return;
+
+    setState(() {
+      _selectedImage = File(pickedImage.path);
+    });
   }
 
   void _onCreatePressed(BuildContext context) {
@@ -101,6 +122,7 @@ class _CreateMosquePageState extends State<CreateMosquePage> {
       timezone: _timezoneController.text.trim(),
       calculationMethod: calculationMethod,
       madhab: madhab,
+      image: _selectedImage,
     );
   }
 
@@ -157,6 +179,8 @@ class _CreateMosquePageState extends State<CreateMosquePage> {
                           calculationMethodController:
                               _calculationMethodController,
                           madhabController: _madhabController,
+                          selectedImage: _selectedImage,
+                          onPickImage: _pickImage,
                         ),
                         AppGap.v24,
                         AppButton(

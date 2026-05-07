@@ -23,7 +23,7 @@ class MosqueQuickInfoCard extends StatelessWidget {
         boxShadow: AppShadows.subtle,
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _InfoRow(
             label: context.l10n.imamLabel,
@@ -83,7 +83,7 @@ class _InfoRow extends StatelessWidget {
           ),
         ],
       ),
-      textAlign: TextAlign.end,
+      textAlign: TextAlign.start,
     );
   }
 }

@@ -21,11 +21,7 @@ class LessonListSection extends StatelessWidget {
   });
 
   void _onLessonPressed(BuildContext context, LessonEntity lesson) {
-    Navigator.pushNamed(
-      context,
-      RouteNames.courseRegistration,
-      arguments: lesson,
-    );
+    Navigator.pushNamed(context, RouteNames.lessonDetail, arguments: lesson);
   }
 
   @override
@@ -35,7 +31,7 @@ class LessonListSection extends StatelessWidget {
       children: [
         Text(
           context.l10n.availableLessons,
-          textAlign: TextAlign.end,
+          textAlign: TextAlign.start,
           style: AppTextStyles.titleLarge.copyWith(fontWeight: FontWeight.w700),
         ),
         const SizedBox(height: AppSpacing.lg),

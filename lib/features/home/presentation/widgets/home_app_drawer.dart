@@ -28,9 +28,11 @@ class HomeAppDrawer extends StatelessWidget {
     final String userName = session?.fullName.trim().isNotEmpty == true
         ? session!.fullName
         : 'مستخدم';
+
     final String email = session?.email.trim().isNotEmpty == true
         ? session!.email
         : '';
+
     final String roleName = session?.roleName ?? '';
 
     return Drawer(
@@ -42,11 +44,11 @@ class HomeAppDrawer extends StatelessWidget {
               padding: const EdgeInsets.all(AppSpacing.lg),
               color: AppColors.primary,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     userName,
-                    textAlign: TextAlign.end,
+                    textAlign: TextAlign.start,
                     style: AppTextStyles.titleLarge.copyWith(
                       color: Colors.white,
                       fontWeight: FontWeight.w700,
@@ -56,7 +58,7 @@ class HomeAppDrawer extends StatelessWidget {
                     const SizedBox(height: AppSpacing.xs),
                     Text(
                       email,
-                      textAlign: TextAlign.end,
+                      textAlign: TextAlign.start,
                       style: AppTextStyles.bodyMedium.copyWith(
                         color: Colors.white70,
                       ),
@@ -66,7 +68,7 @@ class HomeAppDrawer extends StatelessWidget {
                     const SizedBox(height: AppSpacing.xs),
                     Text(
                       roleName,
-                      textAlign: TextAlign.end,
+                      textAlign: TextAlign.start,
                       style: AppTextStyles.bodySmall.copyWith(
                         color: Colors.white,
                       ),
@@ -75,6 +77,7 @@ class HomeAppDrawer extends StatelessWidget {
                 ],
               ),
             ),
+
             _DrawerTile(
               title: 'الملف الشخصي',
               icon: Icons.person_outline_rounded,
@@ -83,6 +86,25 @@ class HomeAppDrawer extends StatelessWidget {
                 Navigator.pushNamed(context, RouteNames.profile);
               },
             ),
+
+            _DrawerTile(
+              title: 'المساجد',
+              icon: Icons.mosque_outlined,
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, RouteNames.mosques);
+              },
+            ),
+
+            _DrawerTile(
+              title: 'الأكاديميات',
+              icon: Icons.school_outlined,
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, RouteNames.academies);
+              },
+            ),
+
             _DrawerTile(
               title: 'الإعدادات',
               icon: Icons.settings_outlined,
@@ -91,6 +113,7 @@ class HomeAppDrawer extends StatelessWidget {
                 Navigator.pushNamed(context, RouteNames.settings);
               },
             ),
+
             if (_isAdmin(roleName))
               _DrawerTile(
                 title: 'توليد كود مدير مسجد',
@@ -104,6 +127,7 @@ class HomeAppDrawer extends StatelessWidget {
                   );
                 },
               ),
+
             if (_canRedeem(roleName))
               _DrawerTile(
                 title: 'تفعيل كود الدعوة',
@@ -142,7 +166,7 @@ class _DrawerTile extends StatelessWidget {
       leading: Icon(icon, color: AppColors.primary),
       title: Text(
         title,
-        textAlign: TextAlign.end,
+        textAlign: TextAlign.start,
         style: AppTextStyles.bodyLarge,
       ),
     );

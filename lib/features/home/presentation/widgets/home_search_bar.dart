@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_radius.dart';
+import '../../../../core/theme/app_shadows.dart';
 import '../../../../core/theme/app_spacing.dart';
+import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/utils/context_extensions.dart';
 
 class HomeSearchBar extends StatelessWidget {
   final VoidCallback? onTap;
@@ -11,38 +14,41 @@ class HomeSearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
+    return Material(
+      color: AppColors.surface,
       borderRadius: BorderRadius.circular(AppRadius.xl),
-      child: Container(
-        height: 56,
-        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-        decoration: BoxDecoration(
-          color: AppColors.surfaceSoft,
-          borderRadius: BorderRadius.circular(AppRadius.xl),
-        ),
-        child: Row(
-          children: [
-            Expanded(
-              child: Align(
-                alignment: Alignment.center,
-                child: Container(
-                  height: 20,
-                  margin: const EdgeInsetsDirectional.only(end: AppSpacing.sm),
-                  decoration: BoxDecoration(
-                    color: AppColors.border,
-                    borderRadius: BorderRadius.circular(AppRadius.pill),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(AppRadius.xl),
+        child: Container(
+          height: 58,
+          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+          decoration: BoxDecoration(
+            color: AppColors.surface,
+            borderRadius: BorderRadius.circular(AppRadius.xl),
+            border: Border.all(color: AppColors.divider),
+            boxShadow: AppShadows.card,
+          ),
+          child: Row(
+            children: [
+              const Icon(
+                Icons.search_rounded,
+                color: AppColors.primary,
+                size: 27,
+              ),
+              const SizedBox(width: AppSpacing.md),
+              Expanded(
+                child: Text(
+                  context.l10n.searchPlaceholder,
+                  textAlign: TextAlign.end,
+                  style: AppTextStyles.bodyMedium.copyWith(
+                    color: AppColors.textHint,
+                    fontSize: 15,
                   ),
                 ),
               ),
-            ),
-            const SizedBox(width: AppSpacing.md),
-            const Icon(
-              Icons.search_rounded,
-              color: AppColors.textSecondary,
-              size: 30,
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

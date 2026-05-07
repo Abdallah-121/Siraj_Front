@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:seraj/features/lessons/domain/entities/lesson_detail_entity.dart';
 
 import '../../../../core/error/failures.dart';
 import '../entities/lesson_entity.dart';
@@ -12,4 +13,6 @@ abstract class LessonsRepository {
   );
 
   Future<Either<Failure, LessonEntity>> createLesson(CreateLessonParams params);
+
+  Future<Either<Failure, LessonDetailEntity>> getLessonDetail(int lessonId);
 }

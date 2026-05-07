@@ -31,17 +31,22 @@ class LoginPage extends StatelessWidget {
       create: (_) => sl<LoginCubit>(),
       child: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) async {
-          if (state.isSuccess && state.session != null) {
-            await context.read<AuthSessionCubit>().setSession(state.session!);
+          final authSessionCubit = context.read<AuthSessionCubit>();
+          final navigator = Navigator.of(context);
+          final scaffoldMessenger = ScaffoldMessenger.of(context);
 
-            if (context.mounted) {
-              Navigator.pushReplacementNamed(context, RouteNames.home);
-            }
+          if (state.isSuccess && state.session != null) {
+            await authSessionCubit.setSession(state.session!);
+
+            if (!context.mounted) return;
+
+            navigator.pushReplacementNamed(RouteNames.home);
           }
+
           if (state.errorMessage != null) {
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(SnackBar(content: Text(state.errorMessage!)));
+            scaffoldMessenger.showSnackBar(
+              SnackBar(content: Text(state.errorMessage!)),
+            );
           }
         },
         builder: (context, state) {
@@ -54,8 +59,8 @@ class LoginPage extends StatelessWidget {
             headerLogo: Image.asset(AppAssets.logo, fit: BoxFit.contain),
             content: LoginForm(
               isLoading: state.isLoading,
-              onLoginPressed: (email, password) async {
-                if (email.isEmpty || password.isEmpty) {
+              onLoginPressed: (identifier, password) async {
+                if (identifier.isEmpty || password.isEmpty) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(context.l10n.pleaseFillRequiredFields),
@@ -65,7 +70,7 @@ class LoginPage extends StatelessWidget {
                 }
 
                 await context.read<LoginCubit>().login(
-                  email: email,
+                  identifier: identifier,
                   password: password,
                 );
               },

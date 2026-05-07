@@ -103,7 +103,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Expanded(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.fromLTRB(
+              padding: const EdgeInsetsDirectional.fromSTEB(
                 AppSpacing.lg,
                 AppSpacing.lg,
                 AppSpacing.lg,

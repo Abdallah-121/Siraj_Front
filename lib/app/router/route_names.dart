@@ -30,4 +30,6 @@ abstract final class RouteNames {
   static const String createLesson = '/createLesson';
 
   static const String createMosque = '/explore/create-mosque';
+
+  static const String lessonDetail = '/lesson-detail';
 }

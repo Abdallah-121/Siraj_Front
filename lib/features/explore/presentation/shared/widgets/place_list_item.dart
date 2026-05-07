@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seraj/core/utils/image_url_resolver.dart';
 
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_radius.dart';
@@ -17,6 +18,7 @@ class PlaceListItem extends StatelessWidget {
   final VoidCallback? onTap;
   final VoidCallback? onFavoritePressed;
   final Widget? topBadge;
+  final String? imageUrl;
 
   const PlaceListItem({
     super.key,
@@ -29,6 +31,7 @@ class PlaceListItem extends StatelessWidget {
     this.onTap,
     this.onFavoritePressed,
     this.topBadge,
+    this.imageUrl,
   });
 
   @override
@@ -42,8 +45,16 @@ class PlaceListItem extends StatelessWidget {
         boxShadow: AppShadows.subtle,
       ),
       child: Row(
+        textDirection: Directionality.of(context),
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          _PlaceImageBlock(
+            imageLabel: imageLabel,
+            imageUrl: imageUrl,
+            isFavorite: isFavorite,
+            onFavoritePressed: onFavoritePressed,
+          ),
+          const SizedBox(width: AppSpacing.lg),
           Expanded(
             child: _PlaceInfoColumn(
               title: title,
@@ -51,12 +62,6 @@ class PlaceListItem extends StatelessWidget {
               imamName: imamName,
               studyType: studyType,
             ),
-          ),
-          const SizedBox(width: AppSpacing.lg),
-          _PlaceImageBlock(
-            imageLabel: imageLabel,
-            isFavorite: isFavorite,
-            onFavoritePressed: onFavoritePressed,
           ),
         ],
       ),
@@ -70,11 +75,10 @@ class PlaceListItem extends StatelessWidget {
             child: content,
           );
 
-    if (topBadge == null) {
-      return wrapped;
-    }
+    if (topBadge == null) return wrapped;
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         topBadge!,
         const SizedBox(height: AppSpacing.xs),
@@ -100,7 +104,7 @@ class _PlaceInfoColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _InfoText(label: context.l10n.nameLabel, value: title),
         const SizedBox(height: AppSpacing.md),
@@ -128,7 +132,7 @@ class _InfoText extends StatelessWidget {
           TextSpan(
             text: '$label: ',
             style: AppTextStyles.bodyLarge.copyWith(
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w600,
             ),
           ),
           TextSpan(
@@ -139,24 +143,29 @@ class _InfoText extends StatelessWidget {
           ),
         ],
       ),
-      textAlign: TextAlign.end,
+      textAlign: TextAlign.start,
     );
   }
 }
 
 class _PlaceImageBlock extends StatelessWidget {
   final String imageLabel;
+  final String? imageUrl;
   final bool isFavorite;
   final VoidCallback? onFavoritePressed;
 
   const _PlaceImageBlock({
     required this.imageLabel,
+    required this.imageUrl,
     required this.isFavorite,
     required this.onFavoritePressed,
   });
 
   @override
   Widget build(BuildContext context) {
+    final String resolvedImageUrl = resolveImageUrl(imageUrl);
+    final bool hasImage = resolvedImageUrl.isNotEmpty;
+
     return SizedBox(
       width: 160,
       child: Column(
@@ -164,19 +173,31 @@ class _PlaceImageBlock extends StatelessWidget {
         children: [
           Stack(
             children: [
-              Container(
-                height: 156,
-                decoration: BoxDecoration(
-                  color: AppColors.border,
-                  borderRadius: BorderRadius.circular(AppRadius.lg),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(AppRadius.lg),
+                child: SizedBox(
+                  height: 156,
+                  width: double.infinity,
+                  child: hasImage
+                      ? Image.network(
+                          resolvedImageUrl,
+                          fit: BoxFit.cover,
+                          errorBuilder: (_, __, ___) =>
+                              const _PlaceImagePlaceholder(),
+                        )
+                      : const _PlaceImagePlaceholder(),
                 ),
               ),
               PositionedDirectional(
                 top: 8,
                 end: 8,
-                child: SizedBox(
-                  width: 28,
-                  height: 28,
+                child: Container(
+                  width: 32,
+                  height: 32,
+                  decoration: BoxDecoration(
+                    color: AppColors.white.withValues(alpha: 0.92),
+                    shape: BoxShape.circle,
+                  ),
                   child: IconButton(
                     onPressed: onFavoritePressed,
                     padding: EdgeInsets.zero,
@@ -185,7 +206,7 @@ class _PlaceImageBlock extends StatelessWidget {
                       isFavorite
                           ? Icons.favorite_rounded
                           : Icons.favorite_border_rounded,
-                      size: 24,
+                      size: 21,
                       color: isFavorite
                           ? AppColors.error
                           : AppColors.textPrimary,
@@ -199,11 +220,27 @@ class _PlaceImageBlock extends StatelessWidget {
           Text(
             imageLabel,
             textAlign: TextAlign.center,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: AppTextStyles.bodyMedium.copyWith(
               fontWeight: FontWeight.w600,
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _PlaceImagePlaceholder extends StatelessWidget {
+  const _PlaceImagePlaceholder();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: AppColors.border,
+      child: const Center(
+        child: Icon(Icons.mosque_rounded, color: AppColors.primary, size: 42),
       ),
     );
   }

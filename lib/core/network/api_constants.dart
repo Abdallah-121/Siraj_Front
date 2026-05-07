@@ -11,4 +11,8 @@ abstract final class ApiConstants {
       '/api/invitation-codes/mosque-manager';
 
   static const String redeemInvitationCode = '/api/invitation-codes/redeem';
+
+  static String uploadMosqueImage(int mosqueId) {
+    return '$mosques/$mosqueId/image';
+  }
 }

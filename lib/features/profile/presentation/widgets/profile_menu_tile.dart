@@ -12,6 +12,8 @@ class ProfileMenuTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isRtl = Directionality.of(context) == TextDirection.rtl;
+
     return InkWell(
       onTap: onTap,
       child: Padding(
@@ -21,19 +23,21 @@ class ProfileMenuTile extends StatelessWidget {
         ),
         child: Row(
           children: [
-            const Icon(
-              Icons.chevron_left_rounded,
+            Expanded(
+              child: Text(
+                title,
+                textAlign: TextAlign.start,
+                style: AppTextStyles.bodyLarge.copyWith(
+                  color: AppColors.textSecondary,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+            const SizedBox(width: AppSpacing.sm),
+            Icon(
+              isRtl ? Icons.chevron_left_rounded : Icons.chevron_right_rounded,
               color: AppColors.textSecondary,
               size: 24,
-            ),
-            const Spacer(),
-            Text(
-              title,
-              textAlign: TextAlign.end,
-              style: AppTextStyles.bodyLarge.copyWith(
-                color: AppColors.textSecondary,
-                fontWeight: FontWeight.w400,
-              ),
             ),
           ],
         ),

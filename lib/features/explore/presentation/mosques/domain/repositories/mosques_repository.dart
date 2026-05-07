@@ -4,6 +4,7 @@ import 'package:seraj/features/explore/presentation/mosques/domain/entites/mosqu
 import 'package:seraj/features/explore/presentation/mosques/domain/entites/mosques_page_entity.dart';
 import 'package:seraj/features/explore/presentation/mosques/domain/usecases/create_mosque_usecase.dart';
 import 'package:seraj/features/explore/presentation/mosques/domain/usecases/get_mosques_usecase.dart';
+import 'dart:io';
 
 abstract class MosquesRepository {
   Future<Either<Failure, MosquesPageEntity>> getMosques(
@@ -11,4 +12,9 @@ abstract class MosquesRepository {
   );
 
   Future<Either<Failure, MosqueEntity>> createMosque(CreateMosqueParams params);
+
+  Future<Either<Failure, String>> uploadMosqueImage({
+    required int mosqueId,
+    required File image,
+  });
 }

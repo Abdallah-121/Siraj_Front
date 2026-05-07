@@ -15,8 +15,8 @@ class LoginUseCase {
 }
 
 class LoginParams {
-  final String email;
+  final String identifier;
   final String password;
 
-  const LoginParams({required this.email, required this.password});
+  const LoginParams({required this.identifier, required this.password});
 }

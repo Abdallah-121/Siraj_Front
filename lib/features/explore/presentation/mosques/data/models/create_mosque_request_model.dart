@@ -10,6 +10,7 @@ class CreateMosqueRequestModel {
   final String timezone;
   final int calculationMethod;
   final int madhab;
+  final String? imageUrl;
 
   const CreateMosqueRequestModel({
     required this.regionId,
@@ -23,6 +24,7 @@ class CreateMosqueRequestModel {
     required this.timezone,
     required this.calculationMethod,
     required this.madhab,
+    required this.imageUrl,
   });
 
   Map<String, dynamic> toJson() {
@@ -38,6 +40,7 @@ class CreateMosqueRequestModel {
       'timezone': timezone,
       'calculationMethod': calculationMethod,
       'madhab': madhab,
+      'imageUrl': imageUrl,
     };
   }
 }

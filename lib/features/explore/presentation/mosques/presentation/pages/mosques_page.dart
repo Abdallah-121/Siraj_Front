@@ -10,7 +10,6 @@ import 'package:seraj/features/explore/presentation/shared/widgets/explore_filte
 import 'package:seraj/features/explore/presentation/shared/widgets/explore_header.dart';
 import 'package:seraj/features/explore/presentation/shared/widgets/explore_search_bar.dart';
 import 'package:seraj/features/explore/presentation/shared/widgets/explore_title_filter_header.dart';
-import 'package:seraj/features/explore/presentation/shared/widgets/new_update_badge.dart';
 import 'package:seraj/features/explore/presentation/shared/widgets/place_list_item.dart';
 
 import '../../../../../../app/widgets/main_bottom_nav_bar.dart';
@@ -147,11 +146,11 @@ class _MosquesPageState extends State<MosquesPage> {
                           ),
                           title: context.l10n.mosques,
                           filterWidget: Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 context.l10n.showMosquesBy,
-                                textAlign: TextAlign.end,
+                                textAlign: TextAlign.start,
                               ),
                               const SizedBox(height: AppSpacing.xs),
                               ExploreFilterDropdown(
@@ -211,9 +210,7 @@ class _MosquesPageState extends State<MosquesPage> {
                                   isFavorite: false,
                                   onTap: () => _onMosquePressed(mosque),
                                   onFavoritePressed: () {},
-                                  topBadge: index == 2
-                                      ? const NewUpdateBadge()
-                                      : null,
+                                  imageUrl: mosque.imageUrl,
                                 );
                               },
                             );

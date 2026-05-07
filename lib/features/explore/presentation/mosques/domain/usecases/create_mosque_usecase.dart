@@ -26,6 +26,7 @@ class CreateMosqueParams {
   final String timezone;
   final int calculationMethod;
   final int madhab;
+  final String? imageUrl;
 
   const CreateMosqueParams({
     required this.regionId,
@@ -39,5 +40,6 @@ class CreateMosqueParams {
     required this.timezone,
     required this.calculationMethod,
     required this.madhab,
+    required this.imageUrl,
   });
 }

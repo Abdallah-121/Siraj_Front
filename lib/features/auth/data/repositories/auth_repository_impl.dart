@@ -22,7 +22,10 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<Either<Failure, AuthSessionEntity>> login(LoginParams params) async {
     try {
       final result = await remoteDataSource.login(
-        LoginRequestModel(email: params.email, password: params.password),
+        LoginRequestModel(
+          identifier: params.identifier,
+          password: params.password,
+        ),
       );
 
       return Right(result);

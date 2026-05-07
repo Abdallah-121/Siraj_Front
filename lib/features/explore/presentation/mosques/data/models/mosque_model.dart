@@ -15,6 +15,7 @@ class MosqueModel extends MosqueEntity {
     required super.isActive,
     required super.phoneNumber,
     required super.createdAt,
+    required super.imageUrl,
   });
 
   factory MosqueModel.fromJson(Map<String, dynamic> json) {
@@ -32,6 +33,7 @@ class MosqueModel extends MosqueEntity {
       isActive: json['isActive'] as bool? ?? false,
       phoneNumber: json['phoneNumber'] as String? ?? '',
       createdAt: DateTime.parse(json['createdAt'] as String),
+      imageUrl: json['imageUrl'] as String? ?? '',
     );
   }
 }

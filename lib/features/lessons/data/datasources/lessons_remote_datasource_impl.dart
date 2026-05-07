@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:seraj/features/lessons/data/datasources/lessons_remote_datasource.dart';
 import 'package:seraj/features/lessons/data/model/create_lesson_request_model.dart';
+import 'package:seraj/features/lessons/data/model/lesson_detail_model.dart';
 import 'package:seraj/features/lessons/data/model/lesson_model.dart';
 import 'package:seraj/features/lessons/data/model/lessons_page_model.dart';
 
@@ -87,6 +88,46 @@ class LessonsRemoteDataSourceImpl implements LessonsRemoteDataSource {
     } catch (e, s) {
       debugPrint('CREATE LESSON ERROR: $e');
       debugPrint('$s');
+      throw UnexpectedException(message: 'Unexpected error');
+    }
+  }
+
+  @override
+  Future<LessonDetailModel> getLessonDetail(int lessonId) async {
+    try {
+      final response = await dioClient.dio.get(
+        '${ApiConstants.lessons}/$lessonId/details',
+      );
+
+      final responseMap = response.data as Map<String, dynamic>;
+      final bool isSuccess = responseMap['isSuccess'] as bool? ?? false;
+
+      if (!isSuccess) {
+        throw ServerException(
+          message:
+              responseMap['message'] as String? ?? 'Get lesson detail failed',
+          statusCode: response.statusCode,
+        );
+      }
+
+      return LessonDetailModel.fromJson(responseMap);
+    } on DioException catch (e) {
+      if (e.type == DioExceptionType.connectionError ||
+          e.type == DioExceptionType.connectionTimeout ||
+          e.type == DioExceptionType.receiveTimeout) {
+        throw NetworkException(message: 'No internet connection');
+      }
+
+      final responseData = e.response?.data;
+      final serverMessage = responseData is Map<String, dynamic>
+          ? (responseData['message'] as String? ?? 'Get lesson detail failed')
+          : 'Get lesson detail failed';
+
+      throw ServerException(
+        message: serverMessage,
+        statusCode: e.response?.statusCode,
+      );
+    } catch (_) {
       throw UnexpectedException(message: 'Unexpected error');
     }
   }

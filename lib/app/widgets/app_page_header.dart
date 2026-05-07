@@ -20,9 +20,11 @@ class AppPageHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isRtl = Directionality.of(context) == TextDirection.rtl;
+
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.fromLTRB(
+      padding: EdgeInsetsDirectional.fromSTEB(
         AppSpacing.lg,
         AppSpacing.lg,
         AppSpacing.lg,
@@ -48,8 +50,10 @@ class AppPageHeader extends StatelessWidget {
                 ),
                 child: IconButton(
                   onPressed: onBackPressed,
-                  icon: const Icon(
-                    Icons.arrow_back_rounded,
+                  icon: Icon(
+                    isRtl
+                        ? Icons.arrow_forward_rounded
+                        : Icons.arrow_back_rounded,
                     color: AppColors.primary,
                   ),
                 ),

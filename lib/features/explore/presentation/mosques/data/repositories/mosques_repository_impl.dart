@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:seraj/core/error/exceptions.dart';
 import 'package:seraj/core/error/failures.dart';
@@ -49,10 +51,32 @@ class MosquesRepositoryImpl implements MosquesRepository {
           timezone: params.timezone,
           calculationMethod: params.calculationMethod,
           madhab: params.madhab,
+          imageUrl: params.imageUrl,
         ),
       );
 
       return Right(result);
+    } on NetworkException catch (e) {
+      return Left(NetworkFailure(e.message));
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    } on UnexpectedException catch (e) {
+      return Left(UnexpectedFailure(e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> uploadMosqueImage({
+    required int mosqueId,
+    required File image,
+  }) async {
+    try {
+      final result = await remoteDataSource.uploadMosqueImage(
+        mosqueId: mosqueId,
+        image: image,
+      );
+
+      return Right(result.imageUrl);
     } on NetworkException catch (e) {
       return Left(NetworkFailure(e.message));
     } on ServerException catch (e) {

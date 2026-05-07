@@ -12,6 +12,7 @@ class MosqueEntity {
   final bool isActive;
   final String phoneNumber;
   final DateTime createdAt;
+  final String imageUrl;
 
   const MosqueEntity({
     required this.id,
@@ -27,5 +28,6 @@ class MosqueEntity {
     required this.isActive,
     required this.phoneNumber,
     required this.createdAt,
+    required this.imageUrl,
   });
 }

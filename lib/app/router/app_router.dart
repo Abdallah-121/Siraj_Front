@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:seraj/features/explore/presentation/mosques/presentation/pages/create_mosque_page.dart';
 import 'package:seraj/features/lessons/presentation/page/create_lesson_page.dart';
+import 'package:seraj/features/lessons/presentation/page/lesson_detail_page.dart';
 import 'package:seraj/features/settings/presentation/pages/change_language_page.dart';
 
 import '../../features/auth/presentation/pages/account_location_page.dart';
@@ -121,6 +122,12 @@ abstract final class AppRouter {
         return _materialRoute(
           settings: settings,
           child: const CreateMosquePage(),
+        );
+
+      case RouteNames.lessonDetail:
+        return _materialRoute(
+          settings: settings,
+          child: const LessonDetailPage(),
         );
 
       case RouteNames.createLesson:

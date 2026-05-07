@@ -25,7 +25,7 @@ class ProfileHeaderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(
+      padding: const EdgeInsetsDirectional.fromSTEB(
         AppSpacing.lg,
         AppSpacing.md,
         AppSpacing.lg,
@@ -34,15 +34,18 @@ class ProfileHeaderCard extends StatelessWidget {
       child: Column(
         children: [
           Row(
+            textDirection: Directionality.of(context),
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              ProfileAvatarPicker(size: 92, onPickImage: onPickImage),
+              const SizedBox(width: AppSpacing.lg),
               Expanded(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       userName,
-                      textAlign: TextAlign.end,
+                      textAlign: TextAlign.start,
                       style: AppTextStyles.titleLarge.copyWith(
                         fontWeight: FontWeight.w700,
                       ),
@@ -50,14 +53,14 @@ class ProfileHeaderCard extends StatelessWidget {
                     const SizedBox(height: AppSpacing.xs),
                     Text(
                       email,
-                      textAlign: TextAlign.end,
+                      textAlign: TextAlign.start,
                       style: AppTextStyles.bodyMedium.copyWith(
                         color: AppColors.textSecondary,
                       ),
                     ),
                     const SizedBox(height: AppSpacing.xl),
                     Align(
-                      alignment: AlignmentDirectional.centerEnd,
+                      alignment: AlignmentDirectional.centerStart,
                       child: SizedBox(
                         width: 190,
                         height: 55,
@@ -70,8 +73,6 @@ class ProfileHeaderCard extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(width: AppSpacing.lg),
-              ProfileAvatarPicker(size: 92, onPickImage: onPickImage),
             ],
           ),
           const SizedBox(height: AppSpacing.lg),

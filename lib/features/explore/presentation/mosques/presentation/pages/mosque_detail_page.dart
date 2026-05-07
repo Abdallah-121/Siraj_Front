@@ -36,6 +36,7 @@ class MosqueDetailPage extends StatelessWidget {
         body: Column(
           children: [
             DetailHeaderImage(
+              imageUrl: mosque.imageUrl,
               onBackPressed: () => _onBackPressed(context),
               onFavoritePressed: () => _onFavoritePressed(context),
               isFavorite: true,

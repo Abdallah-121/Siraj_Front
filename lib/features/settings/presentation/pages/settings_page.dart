@@ -85,7 +85,7 @@ class _SettingsPageState extends State<SettingsPage> {
           AppPageHeader(onBackPressed: _onBackPressed),
           Expanded(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.fromLTRB(
+              padding: const EdgeInsetsDirectional.fromSTEB(
                 AppSpacing.xl,
                 AppSpacing.lg,
                 AppSpacing.xl,

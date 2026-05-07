@@ -57,6 +57,16 @@ class _AppState extends State<App> {
                 GlobalWidgetsLocalizations.delegate,
                 GlobalCupertinoLocalizations.delegate,
               ],
+              builder: (context, child) {
+                final TextDirection textDirection = _localeController.isArabic
+                    ? TextDirection.rtl
+                    : TextDirection.ltr;
+
+                return Directionality(
+                  textDirection: textDirection,
+                  child: child ?? const SizedBox.shrink(),
+                );
+              },
               initialRoute: RouteNames.welcome,
               onGenerateRoute: AppRouter.onGenerateRoute,
             ),

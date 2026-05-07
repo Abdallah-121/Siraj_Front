@@ -27,6 +27,7 @@ import 'package:seraj/features/explore/presentation/mosques/data/repositories/mo
 import 'package:seraj/features/explore/presentation/mosques/domain/repositories/mosques_repository.dart';
 import 'package:seraj/features/explore/presentation/mosques/domain/usecases/create_mosque_usecase.dart';
 import 'package:seraj/features/explore/presentation/mosques/domain/usecases/get_mosques_usecase.dart';
+import 'package:seraj/features/explore/presentation/mosques/domain/usecases/upload_mosque_image_usecase.dart';
 import 'package:seraj/features/explore/presentation/mosques/presentation/cubit/create_mosque_cubit.dart';
 import 'package:seraj/features/explore/presentation/mosques/presentation/cubit/mosques_cubit.dart';
 import 'package:seraj/features/invitation_codes/data/datasources/invitation_codes_remote_data_source.dart';
@@ -42,8 +43,10 @@ import 'package:seraj/features/lessons/data/datasources/lessons_remote_datasourc
 import 'package:seraj/features/lessons/data/repositories/lessons_repositoryI_impl.dart';
 import 'package:seraj/features/lessons/domain/repositories/lessons_repository.dart';
 import 'package:seraj/features/lessons/domain/usecases/create_lesson_usecase.dart';
+import 'package:seraj/features/lessons/domain/usecases/get_lesson_detail_usecase.dart';
 import 'package:seraj/features/lessons/domain/usecases/get_lessons_usecase.dart';
 import 'package:seraj/features/lessons/presentation/cubit/create_lesson_cubit.dart';
+import 'package:seraj/features/lessons/presentation/cubit/lesson_detail_cubit.dart';
 import 'package:seraj/features/lessons/presentation/cubit/lessons_cubit.dart';
 
 import '../../features/location/data/datasources/location_remote_data_source.dart';
@@ -179,5 +182,17 @@ Future<void> initDependencies() async {
     () => CreateMosqueUseCase(sl()),
   );
 
-  sl.registerFactory<CreateMosqueCubit>(() => CreateMosqueCubit(sl()));
+  sl.registerFactory(
+    () => CreateMosqueCubit(
+      sl<CreateMosqueUseCase>(),
+      sl<UploadMosqueImageUseCase>(),
+    ),
+  );
+
+  sl.registerLazySingleton(() => UploadMosqueImageUseCase(sl()));
+  sl.registerLazySingleton<GetLessonDetailUseCase>(
+    () => GetLessonDetailUseCase(sl()),
+  );
+
+  sl.registerFactory<LessonDetailCubit>(() => LessonDetailCubit(sl()));
 }

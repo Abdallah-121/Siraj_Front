@@ -15,4 +15,8 @@ abstract class LessonsRepository {
   Future<Either<Failure, LessonEntity>> createLesson(CreateLessonParams params);
 
   Future<Either<Failure, LessonDetailEntity>> getLessonDetail(int lessonId);
+
+  Future<Either<Failure, LessonEntity>> publishLesson(int lessonId);
+
+  Future<Either<Failure, LessonEntity>> unpublishLesson(int lessonId);
 }

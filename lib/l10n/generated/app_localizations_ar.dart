@@ -683,4 +683,92 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get liveStreamingCapabilityLabel => 'إمكانية البث المباشر';
+
+  @override
+  String get published => 'منشور';
+
+  @override
+  String get unpublished => 'غير منشور';
+
+  @override
+  String get publish => 'نشر';
+
+  @override
+  String get unpublish => 'إلغاء النشر';
+
+  @override
+  String get lessonPublishedSuccessfully => 'تم نشر الدرس بنجاح';
+
+  @override
+  String get lessonUnpublishedSuccessfully => 'تم إلغاء نشر الدرس بنجاح';
+
+  @override
+  String get publishLessonFailed => 'فشل نشر الدرس';
+
+  @override
+  String get unpublishLessonFailed => 'فشل إلغاء نشر الدرس';
+
+  @override
+  String get profileDescriptionHint => 'اكتب نبذة قصيرة عنك';
+
+  @override
+  String get profileUpdatedSuccessfully => 'تم تحديث الملف الشخصي بنجاح';
+
+  @override
+  String get profileImage => 'صورة الملف الشخصي';
+
+  @override
+  String get profileImageUrlHint => 'أدخل رابط صورة الملف الشخصي';
+
+  @override
+  String get noCitiesFound => 'لا توجد مدن مطابقة';
+
+  @override
+  String get promoteUserToTeacher => 'ترقية مستخدم إلى مدرس';
+
+  @override
+  String get promoteUserToTeacherHint =>
+      'ابحث عن المستخدم بالاسم أو البريد أو رقم الهاتف ثم أضف معلومات المدرس.';
+
+  @override
+  String get searchUserForPromotionHint => 'ابحث عن مستخدم';
+
+  @override
+  String get searchUserForPromotionStart =>
+      'اكتب حرفين على الأقل للبحث عن المستخدم.';
+
+  @override
+  String get noUsersFoundForPromotion =>
+      'لم يتم العثور على مستخدم مطابق. يمكنك إنشاء حساب مدرس جديد.';
+
+  @override
+  String get promoteToTeacher => 'ترقية إلى مدرس';
+
+  @override
+  String get createTeacherAccount => 'إنشاء حساب مدرس';
+
+  @override
+  String get createTeacherAccountHint =>
+      'أدخل بيانات المدرس الجديد وسيتم إنشاء حساب وربطه بهذا المسجد.';
+
+  @override
+  String get qualification => 'المؤهل';
+
+  @override
+  String get enterTeacherQualification => 'اكتب مؤهل المدرس';
+
+  @override
+  String get bio => 'النبذة';
+
+  @override
+  String get enterTeacherBio => 'اكتب نبذة عن المدرس';
+
+  @override
+  String get teacherSavedSuccessfully => 'تم حفظ المدرس بنجاح';
+
+  @override
+  String get noFavoriteMosques => 'لا توجد مساجد في المفضلة حالياً';
+
+  @override
+  String get viewDetails => 'عرض التفاصيل';
 }

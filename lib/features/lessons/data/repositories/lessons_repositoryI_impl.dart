@@ -77,4 +77,32 @@ class LessonsRepositoryImpl implements LessonsRepository {
       return Left(UnexpectedFailure(e.message));
     }
   }
+
+  @override
+  Future<Either<Failure, LessonEntity>> publishLesson(int lessonId) async {
+    try {
+      final result = await remoteDataSource.publishLesson(lessonId);
+      return Right(result);
+    } on NetworkException catch (e) {
+      return Left(NetworkFailure(e.message));
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    } on UnexpectedException catch (e) {
+      return Left(UnexpectedFailure(e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, LessonEntity>> unpublishLesson(int lessonId) async {
+    try {
+      final result = await remoteDataSource.unpublishLesson(lessonId);
+      return Right(result);
+    } on NetworkException catch (e) {
+      return Left(NetworkFailure(e.message));
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    } on UnexpectedException catch (e) {
+      return Left(UnexpectedFailure(e.message));
+    }
+  }
 }

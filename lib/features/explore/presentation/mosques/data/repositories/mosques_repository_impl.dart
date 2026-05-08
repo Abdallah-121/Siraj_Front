@@ -85,4 +85,53 @@ class MosquesRepositoryImpl implements MosquesRepository {
       return Left(UnexpectedFailure(e.message));
     }
   }
+
+  @override
+  Future<Either<Failure, Unit>> addMosqueToFavorites(int mosqueId) async {
+    try {
+      await remoteDataSource.addMosqueToFavorites(mosqueId);
+      return const Right(unit);
+    } on NetworkException catch (e) {
+      return Left(NetworkFailure(e.message));
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    } on UnexpectedException catch (e) {
+      return Left(UnexpectedFailure(e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, Unit>> removeMosqueFromFavorites(int mosqueId) async {
+    try {
+      await remoteDataSource.removeMosqueFromFavorites(mosqueId);
+      return const Right(unit);
+    } on NetworkException catch (e) {
+      return Left(NetworkFailure(e.message));
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    } on UnexpectedException catch (e) {
+      return Left(UnexpectedFailure(e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, MosquesPageEntity>> getFavoriteMosques({
+    required int pageNumber,
+    required int pageSize,
+  }) async {
+    try {
+      final result = await remoteDataSource.getFavoriteMosques(
+        pageNumber: pageNumber,
+        pageSize: pageSize,
+      );
+
+      return Right(result);
+    } on NetworkException catch (e) {
+      return Left(NetworkFailure(e.message));
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    } on UnexpectedException catch (e) {
+      return Left(UnexpectedFailure(e.message));
+    }
+  }
 }

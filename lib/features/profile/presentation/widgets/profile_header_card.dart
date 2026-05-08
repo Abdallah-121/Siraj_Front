@@ -12,6 +12,7 @@ class ProfileHeaderCard extends StatelessWidget {
   final String buttonLabel;
   final VoidCallback? onEditPressed;
   final VoidCallback? onPickImage;
+  final String imageUrl;
 
   const ProfileHeaderCard({
     super.key,
@@ -20,6 +21,7 @@ class ProfileHeaderCard extends StatelessWidget {
     required this.buttonLabel,
     this.onEditPressed,
     this.onPickImage,
+    required this.imageUrl,
   });
 
   @override
@@ -37,7 +39,11 @@ class ProfileHeaderCard extends StatelessWidget {
             textDirection: Directionality.of(context),
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              ProfileAvatarPicker(size: 92, onPickImage: onPickImage),
+              ProfileAvatarPicker(
+                size: 92,
+                imageUrl: imageUrl,
+                onPickImage: onPickImage,
+              ),
               const SizedBox(width: AppSpacing.lg),
               Expanded(
                 child: Column(

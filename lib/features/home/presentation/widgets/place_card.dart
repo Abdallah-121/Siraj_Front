@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seraj/core/utils/image_url_resolver.dart';
 
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_radius.dart';
@@ -11,6 +12,10 @@ class PlaceCard extends StatelessWidget {
   static const double cardHeight = 136;
 
   final String title;
+  final String subtitle;
+  final String actionLabel;
+  final String imageUrl;
+  final IconData fallbackIcon;
   final bool isFavorite;
   final VoidCallback? onTap;
   final VoidCallback? onFavoritePressed;
@@ -18,6 +23,10 @@ class PlaceCard extends StatelessWidget {
   const PlaceCard({
     super.key,
     required this.title,
+    required this.subtitle,
+    required this.actionLabel,
+    this.imageUrl = '',
+    this.fallbackIcon = Icons.mosque_rounded,
     this.isFavorite = false,
     this.onTap,
     this.onFavoritePressed,
@@ -25,6 +34,9 @@ class PlaceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String resolvedImageUrl = resolveImageUrl(imageUrl);
+    final bool hasImage = resolvedImageUrl.trim().isNotEmpty;
+
     final Widget content = Container(
       width: cardWidth,
       height: cardHeight,
@@ -38,17 +50,21 @@ class PlaceCard extends StatelessWidget {
       child: Row(
         textDirection: Directionality.of(context),
         children: [
-          Container(
-            width: 104,
-            height: double.infinity,
-            decoration: BoxDecoration(
+          ClipRRect(
+            borderRadius: BorderRadius.circular(AppRadius.lg),
+            child: Container(
+              width: 104,
+              height: double.infinity,
               color: AppColors.primary.withValues(alpha: 0.10),
-              borderRadius: BorderRadius.circular(AppRadius.lg),
-            ),
-            child: const Icon(
-              Icons.mosque_rounded,
-              color: AppColors.primary,
-              size: 38,
+              child: hasImage
+                  ? Image.network(
+                      resolvedImageUrl,
+                      fit: BoxFit.cover,
+                      errorBuilder: (_, __, ___) {
+                        return _FallbackIcon(icon: fallbackIcon);
+                      },
+                    )
+                  : _FallbackIcon(icon: fallbackIcon),
             ),
           ),
           const SizedBox(width: AppSpacing.md),
@@ -67,7 +83,7 @@ class PlaceCard extends StatelessWidget {
                 ),
                 const SizedBox(height: AppSpacing.xs),
                 Text(
-                  'دروس قرآنية وشرعية',
+                  subtitle,
                   textAlign: TextAlign.start,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -89,7 +105,7 @@ class PlaceCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(AppRadius.pill),
                       ),
                       child: Text(
-                        'عرض التفاصيل',
+                        actionLabel,
                         style: AppTextStyles.bodySmall.copyWith(
                           color: AppColors.primary,
                           fontWeight: FontWeight.w700,
@@ -115,6 +131,17 @@ class PlaceCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(AppRadius.xl),
       child: content,
     );
+  }
+}
+
+class _FallbackIcon extends StatelessWidget {
+  final IconData icon;
+
+  const _FallbackIcon({required this.icon});
+
+  @override
+  Widget build(BuildContext context) {
+    return Icon(icon, color: AppColors.primary, size: 38);
   }
 }
 

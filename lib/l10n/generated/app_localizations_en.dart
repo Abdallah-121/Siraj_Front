@@ -687,4 +687,93 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get liveStreamingCapabilityLabel => 'Live streaming capability';
+
+  @override
+  String get published => 'Published';
+
+  @override
+  String get unpublished => 'Unpublished';
+
+  @override
+  String get publish => 'Publish';
+
+  @override
+  String get unpublish => 'Unpublish';
+
+  @override
+  String get lessonPublishedSuccessfully => 'Lesson published successfully';
+
+  @override
+  String get lessonUnpublishedSuccessfully => 'Lesson unpublished successfully';
+
+  @override
+  String get publishLessonFailed => 'Failed to publish lesson';
+
+  @override
+  String get unpublishLessonFailed => 'Failed to unpublish lesson';
+
+  @override
+  String get profileDescriptionHint =>
+      'Write a short description about yourself';
+
+  @override
+  String get profileUpdatedSuccessfully => 'Profile updated successfully';
+
+  @override
+  String get profileImage => 'Profile image';
+
+  @override
+  String get profileImageUrlHint => 'Enter the profile image URL';
+
+  @override
+  String get noCitiesFound => 'No matching cities found';
+
+  @override
+  String get promoteUserToTeacher => 'Promote user to teacher';
+
+  @override
+  String get promoteUserToTeacherHint =>
+      'Search by name, email, or phone, then add the teacher information.';
+
+  @override
+  String get searchUserForPromotionHint => 'Search for a user';
+
+  @override
+  String get searchUserForPromotionStart =>
+      'Type at least two characters to search for a user.';
+
+  @override
+  String get noUsersFoundForPromotion =>
+      'No matching user was found. You can create a new teacher account.';
+
+  @override
+  String get promoteToTeacher => 'Promote to teacher';
+
+  @override
+  String get createTeacherAccount => 'Create teacher account';
+
+  @override
+  String get createTeacherAccountHint =>
+      'Enter the new teacher details and link the account to this mosque.';
+
+  @override
+  String get qualification => 'Qualification';
+
+  @override
+  String get enterTeacherQualification => 'Enter the teacher qualification';
+
+  @override
+  String get bio => 'Bio';
+
+  @override
+  String get enterTeacherBio => 'Enter the teacher bio';
+
+  @override
+  String get teacherSavedSuccessfully => 'Teacher saved successfully';
+
+  @override
+  String get noFavoriteMosques => 'There are no favorite mosques yet';
+
+  @override
+  String get viewDetails => 'View details';
 }

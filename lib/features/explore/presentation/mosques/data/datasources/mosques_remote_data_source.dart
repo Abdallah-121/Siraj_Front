@@ -16,4 +16,13 @@ abstract class MosquesRemoteDataSource {
     required int mosqueId,
     required File image,
   });
+
+  Future<void> addMosqueToFavorites(int mosqueId);
+
+  Future<void> removeMosqueFromFavorites(int mosqueId);
+
+  Future<MosquesPageModel> getFavoriteMosques({
+    required int pageNumber,
+    required int pageSize,
+  });
 }

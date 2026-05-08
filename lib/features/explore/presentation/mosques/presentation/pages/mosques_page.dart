@@ -4,6 +4,8 @@ import 'package:seraj/app/di/service_locator.dart';
 import 'package:seraj/app/router/route_names.dart';
 import 'package:seraj/features/auth/presentation/cubit/auth_session_cubit.dart';
 import 'package:seraj/features/explore/presentation/mosques/domain/entites/mosque_entity.dart';
+import 'package:seraj/features/explore/presentation/mosques/presentation/cubit/mosque_favorites_cubit.dart';
+import 'package:seraj/features/explore/presentation/mosques/presentation/cubit/mosque_favorites_state.dart';
 import 'package:seraj/features/explore/presentation/mosques/presentation/cubit/mosques_cubit.dart';
 import 'package:seraj/features/explore/presentation/mosques/presentation/cubit/mosques_state.dart';
 import 'package:seraj/features/explore/presentation/shared/widgets/explore_filter_dropdown.dart';
@@ -84,8 +86,13 @@ class _MosquesPageState extends State<MosquesPage> {
     final session = context.watch<AuthSessionCubit>().state.session;
     final bool isAdmin = session?.roleName.trim().toLowerCase() == 'admin';
 
-    return BlocProvider(
-      create: (_) => sl<MosquesCubit>()..loadMosques(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => sl<MosquesCubit>()..loadMosques()),
+        BlocProvider(
+          create: (_) => sl<MosqueFavoritesCubit>()..loadFavoriteMosques(),
+        ),
+      ],
       child: Builder(
         builder: (providerContext) {
           void onSearchPressed() {
@@ -185,32 +192,45 @@ class _MosquesPageState extends State<MosquesPage> {
                               );
                             }
 
-                            return ListView.separated(
-                              itemCount: state.mosques.length,
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              separatorBuilder: (_, __) =>
-                                  const SizedBox(height: AppSpacing.lg),
-                              itemBuilder: (context, index) {
-                                final MosqueEntity mosque =
-                                    state.mosques[index];
+                            return BlocBuilder<
+                              MosqueFavoritesCubit,
+                              MosqueFavoritesState
+                            >(
+                              builder: (context, favoritesState) {
+                                return ListView.separated(
+                                  itemCount: state.mosques.length,
+                                  shrinkWrap: true,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  separatorBuilder: (_, __) =>
+                                      const SizedBox(height: AppSpacing.lg),
+                                  itemBuilder: (context, index) {
+                                    final MosqueEntity mosque =
+                                        state.mosques[index];
 
-                                return PlaceListItem(
-                                  title: mosque.name,
-                                  preacherName: mosque.khatibName.isNotEmpty
-                                      ? mosque.khatibName
-                                      : context.l10n.unknown,
-                                  imamName: mosque.imamName.isNotEmpty
-                                      ? mosque.imamName
-                                      : context.l10n.unknown,
-                                  studyType: mosque.cityName.isNotEmpty
-                                      ? mosque.cityName
-                                      : context.l10n.unknown,
-                                  imageLabel: mosque.name,
-                                  isFavorite: false,
-                                  onTap: () => _onMosquePressed(mosque),
-                                  onFavoritePressed: () {},
-                                  imageUrl: mosque.imageUrl,
+                                    return PlaceListItem(
+                                      title: mosque.name,
+                                      preacherName: mosque.khatibName.isNotEmpty
+                                          ? mosque.khatibName
+                                          : context.l10n.unknown,
+                                      imamName: mosque.imamName.isNotEmpty
+                                          ? mosque.imamName
+                                          : context.l10n.unknown,
+                                      studyType: mosque.cityName.isNotEmpty
+                                          ? mosque.cityName
+                                          : context.l10n.unknown,
+                                      imageLabel: mosque.name,
+                                      isFavorite: favoritesState.isFavorite(
+                                        mosque.id,
+                                      ),
+                                      onTap: () => _onMosquePressed(mosque),
+                                      onFavoritePressed: () {
+                                        context
+                                            .read<MosqueFavoritesCubit>()
+                                            .toggleFavorite(mosque.id);
+                                      },
+                                      imageUrl: mosque.imageUrl,
+                                    );
+                                  },
                                 );
                               },
                             );

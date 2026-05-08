@@ -11,18 +11,27 @@ class DetailHeaderImage extends StatelessWidget {
   final VoidCallback? onFavoritePressed;
   final bool isFavorite;
 
+  /// Extra actions shown beside the back button.
+  ///
+  /// Example:
+  /// - promote user to teacher
+  /// - share
+  /// - edit
+  final List<Widget> leadingActions;
+
   const DetailHeaderImage({
     super.key,
     this.imageUrl,
     this.onBackPressed,
     this.onFavoritePressed,
     this.isFavorite = false,
+    this.leadingActions = const [],
   });
 
   @override
   Widget build(BuildContext context) {
     final String resolvedImageUrl = resolveImageUrl(imageUrl);
-    final bool hasImage = resolvedImageUrl.isNotEmpty;
+    final bool hasImage = resolvedImageUrl.trim().isNotEmpty;
 
     return Container(
       height: 280,
@@ -58,6 +67,7 @@ class DetailHeaderImage extends StatelessWidget {
                   )
                 : const _PlaceholderImage(),
           ),
+
           Container(
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.only(
@@ -74,28 +84,84 @@ class DetailHeaderImage extends StatelessWidget {
               ),
             ),
           ),
+
           PositionedDirectional(
             top: AppSpacing.lg,
             start: AppSpacing.lg,
-            child: _CircleIconButton(
-              icon: Icons.arrow_back_rounded,
-              onPressed: onBackPressed,
+            child: SafeArea(
+              bottom: false,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  HeaderCircleIconButton(
+                    icon: Icons.arrow_back_rounded,
+                    onPressed: onBackPressed,
+                  ),
+                  for (final action in leadingActions) ...[
+                    const SizedBox(width: AppSpacing.sm),
+                    action,
+                  ],
+                ],
+              ),
             ),
           ),
+
           PositionedDirectional(
             top: AppSpacing.lg,
             end: AppSpacing.lg,
-            child: _CircleIconButton(
-              icon: isFavorite
-                  ? Icons.favorite_rounded
-                  : Icons.favorite_border_rounded,
-              iconColor: isFavorite ? AppColors.error : AppColors.primary,
-              onPressed: onFavoritePressed,
+            child: SafeArea(
+              bottom: false,
+              child: HeaderCircleIconButton(
+                icon: isFavorite
+                    ? Icons.favorite_rounded
+                    : Icons.favorite_border_rounded,
+                iconColor: isFavorite ? AppColors.error : AppColors.primary,
+                onPressed: onFavoritePressed,
+              ),
             ),
           ),
         ],
       ),
     );
+  }
+}
+
+class HeaderCircleIconButton extends StatelessWidget {
+  final IconData icon;
+  final Color iconColor;
+  final VoidCallback? onPressed;
+  final String? tooltip;
+
+  const HeaderCircleIconButton({
+    super.key,
+    required this.icon,
+    this.iconColor = AppColors.primary,
+    this.onPressed,
+    this.tooltip,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final Widget button = Material(
+      color: AppColors.white,
+      shape: const CircleBorder(),
+      elevation: 0,
+      child: InkWell(
+        onTap: onPressed,
+        customBorder: const CircleBorder(),
+        child: SizedBox(
+          width: 46,
+          height: 46,
+          child: Icon(icon, color: iconColor, size: 25),
+        ),
+      ),
+    );
+
+    if (tooltip == null || tooltip!.trim().isEmpty) {
+      return button;
+    }
+
+    return Tooltip(message: tooltip!, child: button);
   }
 }
 
@@ -124,35 +190,6 @@ class _PlaceholderImage extends StatelessWidget {
                   size: 54,
                 ),
               ),
-      ),
-    );
-  }
-}
-
-class _CircleIconButton extends StatelessWidget {
-  final IconData icon;
-  final Color iconColor;
-  final VoidCallback? onPressed;
-
-  const _CircleIconButton({
-    required this.icon,
-    this.iconColor = AppColors.primary,
-    this.onPressed,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: AppColors.white,
-      shape: const CircleBorder(),
-      child: InkWell(
-        onTap: onPressed,
-        customBorder: const CircleBorder(),
-        child: SizedBox(
-          width: 46,
-          height: 46,
-          child: Icon(icon, color: iconColor, size: 25),
-        ),
       ),
     );
   }

@@ -136,6 +136,7 @@ class _ProfilePageState extends State<ProfilePage> {
           ProfileHeaderCard(
             userName: userName,
             email: email,
+            imageUrl: session?.profileImage ?? '',
             buttonLabel: context.l10n.editProfileButton,
             onEditPressed: _onEditProfilePressed,
             onPickImage: () {},
@@ -145,7 +146,12 @@ class _ProfilePageState extends State<ProfilePage> {
               child: Column(
                 children: [
                   const SizedBox(height: AppSpacing.md),
-                  ProfileMenuTile(title: context.l10n.favorites, onTap: () {}),
+                  ProfileMenuTile(
+                    title: context.l10n.favorites,
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteNames.favoriteMosques);
+                    },
+                  ),
                   ProfileMenuTile(
                     title: context.l10n.currentLessons,
                     onTap: _onCurrentCoursesPressed,

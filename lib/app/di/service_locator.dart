@@ -25,10 +25,14 @@ import 'package:seraj/features/explore/presentation/mosques/data/datasources/mos
 import 'package:seraj/features/explore/presentation/mosques/data/datasources/mosques_remote_data_source_impl.dart';
 import 'package:seraj/features/explore/presentation/mosques/data/repositories/mosques_repository_impl.dart';
 import 'package:seraj/features/explore/presentation/mosques/domain/repositories/mosques_repository.dart';
+import 'package:seraj/features/explore/presentation/mosques/domain/usecases/add_mosque_to_favorites_usecase.dart';
 import 'package:seraj/features/explore/presentation/mosques/domain/usecases/create_mosque_usecase.dart';
+import 'package:seraj/features/explore/presentation/mosques/domain/usecases/get_favorite_mosques_usecase.dart';
 import 'package:seraj/features/explore/presentation/mosques/domain/usecases/get_mosques_usecase.dart';
+import 'package:seraj/features/explore/presentation/mosques/domain/usecases/remove_mosque_from_favorites_usecase.dart';
 import 'package:seraj/features/explore/presentation/mosques/domain/usecases/upload_mosque_image_usecase.dart';
 import 'package:seraj/features/explore/presentation/mosques/presentation/cubit/create_mosque_cubit.dart';
+import 'package:seraj/features/explore/presentation/mosques/presentation/cubit/mosque_favorites_cubit.dart';
 import 'package:seraj/features/explore/presentation/mosques/presentation/cubit/mosques_cubit.dart';
 import 'package:seraj/features/invitation_codes/data/datasources/invitation_codes_remote_data_source.dart';
 import 'package:seraj/features/invitation_codes/data/datasources/invitation_codes_remote_data_source_impl.dart';
@@ -45,9 +49,27 @@ import 'package:seraj/features/lessons/domain/repositories/lessons_repository.da
 import 'package:seraj/features/lessons/domain/usecases/create_lesson_usecase.dart';
 import 'package:seraj/features/lessons/domain/usecases/get_lesson_detail_usecase.dart';
 import 'package:seraj/features/lessons/domain/usecases/get_lessons_usecase.dart';
+import 'package:seraj/features/lessons/domain/usecases/publish_lesson_usecase.dart';
+import 'package:seraj/features/lessons/domain/usecases/unpublish_lesson_usecase.dart';
 import 'package:seraj/features/lessons/presentation/cubit/create_lesson_cubit.dart';
 import 'package:seraj/features/lessons/presentation/cubit/lesson_detail_cubit.dart';
 import 'package:seraj/features/lessons/presentation/cubit/lessons_cubit.dart';
+import 'package:seraj/features/profile/data/datasources/profile_remote_data_source.dart';
+import 'package:seraj/features/profile/data/datasources/profile_remote_data_source_impl.dart';
+import 'package:seraj/features/profile/data/repositories/profile_repository_impl.dart';
+import 'package:seraj/features/profile/domain/repositories/profile_repository.dart';
+import 'package:seraj/features/profile/domain/usecase/update_profile_usecase.dart';
+import 'package:seraj/features/profile/presentation/cubit/edit_profile_cubit.dart';
+import 'package:seraj/features/teachers/data/datasources/teacher_promotion_remote_data_source.dart';
+import 'package:seraj/features/teachers/data/datasources/teacher_promotion_remote_data_source_impl.dart';
+import 'package:seraj/features/teachers/data/repositories/teacher_promotion_repository_impl.dart';
+import 'package:seraj/features/teachers/domain/repositories/teacher_promotion_repository.dart';
+import 'package:seraj/features/teachers/domain/usecases/create_teacher_usecase.dart';
+import 'package:seraj/features/teachers/domain/usecases/get_teachers_by_mosque_usecase.dart';
+import 'package:seraj/features/teachers/domain/usecases/promote_user_to_teacher_usecase.dart';
+import 'package:seraj/features/teachers/domain/usecases/search_users_for_promotion_usecase.dart';
+import 'package:seraj/features/teachers/presentation/cubit/mosque_teachers_cubit.dart';
+import 'package:seraj/features/teachers/presentation/cubit/teacher_promotion_cubit.dart';
 
 import '../../features/location/data/datasources/location_remote_data_source.dart';
 import '../../features/location/data/datasources/location_remote_data_source_impl.dart';
@@ -146,8 +168,22 @@ Future<void> initDependencies() async {
   );
 
   sl.registerLazySingleton<GetLessonsUseCase>(() => GetLessonsUseCase(sl()));
-  sl.registerFactory<LessonsCubit>(() => LessonsCubit(sl()));
 
+  sl.registerLazySingleton<PublishLessonUseCase>(
+    () => PublishLessonUseCase(sl()),
+  );
+
+  sl.registerLazySingleton<UnpublishLessonUseCase>(
+    () => UnpublishLessonUseCase(sl()),
+  );
+
+  sl.registerFactory<LessonsCubit>(
+    () => LessonsCubit(
+      getLessonsUseCase: sl(),
+      publishLessonUseCase: sl(),
+      unpublishLessonUseCase: sl(),
+    ),
+  );
   sl.registerLazySingleton<CreateLessonUseCase>(
     () => CreateLessonUseCase(sl()),
   );
@@ -195,4 +231,72 @@ Future<void> initDependencies() async {
   );
 
   sl.registerFactory<LessonDetailCubit>(() => LessonDetailCubit(sl()));
+
+  sl.registerLazySingleton<ProfileRemoteDataSource>(
+    () => ProfileRemoteDataSourceImpl(sl()),
+  );
+
+  sl.registerLazySingleton<ProfileRepository>(
+    () => ProfileRepositoryImpl(sl()),
+  );
+
+  sl.registerLazySingleton<UpdateProfileUseCase>(
+    () => UpdateProfileUseCase(sl()),
+  );
+
+  sl.registerFactory<EditProfileCubit>(() => EditProfileCubit(sl()));
+
+  sl.registerLazySingleton<TeacherPromotionRemoteDataSource>(
+    () => TeacherPromotionRemoteDataSourceImpl(sl()),
+  );
+
+  sl.registerLazySingleton<TeacherPromotionRepository>(
+    () => TeacherPromotionRepositoryImpl(sl()),
+  );
+
+  sl.registerLazySingleton<SearchUsersForPromotionUseCase>(
+    () => SearchUsersForPromotionUseCase(sl()),
+  );
+
+  sl.registerLazySingleton<PromoteUserToTeacherUseCase>(
+    () => PromoteUserToTeacherUseCase(sl()),
+  );
+
+  sl.registerLazySingleton<CreateTeacherUseCase>(
+    () => CreateTeacherUseCase(sl()),
+  );
+
+  sl.registerFactory<TeacherPromotionCubit>(
+    () => TeacherPromotionCubit(
+      searchUsersForPromotionUseCase: sl(),
+      promoteUserToTeacherUseCase: sl(),
+      createTeacherUseCase: sl(),
+    ),
+  );
+
+  sl.registerLazySingleton<GetTeachersByMosqueUseCase>(
+    () => GetTeachersByMosqueUseCase(sl()),
+  );
+
+  sl.registerFactory<MosqueTeachersCubit>(() => MosqueTeachersCubit(sl()));
+
+  sl.registerLazySingleton<AddMosqueToFavoritesUseCase>(
+    () => AddMosqueToFavoritesUseCase(sl()),
+  );
+
+  sl.registerLazySingleton<RemoveMosqueFromFavoritesUseCase>(
+    () => RemoveMosqueFromFavoritesUseCase(sl()),
+  );
+
+  sl.registerLazySingleton<GetFavoriteMosquesUseCase>(
+    () => GetFavoriteMosquesUseCase(sl()),
+  );
+
+  sl.registerFactory<MosqueFavoritesCubit>(
+    () => MosqueFavoritesCubit(
+      addMosqueToFavoritesUseCase: sl(),
+      removeMosqueFromFavoritesUseCase: sl(),
+      getFavoriteMosquesUseCase: sl(),
+    ),
+  );
 }

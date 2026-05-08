@@ -7,7 +7,12 @@ import '../../domain/usecases/get_lessons_usecase.dart';
 
 abstract class LessonsRemoteDataSource {
   Future<LessonsPageModel> getLessons(GetLessonsParams params);
+
   Future<LessonModel> createLesson(CreateLessonRequestModel request);
 
   Future<LessonDetailModel> getLessonDetail(int lessonId);
+
+  Future<LessonModel> publishLesson(int lessonId);
+
+  Future<LessonModel> unpublishLesson(int lessonId);
 }

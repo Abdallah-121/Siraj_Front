@@ -34,8 +34,6 @@ class LessonsRemoteDataSourceImpl implements LessonsRemoteDataSource {
         },
       );
 
-      debugPrint('LESSONS RESPONSE: ${response.data}');
-
       final responseMap = response.data as Map<String, dynamic>;
       final bool isSuccess = responseMap['isSuccess'] as bool? ?? false;
 
@@ -49,10 +47,7 @@ class LessonsRemoteDataSourceImpl implements LessonsRemoteDataSource {
       final data = responseMap['data'] as Map<String, dynamic>;
       return LessonsPageModel.fromJson(data);
     } on DioException catch (e) {
-      throw ServerException(
-        message: e.message ?? 'Lessons request failed',
-        statusCode: e.response?.statusCode,
-      );
+      _throwMappedDioException(e, fallbackMessage: 'Lessons request failed');
     } catch (e, s) {
       debugPrint('LESSONS PARSE ERROR: $e');
       debugPrint('$s');
@@ -81,9 +76,9 @@ class LessonsRemoteDataSourceImpl implements LessonsRemoteDataSource {
       final data = responseMap['data'] as Map<String, dynamic>;
       return LessonModel.fromJson(data);
     } on DioException catch (e) {
-      throw ServerException(
-        message: e.message ?? 'Create lesson request failed',
-        statusCode: e.response?.statusCode,
+      _throwMappedDioException(
+        e,
+        fallbackMessage: 'Create lesson request failed',
       );
     } catch (e, s) {
       debugPrint('CREATE LESSON ERROR: $e');
@@ -112,23 +107,89 @@ class LessonsRemoteDataSourceImpl implements LessonsRemoteDataSource {
 
       return LessonDetailModel.fromJson(responseMap);
     } on DioException catch (e) {
-      if (e.type == DioExceptionType.connectionError ||
-          e.type == DioExceptionType.connectionTimeout ||
-          e.type == DioExceptionType.receiveTimeout) {
-        throw NetworkException(message: 'No internet connection');
-      }
-
-      final responseData = e.response?.data;
-      final serverMessage = responseData is Map<String, dynamic>
-          ? (responseData['message'] as String? ?? 'Get lesson detail failed')
-          : 'Get lesson detail failed';
-
-      throw ServerException(
-        message: serverMessage,
-        statusCode: e.response?.statusCode,
-      );
+      _throwMappedDioException(e, fallbackMessage: 'Get lesson detail failed');
     } catch (_) {
       throw UnexpectedException(message: 'Unexpected error');
     }
+  }
+
+  @override
+  Future<LessonModel> publishLesson(int lessonId) async {
+    try {
+      final response = await dioClient.dio.post(
+        ApiConstants.publishLesson(lessonId),
+      );
+
+      return _parseLessonActionResponse(
+        response,
+        fallbackMessage: 'Publish lesson failed',
+      );
+    } on DioException catch (e) {
+      _throwMappedDioException(e, fallbackMessage: 'Publish lesson failed');
+    } catch (e, s) {
+      debugPrint('PUBLISH LESSON ERROR: $e');
+      debugPrint('$s');
+      throw UnexpectedException(message: 'Unexpected error');
+    }
+  }
+
+  @override
+  Future<LessonModel> unpublishLesson(int lessonId) async {
+    try {
+      final response = await dioClient.dio.post(
+        ApiConstants.unpublishLesson(lessonId),
+      );
+
+      return _parseLessonActionResponse(
+        response,
+        fallbackMessage: 'Unpublish lesson failed',
+      );
+    } on DioException catch (e) {
+      _throwMappedDioException(e, fallbackMessage: 'Unpublish lesson failed');
+    } catch (e, s) {
+      debugPrint('UNPUBLISH LESSON ERROR: $e');
+      debugPrint('$s');
+      throw UnexpectedException(message: 'Unexpected error');
+    }
+  }
+
+  LessonModel _parseLessonActionResponse(
+    Response<dynamic> response, {
+    required String fallbackMessage,
+  }) {
+    final responseMap = response.data as Map<String, dynamic>;
+    final bool isSuccess = responseMap['isSuccess'] as bool? ?? false;
+
+    if (!isSuccess) {
+      throw ServerException(
+        message: responseMap['message'] as String? ?? fallbackMessage,
+        statusCode: response.statusCode,
+      );
+    }
+
+    final data = responseMap['data'] as Map<String, dynamic>;
+    return LessonModel.fromJson(data);
+  }
+
+  Never _throwMappedDioException(
+    DioException e, {
+    required String fallbackMessage,
+  }) {
+    if (e.type == DioExceptionType.connectionError ||
+        e.type == DioExceptionType.connectionTimeout ||
+        e.type == DioExceptionType.receiveTimeout) {
+      throw NetworkException(message: 'No internet connection');
+    }
+
+    final responseData = e.response?.data;
+
+    final String serverMessage = responseData is Map<String, dynamic>
+        ? (responseData['message'] as String? ?? fallbackMessage)
+        : fallbackMessage;
+
+    throw ServerException(
+      message: serverMessage,
+      statusCode: e.response?.statusCode,
+    );
   }
 }

@@ -11,6 +11,13 @@ class AuthSessionModel extends AuthSessionEntity {
     required super.roleName,
     required super.token,
     super.teacherId,
+    super.firstName,
+    super.lastName,
+    super.phone,
+    super.profileImage,
+    super.description,
+    super.cityId,
+    super.birthDate,
   });
 
   factory AuthSessionModel.fromJson(Map<String, dynamic> json) {
@@ -25,16 +32,32 @@ class AuthSessionModel extends AuthSessionEntity {
       fallbackRoleName: json['roleName'] as String? ?? '',
     );
 
+    final String firstName = json['firstName'] as String? ?? '';
+    final String lastName = json['lastName'] as String? ?? '';
+    final String fullNameFromParts = '$firstName $lastName'.trim();
+
     return AuthSessionModel(
       userId: json['userId'] as String? ?? parsed.userId,
-      fullName: json['fullName'] as String? ?? parsed.fullName,
+      fullName:
+          json['fullName'] as String? ??
+          (fullNameFromParts.isNotEmpty ? fullNameFromParts : parsed.fullName),
       email: json['email'] as String? ?? parsed.email,
       roleId: json['roleId'] as int? ?? parsed.roleId,
       roleName: json['roleName'] as String? ?? parsed.roleName,
       token: token,
       teacherId: parsed.teacherId,
+      firstName: firstName,
+      lastName: lastName,
+      phone: json['phone'] as String? ?? '',
+      profileImage: json['profileImage'] as String? ?? '',
+      description: json['description'] as String? ?? '',
+      cityId: json['cityId'] as int?,
+      birthDate: json['birthDate'] == null
+          ? null
+          : DateTime.tryParse(json['birthDate'].toString()),
     );
   }
+
   factory AuthSessionModel.fromStorageJson(Map<String, dynamic> json) {
     return AuthSessionModel(
       userId: json['userId'] as String? ?? '',
@@ -44,6 +67,34 @@ class AuthSessionModel extends AuthSessionEntity {
       roleName: json['roleName'] as String? ?? '',
       token: json['token'] as String? ?? '',
       teacherId: json['teacherId'] as int?,
+      firstName: json['firstName'] as String? ?? '',
+      lastName: json['lastName'] as String? ?? '',
+      phone: json['phone'] as String? ?? '',
+      profileImage: json['profileImage'] as String? ?? '',
+      description: json['description'] as String? ?? '',
+      cityId: json['cityId'] as int?,
+      birthDate: json['birthDate'] == null
+          ? null
+          : DateTime.tryParse(json['birthDate'].toString()),
+    );
+  }
+
+  factory AuthSessionModel.fromEntity(AuthSessionEntity entity) {
+    return AuthSessionModel(
+      userId: entity.userId,
+      fullName: entity.fullName,
+      email: entity.email,
+      roleId: entity.roleId,
+      roleName: entity.roleName,
+      token: entity.token,
+      teacherId: entity.teacherId,
+      firstName: entity.firstName,
+      lastName: entity.lastName,
+      phone: entity.phone,
+      profileImage: entity.profileImage,
+      description: entity.description,
+      cityId: entity.cityId,
+      birthDate: entity.birthDate,
     );
   }
 
@@ -56,6 +107,13 @@ class AuthSessionModel extends AuthSessionEntity {
       'roleName': roleName,
       'token': token,
       'teacherId': teacherId,
+      'firstName': firstName,
+      'lastName': lastName,
+      'phone': phone,
+      'profileImage': profileImage,
+      'description': description,
+      'cityId': cityId,
+      'birthDate': birthDate?.toIso8601String(),
     };
   }
 }

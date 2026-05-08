@@ -1425,6 +1425,174 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Live streaming capability'**
   String get liveStreamingCapabilityLabel;
+
+  /// No description provided for @published.
+  ///
+  /// In en, this message translates to:
+  /// **'Published'**
+  String get published;
+
+  /// No description provided for @unpublished.
+  ///
+  /// In en, this message translates to:
+  /// **'Unpublished'**
+  String get unpublished;
+
+  /// No description provided for @publish.
+  ///
+  /// In en, this message translates to:
+  /// **'Publish'**
+  String get publish;
+
+  /// No description provided for @unpublish.
+  ///
+  /// In en, this message translates to:
+  /// **'Unpublish'**
+  String get unpublish;
+
+  /// No description provided for @lessonPublishedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Lesson published successfully'**
+  String get lessonPublishedSuccessfully;
+
+  /// No description provided for @lessonUnpublishedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Lesson unpublished successfully'**
+  String get lessonUnpublishedSuccessfully;
+
+  /// No description provided for @publishLessonFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to publish lesson'**
+  String get publishLessonFailed;
+
+  /// No description provided for @unpublishLessonFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to unpublish lesson'**
+  String get unpublishLessonFailed;
+
+  /// No description provided for @profileDescriptionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a short description about yourself'**
+  String get profileDescriptionHint;
+
+  /// No description provided for @profileUpdatedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile updated successfully'**
+  String get profileUpdatedSuccessfully;
+
+  /// No description provided for @profileImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile image'**
+  String get profileImage;
+
+  /// No description provided for @profileImageUrlHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the profile image URL'**
+  String get profileImageUrlHint;
+
+  /// No description provided for @noCitiesFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No matching cities found'**
+  String get noCitiesFound;
+
+  /// No description provided for @promoteUserToTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Promote user to teacher'**
+  String get promoteUserToTeacher;
+
+  /// No description provided for @promoteUserToTeacherHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by name, email, or phone, then add the teacher information.'**
+  String get promoteUserToTeacherHint;
+
+  /// No description provided for @searchUserForPromotionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search for a user'**
+  String get searchUserForPromotionHint;
+
+  /// No description provided for @searchUserForPromotionStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Type at least two characters to search for a user.'**
+  String get searchUserForPromotionStart;
+
+  /// No description provided for @noUsersFoundForPromotion.
+  ///
+  /// In en, this message translates to:
+  /// **'No matching user was found. You can create a new teacher account.'**
+  String get noUsersFoundForPromotion;
+
+  /// No description provided for @promoteToTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Promote to teacher'**
+  String get promoteToTeacher;
+
+  /// No description provided for @createTeacherAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Create teacher account'**
+  String get createTeacherAccount;
+
+  /// No description provided for @createTeacherAccountHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the new teacher details and link the account to this mosque.'**
+  String get createTeacherAccountHint;
+
+  /// No description provided for @qualification.
+  ///
+  /// In en, this message translates to:
+  /// **'Qualification'**
+  String get qualification;
+
+  /// No description provided for @enterTeacherQualification.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the teacher qualification'**
+  String get enterTeacherQualification;
+
+  /// No description provided for @bio.
+  ///
+  /// In en, this message translates to:
+  /// **'Bio'**
+  String get bio;
+
+  /// No description provided for @enterTeacherBio.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the teacher bio'**
+  String get enterTeacherBio;
+
+  /// No description provided for @teacherSavedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher saved successfully'**
+  String get teacherSavedSuccessfully;
+
+  /// No description provided for @noFavoriteMosques.
+  ///
+  /// In en, this message translates to:
+  /// **'There are no favorite mosques yet'**
+  String get noFavoriteMosques;
+
+  /// No description provided for @viewDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'View details'**
+  String get viewDetails;
 }
 
 class _AppLocalizationsDelegate

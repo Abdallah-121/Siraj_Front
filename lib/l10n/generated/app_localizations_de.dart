@@ -694,4 +694,98 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get liveStreamingCapabilityLabel => 'Live-Streaming-Funktion';
+
+  @override
+  String get published => 'Veröffentlicht';
+
+  @override
+  String get unpublished => 'Nicht veröffentlicht';
+
+  @override
+  String get publish => 'Veröffentlichen';
+
+  @override
+  String get unpublish => 'Veröffentlichung aufheben';
+
+  @override
+  String get lessonPublishedSuccessfully =>
+      'Lektion wurde erfolgreich veröffentlicht';
+
+  @override
+  String get lessonUnpublishedSuccessfully =>
+      'Veröffentlichung der Lektion wurde erfolgreich aufgehoben';
+
+  @override
+  String get publishLessonFailed =>
+      'Lektion konnte nicht veröffentlicht werden';
+
+  @override
+  String get unpublishLessonFailed =>
+      'Veröffentlichung der Lektion konnte nicht aufgehoben werden';
+
+  @override
+  String get profileDescriptionHint =>
+      'Schreibe eine kurze Beschreibung über dich';
+
+  @override
+  String get profileUpdatedSuccessfully =>
+      'Profil wurde erfolgreich aktualisiert';
+
+  @override
+  String get profileImage => 'Profilbild';
+
+  @override
+  String get profileImageUrlHint => 'Gib die URL des Profilbilds ein';
+
+  @override
+  String get noCitiesFound => 'Keine passenden Städte gefunden';
+
+  @override
+  String get promoteUserToTeacher => 'Benutzer zum Lehrer befördern';
+
+  @override
+  String get promoteUserToTeacherHint =>
+      'Suche nach Name, E-Mail oder Telefonnummer und ergänze anschließend die Lehrerdaten.';
+
+  @override
+  String get searchUserForPromotionHint => 'Benutzer suchen';
+
+  @override
+  String get searchUserForPromotionStart =>
+      'Gib mindestens zwei Zeichen ein, um nach einem Benutzer zu suchen.';
+
+  @override
+  String get noUsersFoundForPromotion =>
+      'Es wurde kein passender Benutzer gefunden. Du kannst ein neues Lehrerkonto erstellen.';
+
+  @override
+  String get promoteToTeacher => 'Zum Lehrer befördern';
+
+  @override
+  String get createTeacherAccount => 'Lehrerkonto erstellen';
+
+  @override
+  String get createTeacherAccountHint =>
+      'Gib die Daten des neuen Lehrers ein und verknüpfe das Konto mit dieser Moschee.';
+
+  @override
+  String get qualification => 'Qualifikation';
+
+  @override
+  String get enterTeacherQualification => 'Qualifikation des Lehrers eingeben';
+
+  @override
+  String get bio => 'Kurzbeschreibung';
+
+  @override
+  String get enterTeacherBio => 'Kurzbeschreibung des Lehrers eingeben';
+
+  @override
+  String get teacherSavedSuccessfully => 'Lehrer wurde erfolgreich gespeichert';
+
+  @override
+  String get noFavoriteMosques => 'Es gibt noch keine favorisierten Moscheen';
+
+  @override
+  String get viewDetails => 'Details anzeigen';
 }

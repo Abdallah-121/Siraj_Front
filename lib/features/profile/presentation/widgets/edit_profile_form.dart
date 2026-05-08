@@ -5,19 +5,28 @@ import '../../../../core/widgets/app_gap.dart';
 import '../../../../core/widgets/app_text_field.dart';
 
 class EditProfileForm extends StatelessWidget {
-  final TextEditingController usernameController;
+  final TextEditingController firstNameController;
+  final TextEditingController lastNameController;
   final TextEditingController emailController;
-  final TextEditingController passwordController;
-  final TextEditingController confirmPasswordController;
   final TextEditingController phoneController;
+  final TextEditingController birthDateController;
+  final TextEditingController cityController;
+  final TextEditingController descriptionController;
+
+  final VoidCallback onBirthDatePressed;
+  final VoidCallback onCityPressed;
 
   const EditProfileForm({
     super.key,
-    required this.usernameController,
+    required this.firstNameController,
+    required this.lastNameController,
     required this.emailController,
-    required this.passwordController,
-    required this.confirmPasswordController,
     required this.phoneController,
+    required this.birthDateController,
+    required this.cityController,
+    required this.descriptionController,
+    required this.onBirthDatePressed,
+    required this.onCityPressed,
   });
 
   @override
@@ -25,11 +34,19 @@ class EditProfileForm extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        _FieldLabel(label: context.l10n.username),
+        _FieldLabel(label: context.l10n.firstName),
         AppGap.v8,
         AppTextField(
-          controller: usernameController,
-          hintText: context.l10n.enterUsername,
+          controller: firstNameController,
+          hintText: context.l10n.enterFirstName,
+          prefixIcon: const Icon(Icons.person_outline_rounded),
+        ),
+        AppGap.v16,
+        _FieldLabel(label: context.l10n.lastName),
+        AppGap.v8,
+        AppTextField(
+          controller: lastNameController,
+          hintText: context.l10n.enterLastName,
           prefixIcon: const Icon(Icons.person_outline_rounded),
         ),
         AppGap.v16,
@@ -42,24 +59,6 @@ class EditProfileForm extends StatelessWidget {
           prefixIcon: const Icon(Icons.email_outlined),
         ),
         AppGap.v16,
-        _FieldLabel(label: context.l10n.password),
-        AppGap.v8,
-        AppTextField(
-          controller: passwordController,
-          hintText: context.l10n.enterPassword,
-          obscureText: true,
-          prefixIcon: const Icon(Icons.visibility_outlined),
-        ),
-        AppGap.v16,
-        _FieldLabel(label: context.l10n.confirmPassword),
-        AppGap.v8,
-        AppTextField(
-          controller: confirmPasswordController,
-          hintText: context.l10n.enterPasswordAgain,
-          obscureText: true,
-          prefixIcon: const Icon(Icons.visibility_off_outlined),
-        ),
-        AppGap.v16,
         _FieldLabel(label: context.l10n.phoneNumber),
         AppGap.v8,
         AppTextField(
@@ -67,6 +66,36 @@ class EditProfileForm extends StatelessWidget {
           hintText: context.l10n.enterPhoneNumber,
           keyboardType: TextInputType.phone,
           prefixIcon: const Icon(Icons.phone_outlined),
+        ),
+        AppGap.v16,
+        _FieldLabel(label: context.l10n.cityNameLabel),
+        AppGap.v8,
+        AppTextField(
+          controller: cityController,
+          hintText: context.l10n.searchGovernorate,
+          readOnly: true,
+          onTap: onCityPressed,
+          prefixIcon: const Icon(Icons.location_city_outlined),
+          suffixIcon: const Icon(Icons.keyboard_arrow_down_rounded),
+        ),
+        AppGap.v16,
+        _FieldLabel(label: context.l10n.birthDate),
+        AppGap.v8,
+        AppTextField(
+          controller: birthDateController,
+          hintText: context.l10n.enterBirthDate,
+          readOnly: true,
+          onTap: onBirthDatePressed,
+          prefixIcon: const Icon(Icons.calendar_month_outlined),
+        ),
+        AppGap.v16,
+        _FieldLabel(label: context.l10n.descriptionLabel),
+        AppGap.v8,
+        AppTextField(
+          controller: descriptionController,
+          hintText: context.l10n.profileDescriptionHint,
+          maxLines: 4,
+          prefixIcon: const Icon(Icons.notes_outlined),
         ),
       ],
     );

@@ -25,4 +25,11 @@ abstract class MosquesRemoteDataSource {
     required int pageNumber,
     required int pageSize,
   });
+
+  Future<List<MosqueModel>> getMosquesByLessonCategory({
+    required int categoryId,
+    int? cityId,
+    int? regionId,
+    bool? isActive,
+  });
 }

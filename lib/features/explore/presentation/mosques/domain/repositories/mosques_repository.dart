@@ -27,4 +27,11 @@ abstract class MosquesRepository {
     required int pageNumber,
     required int pageSize,
   });
+
+  Future<Either<Failure, List<MosqueEntity>>> getMosquesByLessonCategory({
+    required int categoryId,
+    int? cityId,
+    int? regionId,
+    bool? isActive,
+  });
 }

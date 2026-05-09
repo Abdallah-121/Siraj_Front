@@ -788,4 +788,44 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get viewDetails => 'Details anzeigen';
+
+  @override
+  String get categories => 'Kategorien';
+
+  @override
+  String get addCategory => 'Kategorie hinzufügen';
+
+  @override
+  String get editCategory => 'Kategorie bearbeiten';
+
+  @override
+  String get deleteCategory => 'Kategorie löschen';
+
+  @override
+  String get categoryName => 'Kategoriename';
+
+  @override
+  String get enterCategoryName => 'Kategorienamen eingeben';
+
+  @override
+  String get deleteCategoryConfirmation =>
+      'Möchtest du diese Kategorie wirklich löschen?';
+
+  @override
+  String get categoryCreatedSuccessfully =>
+      'Kategorie wurde erfolgreich erstellt';
+
+  @override
+  String get categoryUpdatedSuccessfully =>
+      'Kategorie wurde erfolgreich aktualisiert';
+
+  @override
+  String get categoryDeletedSuccessfully =>
+      'Kategorie wurde erfolgreich gelöscht';
+
+  @override
+  String get noCategoriesFound => 'Keine Kategorien gefunden';
+
+  @override
+  String get selectCategory => 'Kategorie auswählen';
 }

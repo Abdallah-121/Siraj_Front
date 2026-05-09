@@ -776,4 +776,41 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get viewDetails => 'View details';
+
+  @override
+  String get categories => 'Categories';
+
+  @override
+  String get addCategory => 'Add category';
+
+  @override
+  String get editCategory => 'Edit category';
+
+  @override
+  String get deleteCategory => 'Delete category';
+
+  @override
+  String get categoryName => 'Category name';
+
+  @override
+  String get enterCategoryName => 'Enter category name';
+
+  @override
+  String get deleteCategoryConfirmation =>
+      'Are you sure you want to delete this category?';
+
+  @override
+  String get categoryCreatedSuccessfully => 'Category created successfully';
+
+  @override
+  String get categoryUpdatedSuccessfully => 'Category updated successfully';
+
+  @override
+  String get categoryDeletedSuccessfully => 'Category deleted successfully';
+
+  @override
+  String get noCategoriesFound => 'No categories found';
+
+  @override
+  String get selectCategory => 'Select category';
 }

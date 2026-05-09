@@ -44,4 +44,12 @@ abstract final class ApiConstants {
   }
 
   static const String favoriteMosques = '$mosques/favorites';
+
+  static const String categories = '/api/categories';
+
+  static String categoryById(int id) {
+    return '$categories/$id';
+  }
+
+  static const String mosquesByLessonCategory = '$mosques/by-lesson-category';
 }

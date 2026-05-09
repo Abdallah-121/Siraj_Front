@@ -254,5 +254,17 @@
   "enterTeacherBio": "اكتب نبذة عن المدرس",
   "teacherSavedSuccessfully": "تم حفظ المدرس بنجاح",
   "noFavoriteMosques": "لا توجد مساجد في المفضلة حالياً",
-  "viewDetails": "عرض التفاصيل"
+  "viewDetails": "عرض التفاصيل",
+  "categories": "التصنيفات",
+  "addCategory": "إضافة تصنيف",
+  "editCategory": "تعديل التصنيف",
+  "deleteCategory": "حذف التصنيف",
+  "categoryName": "اسم التصنيف",
+  "enterCategoryName": "اكتب اسم التصنيف",
+  "deleteCategoryConfirmation": "هل أنت متأكد من حذف هذا التصنيف؟",
+  "categoryCreatedSuccessfully": "تم إنشاء التصنيف بنجاح",
+  "categoryUpdatedSuccessfully": "تم تعديل التصنيف بنجاح",
+  "categoryDeletedSuccessfully": "تم حذف التصنيف بنجاح",
+  "noCategoriesFound": "لا توجد تصنيفات حالياً",
+  "selectCategory": "اختر التصنيف"
 }

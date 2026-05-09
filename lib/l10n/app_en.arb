@@ -255,5 +255,17 @@
   "enterTeacherBio": "Enter the teacher bio",
   "teacherSavedSuccessfully": "Teacher saved successfully",
   "noFavoriteMosques": "There are no favorite mosques yet",
-  "viewDetails": "View details"
+  "viewDetails": "View details",
+  "categories": "Categories",
+  "addCategory": "Add category",
+  "editCategory": "Edit category",
+  "deleteCategory": "Delete category",
+  "categoryName": "Category name",
+  "enterCategoryName": "Enter category name",
+  "deleteCategoryConfirmation": "Are you sure you want to delete this category?",
+  "categoryCreatedSuccessfully": "Category created successfully",
+  "categoryUpdatedSuccessfully": "Category updated successfully",
+  "categoryDeletedSuccessfully": "Category deleted successfully",
+  "noCategoriesFound": "No categories found",
+  "selectCategory": "Select category"
 }

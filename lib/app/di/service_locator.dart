@@ -15,6 +15,16 @@ import 'package:seraj/features/auth/domain/usecases/save_auth_session_usecase.da
 import 'package:seraj/features/auth/presentation/cubit/auth_session_cubit.dart';
 import 'package:seraj/features/auth/presentation/cubit/login_cubit.dart';
 import 'package:seraj/features/auth/presentation/cubit/register_cubit.dart';
+import 'package:seraj/features/categories/data/datasources/categories_remote_data_source.dart';
+import 'package:seraj/features/categories/data/datasources/categories_remote_data_source_impl.dart';
+import 'package:seraj/features/categories/data/repositories/categories_repository_impl.dart';
+import 'package:seraj/features/categories/domain/repositories/categories_repository.dart';
+import 'package:seraj/features/categories/domain/usecases/create_category_usecase.dart';
+import 'package:seraj/features/categories/domain/usecases/delete_category_usecase.dart';
+import 'package:seraj/features/categories/domain/usecases/get_categories_usecase.dart';
+import 'package:seraj/features/categories/domain/usecases/get_category_by_id_usecase.dart';
+import 'package:seraj/features/categories/domain/usecases/update_category_usecase.dart';
+import 'package:seraj/features/categories/presentation/cubit/categories_cubit.dart';
 import 'package:seraj/features/explore/presentation/academies/data/datasources/academies_remote_data_source.dart';
 import 'package:seraj/features/explore/presentation/academies/data/datasources/academies_remote_data_source_impl.dart';
 import 'package:seraj/features/explore/presentation/academies/data/repositories/academies_repository_impl.dart';
@@ -28,6 +38,7 @@ import 'package:seraj/features/explore/presentation/mosques/domain/repositories/
 import 'package:seraj/features/explore/presentation/mosques/domain/usecases/add_mosque_to_favorites_usecase.dart';
 import 'package:seraj/features/explore/presentation/mosques/domain/usecases/create_mosque_usecase.dart';
 import 'package:seraj/features/explore/presentation/mosques/domain/usecases/get_favorite_mosques_usecase.dart';
+import 'package:seraj/features/explore/presentation/mosques/domain/usecases/get_mosques_by_lesson_category_usecase.dart';
 import 'package:seraj/features/explore/presentation/mosques/domain/usecases/get_mosques_usecase.dart';
 import 'package:seraj/features/explore/presentation/mosques/domain/usecases/remove_mosque_from_favorites_usecase.dart';
 import 'package:seraj/features/explore/presentation/mosques/domain/usecases/upload_mosque_image_usecase.dart';
@@ -111,8 +122,12 @@ Future<void> initDependencies() async {
   );
 
   sl.registerLazySingleton<GetMosquesUseCase>(() => GetMosquesUseCase(sl()));
-  sl.registerFactory<MosquesCubit>(() => MosquesCubit(sl()));
-
+  sl.registerFactory<MosquesCubit>(
+    () => MosquesCubit(
+      getMosquesUseCase: sl(),
+      getMosquesByLessonCategoryUseCase: sl(),
+    ),
+  );
   sl.registerLazySingleton<AcademiesRemoteDataSource>(
     () => AcademiesRemoteDataSourceImpl(sl()),
   );
@@ -298,5 +313,46 @@ Future<void> initDependencies() async {
       removeMosqueFromFavoritesUseCase: sl(),
       getFavoriteMosquesUseCase: sl(),
     ),
+  );
+
+  sl.registerLazySingleton<CategoriesRemoteDataSource>(
+    () => CategoriesRemoteDataSourceImpl(sl()),
+  );
+
+  sl.registerLazySingleton<CategoriesRepository>(
+    () => CategoriesRepositoryImpl(sl()),
+  );
+
+  sl.registerLazySingleton<GetCategoriesUseCase>(
+    () => GetCategoriesUseCase(sl()),
+  );
+
+  sl.registerLazySingleton<GetCategoryByIdUseCase>(
+    () => GetCategoryByIdUseCase(sl()),
+  );
+
+  sl.registerLazySingleton<CreateCategoryUseCase>(
+    () => CreateCategoryUseCase(sl()),
+  );
+
+  sl.registerLazySingleton<UpdateCategoryUseCase>(
+    () => UpdateCategoryUseCase(sl()),
+  );
+
+  sl.registerLazySingleton<DeleteCategoryUseCase>(
+    () => DeleteCategoryUseCase(sl()),
+  );
+
+  sl.registerFactory<CategoriesCubit>(
+    () => CategoriesCubit(
+      getCategoriesUseCase: sl(),
+      createCategoryUseCase: sl(),
+      updateCategoryUseCase: sl(),
+      deleteCategoryUseCase: sl(),
+    ),
+  );
+
+  sl.registerLazySingleton<GetMosquesByLessonCategoryUseCase>(
+    () => GetMosquesByLessonCategoryUseCase(sl()),
   );
 }

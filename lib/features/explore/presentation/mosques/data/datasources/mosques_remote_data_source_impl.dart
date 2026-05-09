@@ -298,4 +298,64 @@ class MosquesRemoteDataSourceImpl implements MosquesRemoteDataSource {
       statusCode: e.response?.statusCode,
     );
   }
+
+  @override
+  Future<List<MosqueModel>> getMosquesByLessonCategory({
+    required int categoryId,
+    int? cityId,
+    int? regionId,
+    bool? isActive,
+  }) async {
+    try {
+      final Response<dynamic> response = await dioClient.dio.get(
+        ApiConstants.mosquesByLessonCategory,
+        queryParameters: {
+          'CategoryId': categoryId,
+          if (cityId != null) 'CityId': cityId,
+          if (regionId != null) 'RegionId': regionId,
+          if (isActive != null) 'IsActive': isActive,
+        },
+      );
+
+      final Map<String, dynamic> responseMap =
+          response.data as Map<String, dynamic>;
+
+      final bool isSuccess = responseMap['isSuccess'] as bool? ?? false;
+      final String message =
+          responseMap['message'] as String? ?? 'Get mosques by category failed';
+
+      if (!isSuccess) {
+        throw ServerException(
+          message: message,
+          statusCode: response.statusCode,
+        );
+      }
+
+      final List<dynamic> data = responseMap['data'] as List<dynamic>? ?? [];
+
+      return data
+          .whereType<Map<String, dynamic>>()
+          .map(MosqueModel.fromJson)
+          .toList(growable: false);
+    } on DioException catch (e) {
+      if (e.type == DioExceptionType.connectionError ||
+          e.type == DioExceptionType.connectionTimeout ||
+          e.type == DioExceptionType.receiveTimeout) {
+        throw NetworkException(message: 'No internet connection');
+      }
+
+      final dynamic responseData = e.response?.data;
+      final String serverMessage = responseData is Map<String, dynamic>
+          ? responseData['message'] as String? ??
+                'Get mosques by category failed'
+          : 'Get mosques by category failed';
+
+      throw ServerException(
+        message: serverMessage,
+        statusCode: e.response?.statusCode,
+      );
+    } catch (_) {
+      throw UnexpectedException(message: 'Unexpected error');
+    }
+  }
 }

@@ -34,4 +34,6 @@ abstract final class RouteNames {
   static const String lessonDetail = '/lesson-detail';
 
   static const String favoriteMosques = '/favorite-mosques';
+
+  static const String categories = '/categories';
 }

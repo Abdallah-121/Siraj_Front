@@ -253,5 +253,17 @@
   "enterTeacherBio": "Kurzbeschreibung des Lehrers eingeben",
   "teacherSavedSuccessfully": "Lehrer wurde erfolgreich gespeichert",
   "noFavoriteMosques": "Es gibt noch keine favorisierten Moscheen",
-  "viewDetails": "Details anzeigen"
+  "viewDetails": "Details anzeigen",
+  "categories": "Kategorien",
+  "addCategory": "Kategorie hinzufügen",
+  "editCategory": "Kategorie bearbeiten",
+  "deleteCategory": "Kategorie löschen",
+  "categoryName": "Kategoriename",
+  "enterCategoryName": "Kategorienamen eingeben",
+  "deleteCategoryConfirmation": "Möchtest du diese Kategorie wirklich löschen?",
+  "categoryCreatedSuccessfully": "Kategorie wurde erfolgreich erstellt",
+  "categoryUpdatedSuccessfully": "Kategorie wurde erfolgreich aktualisiert",
+  "categoryDeletedSuccessfully": "Kategorie wurde erfolgreich gelöscht",
+  "noCategoriesFound": "Keine Kategorien gefunden",
+  "selectCategory": "Kategorie auswählen"
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:seraj/app/di/service_locator.dart';
+import 'package:seraj/features/categories/presentation/cubit/categories_cubit.dart';
 import 'package:seraj/features/explore/presentation/mosques/domain/entites/mosque_entity.dart';
 import 'package:seraj/features/lessons/presentation/cubit/create_lesson_cubit.dart';
 import 'package:seraj/features/lessons/presentation/cubit/create_lesson_state.dart';
@@ -16,27 +17,27 @@ import '../../../explore/presentation/shared/widgets/detail_title_section.dart';
 class CreateLessonPage extends StatelessWidget {
   const CreateLessonPage({super.key});
 
-  void _onBackPressed(BuildContext context) {
-    Navigator.pop(context);
-  }
-
   @override
   Widget build(BuildContext context) {
     final MosqueEntity mosque =
         ModalRoute.of(context)!.settings.arguments as MosqueEntity;
 
-    return BlocProvider(
-      create: (_) => sl<CreateLessonCubit>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => sl<CreateLessonCubit>()),
+        BlocProvider(create: (_) => sl<CategoriesCubit>()..loadCategories()),
+      ],
       child: BlocConsumer<CreateLessonCubit, CreateLessonState>(
         listener: (context, state) {
           if (state.isSuccess) {
             Navigator.pop(context, true);
+            return;
           }
 
           if (state.errorMessage != null) {
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(SnackBar(content: Text(state.errorMessage!)));
+            ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(SnackBar(content: Text(state.errorMessage!)));
           }
         },
         builder: (context, state) {
@@ -46,7 +47,7 @@ class CreateLessonPage extends StatelessWidget {
             body: Column(
               children: [
                 DetailHeaderImage(
-                  onBackPressed: () => _onBackPressed(context),
+                  onBackPressed: () => Navigator.pop(context),
                   isFavorite: false,
                 ),
                 Expanded(

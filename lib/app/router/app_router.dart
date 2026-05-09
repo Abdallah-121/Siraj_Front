@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seraj/features/categories/presentation/pages/categories_page.dart';
 import 'package:seraj/features/explore/presentation/mosques/presentation/pages/create_mosque_page.dart';
 import 'package:seraj/features/explore/presentation/mosques/presentation/pages/favorite_mosques_page.dart';
 import 'package:seraj/features/lessons/presentation/page/create_lesson_page.dart';
@@ -130,6 +131,9 @@ abstract final class AppRouter {
           settings: settings,
           child: const LessonDetailPage(),
         );
+
+      case RouteNames.categories:
+        return MaterialPageRoute(builder: (_) => const CategoriesPage());
 
       case RouteNames.favoriteMosques:
         return MaterialPageRoute(builder: (_) => const FavoriteMosquesPage());

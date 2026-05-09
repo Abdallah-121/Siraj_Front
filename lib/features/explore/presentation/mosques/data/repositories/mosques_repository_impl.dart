@@ -134,4 +134,29 @@ class MosquesRepositoryImpl implements MosquesRepository {
       return Left(UnexpectedFailure(e.message));
     }
   }
+
+  @override
+  Future<Either<Failure, List<MosqueEntity>>> getMosquesByLessonCategory({
+    required int categoryId,
+    int? cityId,
+    int? regionId,
+    bool? isActive,
+  }) async {
+    try {
+      final result = await remoteDataSource.getMosquesByLessonCategory(
+        categoryId: categoryId,
+        cityId: cityId,
+        regionId: regionId,
+        isActive: isActive,
+      );
+
+      return Right(result);
+    } on NetworkException catch (e) {
+      return Left(NetworkFailure(e.message));
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    } on UnexpectedException catch (e) {
+      return Left(UnexpectedFailure(e.message));
+    }
+  }
 }

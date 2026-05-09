@@ -771,4 +771,40 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get viewDetails => 'عرض التفاصيل';
+
+  @override
+  String get categories => 'التصنيفات';
+
+  @override
+  String get addCategory => 'إضافة تصنيف';
+
+  @override
+  String get editCategory => 'تعديل التصنيف';
+
+  @override
+  String get deleteCategory => 'حذف التصنيف';
+
+  @override
+  String get categoryName => 'اسم التصنيف';
+
+  @override
+  String get enterCategoryName => 'اكتب اسم التصنيف';
+
+  @override
+  String get deleteCategoryConfirmation => 'هل أنت متأكد من حذف هذا التصنيف؟';
+
+  @override
+  String get categoryCreatedSuccessfully => 'تم إنشاء التصنيف بنجاح';
+
+  @override
+  String get categoryUpdatedSuccessfully => 'تم تعديل التصنيف بنجاح';
+
+  @override
+  String get categoryDeletedSuccessfully => 'تم حذف التصنيف بنجاح';
+
+  @override
+  String get noCategoriesFound => 'لا توجد تصنيفات حالياً';
+
+  @override
+  String get selectCategory => 'اختر التصنيف';
 }

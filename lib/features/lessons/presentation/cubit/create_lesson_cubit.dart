@@ -10,6 +10,12 @@ class CreateLessonCubit extends Cubit<CreateLessonState> {
   CreateLessonCubit(this.createLessonUseCase)
     : super(CreateLessonState.initial());
 
+  void _safeEmit(CreateLessonState newState) {
+    if (!isClosed) {
+      emit(newState);
+    }
+  }
+
   Future<void> createLesson({
     required int categoryId,
     required int mosqueId,
@@ -20,7 +26,7 @@ class CreateLessonCubit extends Cubit<CreateLessonState> {
     required bool isItACompleteCourse,
     required bool liveStreamingCapability,
   }) async {
-    emit(state.copyWith(isLoading: true, clearError: true));
+    _safeEmit(state.copyWith(isLoading: true, clearError: true));
 
     final result = await createLessonUseCase(
       CreateLessonParams(
@@ -35,9 +41,11 @@ class CreateLessonCubit extends Cubit<CreateLessonState> {
       ),
     );
 
+    if (isClosed) return;
+
     result.fold(
       (failure) {
-        emit(
+        _safeEmit(
           state.copyWith(
             isLoading: false,
             errorMessage: ErrorMapper.mapFailureToMessage(failure),
@@ -45,7 +53,7 @@ class CreateLessonCubit extends Cubit<CreateLessonState> {
         );
       },
       (_) {
-        emit(
+        _safeEmit(
           state.copyWith(isLoading: false, isSuccess: true, clearError: true),
         );
       },

@@ -726,7 +726,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileImageUrlHint => 'Enter the profile image URL';
 
   @override
-  String get noCitiesFound => 'No matching cities found';
+  String get noCitiesFound => 'No cities available';
 
   @override
   String get promoteUserToTeacher => 'Promote user to teacher';
@@ -813,4 +813,88 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get selectCategory => 'Select category';
+
+  @override
+  String get noAcademiesFound => 'No academies found';
+
+  @override
+  String get addAcademy => 'Add academy';
+
+  @override
+  String get academyLink => 'Academy link';
+
+  @override
+  String get academyUpdatedSuccessfully => 'Academy updated successfully';
+
+  @override
+  String get academyCreatedSuccessfully => 'Academy created successfully';
+
+  @override
+  String get academyDeletedSuccessfully => 'Academy deleted successfully';
+
+  @override
+  String get deleteAcademy => 'Delete Academy';
+
+  @override
+  String get deleteAcademyConfirmation =>
+      'Are you sure you want to delete this academy?';
+
+  @override
+  String get unexpectedError => 'An unexpected error occurred';
+
+  @override
+  String get prayerTimes => 'Prayer times';
+
+  @override
+  String get viewTodayPrayerTimes => 'View today’s prayer times';
+
+  @override
+  String get nextPrayer => 'Next prayer';
+
+  @override
+  String get chooseCity => 'Choose city';
+
+  @override
+  String get chooseCityToShowPrayerTimes =>
+      'Choose a city to show prayer times';
+
+  @override
+  String get noPrayerTimesFound => 'No prayer times available';
+
+  @override
+  String get fajr => 'Fajr';
+
+  @override
+  String get sunrise => 'Sunrise';
+
+  @override
+  String get dhuhr => 'Dhuhr';
+
+  @override
+  String get asr => 'Asr';
+
+  @override
+  String get maghrib => 'Maghrib';
+
+  @override
+  String get isha => 'Isha';
+
+  @override
+  String get currentPassword => 'Current password';
+
+  @override
+  String get enterCurrentPassword => 'Enter current password';
+
+  @override
+  String get confirmNewPassword => 'Confirm new password';
+
+  @override
+  String get passwordChangedSuccessfully => 'Password changed successfully';
+
+  @override
+  String get changePasswordDescription =>
+      'Enter your current password and the new password to update your login credentials.';
+
+  @override
+  String get passwordTooShort => 'Password must be at least 6 characters';
 }

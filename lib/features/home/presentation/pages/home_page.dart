@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:seraj/features/explore/presentation/academies/domain/entites/academy_entity.dart';
+import 'package:seraj/features/explore/presentation/academies/presentation/cubit/academies_cubit.dart';
+import 'package:seraj/features/explore/presentation/academies/presentation/cubit/academies_state.dart';
+import 'package:seraj/features/explore/presentation/academies/presentation/cubit/academy_favorites_cubit.dart';
+import 'package:seraj/features/explore/presentation/academies/presentation/cubit/academy_favorites_state.dart';
 import 'package:seraj/features/explore/presentation/mosques/domain/entites/mosque_entity.dart';
 import 'package:seraj/features/explore/presentation/mosques/presentation/cubit/mosque_favorites_cubit.dart';
 import 'package:seraj/features/explore/presentation/mosques/presentation/cubit/mosque_favorites_state.dart';
 import 'package:seraj/features/explore/presentation/mosques/presentation/cubit/mosques_cubit.dart';
 import 'package:seraj/features/explore/presentation/mosques/presentation/cubit/mosques_state.dart';
 import 'package:seraj/features/home/presentation/widgets/home_app_drawer.dart';
+import 'package:seraj/features/home/presentation/widgets/home_prayer_times_card.dart';
 
 import '../../../../app/di/service_locator.dart';
 import '../../../../app/router/route_names.dart';
@@ -36,6 +43,10 @@ class _HomePageState extends State<HomePage> {
     _scaffoldKey.currentState?.openDrawer();
   }
 
+  void _onPrayerTimesPressed() {
+    Navigator.pushNamed(context, RouteNames.prayerTimes);
+  }
+
   void _onSearchPressed() {}
 
   void _onViewAllNearbyMosquesPressed() {
@@ -48,6 +59,10 @@ class _HomePageState extends State<HomePage> {
 
   void _onMosquePressed(MosqueEntity mosque) {
     Navigator.pushNamed(context, RouteNames.mosqueDetail, arguments: mosque);
+  }
+
+  void _onAcademyPressed(AcademyEntity academy) {
+    Navigator.pushNamed(context, RouteNames.academyDetail, arguments: academy);
   }
 
   void _onBottomNavItemSelected(MainNavItem item) {
@@ -95,11 +110,17 @@ class _HomePageState extends State<HomePage> {
 
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
+        BlocProvider<MosquesCubit>(
           create: (_) => sl<MosquesCubit>()..loadMosques(pageSize: 8),
         ),
-        BlocProvider(
+        BlocProvider<MosqueFavoritesCubit>(
           create: (_) => sl<MosqueFavoritesCubit>()..loadFavoriteMosques(),
+        ),
+        BlocProvider<AcademiesCubit>(
+          create: (_) => sl<AcademiesCubit>()..loadAcademies(pageSize: 8),
+        ),
+        BlocProvider<AcademyFavoritesCubit>(
+          create: (_) => sl<AcademyFavoritesCubit>()..loadFavoriteAcademies(),
         ),
       ],
       child: AppScaffold(
@@ -152,33 +173,17 @@ class _HomePageState extends State<HomePage> {
                         },
                       ),
                     ),
+                    AppGap.v20,
+                    HomePrayerTimesCard(onTap: _onPrayerTimesPressed),
                     AppGap.v24,
                     _HomeMosquesSection(
                       onViewAllPressed: _onViewAllNearbyMosquesPressed,
                       onMosquePressed: _onMosquePressed,
                     ),
                     AppGap.v24,
-                    HomeHorizontalSection(
-                      title: context.l10n.viewAllAcademies,
-                      height: PlaceCard.cardHeight,
-                      onPressed: _onViewAllAcademiesPressed,
-                      child: ListView.separated(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 3,
-                        separatorBuilder: (_, __) =>
-                            const SizedBox(width: AppSpacing.lg),
-                        itemBuilder: (context, index) {
-                          return PlaceCard(
-                            title: context.l10n.sampleAcademyName,
-                            subtitle: context.l10n.academyDetails,
-                            actionLabel: context.l10n.viewDetails,
-                            fallbackIcon: Icons.school_rounded,
-                            isFavorite: false,
-                            onTap: _onViewAllAcademiesPressed,
-                            onFavoritePressed: () {},
-                          );
-                        },
-                      ),
+                    _HomeAcademiesSection(
+                      onViewAllPressed: _onViewAllAcademiesPressed,
+                      onAcademyPressed: _onAcademyPressed,
                     ),
                   ],
                 ),
@@ -225,6 +230,7 @@ class _HomeMosquesSection extends StatelessWidget {
                       title: context.l10n.loading,
                       subtitle: '',
                       actionLabel: context.l10n.viewDetails,
+                      fallbackIcon: Icons.mosque_rounded,
                       isFavorite: false,
                       onTap: null,
                       onFavoritePressed: null,
@@ -258,6 +264,87 @@ class _HomeMosquesSection extends StatelessWidget {
                     onFavoritePressed: () {
                       context.read<MosqueFavoritesCubit>().toggleFavorite(
                         mosque.id,
+                      );
+                    },
+                  );
+                },
+              );
+            },
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _HomeAcademiesSection extends StatelessWidget {
+  final VoidCallback onViewAllPressed;
+  final ValueChanged<AcademyEntity> onAcademyPressed;
+
+  const _HomeAcademiesSection({
+    required this.onViewAllPressed,
+    required this.onAcademyPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<AcademiesCubit, AcademiesState>(
+      builder: (context, academiesState) {
+        final List<AcademyEntity> academies = academiesState.academies
+            .take(5)
+            .toList(growable: false);
+
+        return HomeHorizontalSection(
+          title: context.l10n.viewAllAcademies,
+          height: PlaceCard.cardHeight,
+          onPressed: onViewAllPressed,
+          child: BlocBuilder<AcademyFavoritesCubit, AcademyFavoritesState>(
+            builder: (context, favoritesState) {
+              if (academiesState.isLoading) {
+                return ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 3,
+                  separatorBuilder: (_, __) =>
+                      const SizedBox(width: AppSpacing.lg),
+                  itemBuilder: (context, index) {
+                    return PlaceCard(
+                      title: context.l10n.loading,
+                      subtitle: '',
+                      actionLabel: context.l10n.viewDetails,
+                      fallbackIcon: Icons.school_rounded,
+                      isFavorite: false,
+                      onTap: null,
+                      onFavoritePressed: null,
+                    );
+                  },
+                );
+              }
+
+              if (academies.isEmpty) {
+                return Center(child: Text(context.l10n.noAcademiesFound));
+              }
+
+              return ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemCount: academies.length,
+                separatorBuilder: (_, __) =>
+                    const SizedBox(width: AppSpacing.lg),
+                itemBuilder: (context, index) {
+                  final academy = academies[index];
+
+                  return PlaceCard(
+                    title: academy.name,
+                    subtitle: academy.specialization.isNotEmpty
+                        ? academy.specialization
+                        : academy.platformName,
+                    actionLabel: context.l10n.viewDetails,
+                    imageUrl: academy.imageUrl,
+                    fallbackIcon: Icons.school_rounded,
+                    isFavorite: favoritesState.isFavorite(academy.id),
+                    onTap: () => onAcademyPressed(academy),
+                    onFavoritePressed: () {
+                      context.read<AcademyFavoritesCubit>().toggleFavorite(
+                        academy.id,
                       );
                     },
                   );

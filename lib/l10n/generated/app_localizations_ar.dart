@@ -721,7 +721,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get profileImageUrlHint => 'أدخل رابط صورة الملف الشخصي';
 
   @override
-  String get noCitiesFound => 'لا توجد مدن مطابقة';
+  String get noCitiesFound => 'لا توجد مدن متاحة';
 
   @override
   String get promoteUserToTeacher => 'ترقية مستخدم إلى مدرس';
@@ -807,4 +807,86 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get selectCategory => 'اختر التصنيف';
+
+  @override
+  String get noAcademiesFound => 'لا توجد أكاديميات مطابقة';
+
+  @override
+  String get addAcademy => 'إضافة أكاديمية';
+
+  @override
+  String get academyLink => 'رابط الأكاديمية';
+
+  @override
+  String get academyUpdatedSuccessfully => 'تم تعديل الأكاديمية بنجاح';
+
+  @override
+  String get academyCreatedSuccessfully => 'تم إنشاء الأكاديمية بنجاح';
+
+  @override
+  String get academyDeletedSuccessfully => 'تم حذف الأكاديمية بنجاح';
+
+  @override
+  String get deleteAcademy => 'حذف الأكاديمية';
+
+  @override
+  String get deleteAcademyConfirmation => 'هل أنت متأكد من حذف هذه الأكاديمية؟';
+
+  @override
+  String get unexpectedError => 'حدث خطأ غير متوقع';
+
+  @override
+  String get prayerTimes => 'مواقيت الصلاة';
+
+  @override
+  String get viewTodayPrayerTimes => 'اعرض مواقيت الصلاة لليوم';
+
+  @override
+  String get nextPrayer => 'الصلاة القادمة';
+
+  @override
+  String get chooseCity => 'اختر المدينة';
+
+  @override
+  String get chooseCityToShowPrayerTimes => 'اختر المدينة لعرض مواقيت الصلاة';
+
+  @override
+  String get noPrayerTimesFound => 'لا توجد مواقيت صلاة متاحة';
+
+  @override
+  String get fajr => 'الفجر';
+
+  @override
+  String get sunrise => 'الشروق';
+
+  @override
+  String get dhuhr => 'الظهر';
+
+  @override
+  String get asr => 'العصر';
+
+  @override
+  String get maghrib => 'المغرب';
+
+  @override
+  String get isha => 'العشاء';
+
+  @override
+  String get currentPassword => 'كلمة المرور الحالية';
+
+  @override
+  String get enterCurrentPassword => 'اكتب كلمة المرور الحالية';
+
+  @override
+  String get confirmNewPassword => 'تأكيد كلمة المرور الجديدة';
+
+  @override
+  String get passwordChangedSuccessfully => 'تم تغيير كلمة المرور بنجاح';
+
+  @override
+  String get changePasswordDescription =>
+      'أدخل كلمة المرور الحالية ثم كلمة المرور الجديدة لتحديث بيانات الدخول.';
+
+  @override
+  String get passwordTooShort => 'كلمة المرور يجب أن تكون 6 أحرف على الأقل';
 }

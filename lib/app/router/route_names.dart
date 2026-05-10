@@ -36,4 +36,10 @@ abstract final class RouteNames {
   static const String favoriteMosques = '/favorite-mosques';
 
   static const String categories = '/categories';
+
+  static const String createEditAcademy = '/create-edit-academy';
+
+  static const String prayerTimes = '/prayer-times';
+
+  static const String changePassword = '/change-password';
 }

@@ -13,4 +13,9 @@ abstract class AuthRepository {
   Future<AuthSessionEntity?> getSavedSession();
   Future<void> clearSession();
   Future<String?> getToken();
+  Future<Either<Failure, Unit>> changePassword({
+    required String currentPassword,
+    required String newPassword,
+    required String confirmNewPassword,
+  });
 }

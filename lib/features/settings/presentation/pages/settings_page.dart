@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:seraj/app/widgets/app_page_header.dart';
 import 'package:seraj/app/widgets/app_section_header.dart';
 
@@ -8,6 +9,7 @@ import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/context_extensions.dart';
 import '../../../../core/widgets/app_gap.dart';
 import '../../../../core/widgets/app_scaffold.dart';
+import '../../../auth/presentation/cubit/auth_session_cubit.dart';
 import '../widgets/logout_confirmation_dialog.dart';
 import '../widgets/settings_action_tile.dart';
 import '../widgets/settings_contact_block.dart';
@@ -38,6 +40,9 @@ class _SettingsPageState extends State<SettingsPage> {
       case MainNavItem.search:
         Navigator.pushReplacementNamed(context, RouteNames.search);
         break;
+      case MainNavItem.profile:
+        Navigator.pushReplacementNamed(context, RouteNames.profile);
+        break;
       default:
         setState(() {
           _currentItem = item;
@@ -50,15 +55,20 @@ class _SettingsPageState extends State<SettingsPage> {
     await showDialog<void>(
       context: context,
       barrierDismissible: true,
-      builder: (_) {
+      builder: (dialogContext) {
         return LogoutConfirmationDialog(
           title: context.l10n.confirmLogoutTitle,
           yesLabel: context.l10n.yes,
           noLabel: context.l10n.no,
-          onClose: () => Navigator.pop(context),
-          onCancel: () => Navigator.pop(context),
-          onConfirm: () {
-            Navigator.pop(context);
+          onClose: () => Navigator.pop(dialogContext),
+          onCancel: () => Navigator.pop(dialogContext),
+          onConfirm: () async {
+            Navigator.pop(dialogContext);
+
+            await context.read<AuthSessionCubit>().logout();
+
+            if (!mounted) return;
+
             Navigator.pushNamedAndRemoveUntil(
               context,
               RouteNames.welcome,
@@ -113,7 +123,9 @@ class _SettingsPageState extends State<SettingsPage> {
                   SettingsActionTile(
                     leadingIcon: Icons.chevron_left_rounded,
                     title: context.l10n.changePassword,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteNames.changePassword);
+                    },
                     showChevron: false,
                   ),
                   AppGap.v24,

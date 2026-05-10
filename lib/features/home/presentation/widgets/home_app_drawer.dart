@@ -106,6 +106,15 @@ class HomeAppDrawer extends StatelessWidget {
             ),
 
             _DrawerTile(
+              icon: (Icons.access_time_filled_rounded),
+              title: 'أوقات الصلاة',
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, RouteNames.prayerTimes);
+              },
+            ),
+
+            _DrawerTile(
               title: 'الإعدادات',
               icon: Icons.settings_outlined,
               onTap: () {

@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:seraj/features/auth/data/models/change_password_request_model.dart';
 
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/error/failures.dart';
@@ -94,5 +95,30 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<String?> getToken() async {
     return localDataSource.getToken();
+  }
+
+  @override
+  Future<Either<Failure, Unit>> changePassword({
+    required String currentPassword,
+    required String newPassword,
+    required String confirmNewPassword,
+  }) async {
+    try {
+      await remoteDataSource.changePassword(
+        ChangePasswordRequestModel(
+          currentPassword: currentPassword,
+          newPassword: newPassword,
+          confirmNewPassword: confirmNewPassword,
+        ),
+      );
+
+      return const Right(unit);
+    } on NetworkException catch (e) {
+      return Left(NetworkFailure(e.message));
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    } on UnexpectedException catch (e) {
+      return Left(UnexpectedFailure(e.message));
+    }
   }
 }

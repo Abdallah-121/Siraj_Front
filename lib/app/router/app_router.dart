@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:seraj/features/auth/presentation/pages/change_password_page.dart';
 import 'package:seraj/features/categories/presentation/pages/categories_page.dart';
+import 'package:seraj/features/explore/presentation/academies/presentation/pages/create_edit_academy_page.dart';
 import 'package:seraj/features/explore/presentation/mosques/presentation/pages/create_mosque_page.dart';
 import 'package:seraj/features/explore/presentation/mosques/presentation/pages/favorite_mosques_page.dart';
 import 'package:seraj/features/lessons/presentation/page/create_lesson_page.dart';
 import 'package:seraj/features/lessons/presentation/page/lesson_detail_page.dart';
+import 'package:seraj/features/prayer_times/presentation/pages/prayer_times_page.dart';
 import 'package:seraj/features/settings/presentation/pages/change_language_page.dart';
 
 import '../../features/auth/presentation/pages/account_location_page.dart';
@@ -137,6 +140,24 @@ abstract final class AppRouter {
 
       case RouteNames.favoriteMosques:
         return MaterialPageRoute(builder: (_) => const FavoriteMosquesPage());
+
+      case RouteNames.createEditAcademy:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const CreateEditAcademyPage(),
+        );
+
+      case RouteNames.prayerTimes:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const PrayerTimesPage(),
+        );
+
+      case RouteNames.changePassword:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const ChangePasswordPage(),
+        );
 
       case RouteNames.createLesson:
         return MaterialPageRoute(

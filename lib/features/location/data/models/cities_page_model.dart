@@ -10,15 +10,16 @@ class CitiesPageModel extends CitiesPageEntity {
   });
 
   factory CitiesPageModel.fromJson(Map<String, dynamic> json) {
-    final List<dynamic> rawItems = json['items'] as List<dynamic>;
+    final List<dynamic> rawItems =
+        json['items'] as List<dynamic>? ?? <dynamic>[];
 
     return CitiesPageModel(
       items: rawItems
           .map((item) => CityModel.fromJson(item as Map<String, dynamic>))
           .toList(),
-      totalCount: json['totalCount'] as int,
-      pageNumber: json['pageNumber'] as int,
-      pageSize: json['pageSize'] as int,
+      totalCount: json['totalCount'] as int? ?? 0,
+      pageNumber: json['pageNumber'] as int? ?? 1,
+      pageSize: json['pageSize'] as int? ?? rawItems.length,
     );
   }
 }

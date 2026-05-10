@@ -52,4 +52,24 @@ abstract final class ApiConstants {
   }
 
   static const String mosquesByLessonCategory = '$mosques/by-lesson-category';
+
+  static String academyById(int academyId) {
+    return '$academies/$academyId';
+  }
+
+  static String academyImage(int academyId) {
+    return '$academies/$academyId/image';
+  }
+
+  static String favoriteAcademy(int academyId) {
+    return '$academies/$academyId/favorite';
+  }
+
+  static const String favoriteAcademies = '$academies/favorites';
+
+  static const String academiesByLocation = '$academies/by-location';
+
+  static const String prayerTimesToday = '/api/prayer-times/today';
+
+  static const String changePassword = '/api/auth/change-password';
 }

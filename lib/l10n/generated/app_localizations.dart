@@ -1501,7 +1501,7 @@ abstract class AppLocalizations {
   /// No description provided for @noCitiesFound.
   ///
   /// In en, this message translates to:
-  /// **'No matching cities found'**
+  /// **'No cities available'**
   String get noCitiesFound;
 
   /// No description provided for @promoteUserToTeacher.
@@ -1665,6 +1665,168 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Select category'**
   String get selectCategory;
+
+  /// No description provided for @noAcademiesFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No academies found'**
+  String get noAcademiesFound;
+
+  /// No description provided for @addAcademy.
+  ///
+  /// In en, this message translates to:
+  /// **'Add academy'**
+  String get addAcademy;
+
+  /// No description provided for @academyLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Academy link'**
+  String get academyLink;
+
+  /// No description provided for @academyUpdatedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Academy updated successfully'**
+  String get academyUpdatedSuccessfully;
+
+  /// No description provided for @academyCreatedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Academy created successfully'**
+  String get academyCreatedSuccessfully;
+
+  /// No description provided for @academyDeletedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Academy deleted successfully'**
+  String get academyDeletedSuccessfully;
+
+  /// No description provided for @deleteAcademy.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Academy'**
+  String get deleteAcademy;
+
+  /// No description provided for @deleteAcademyConfirmation.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete this academy?'**
+  String get deleteAcademyConfirmation;
+
+  /// No description provided for @unexpectedError.
+  ///
+  /// In en, this message translates to:
+  /// **'An unexpected error occurred'**
+  String get unexpectedError;
+
+  /// No description provided for @prayerTimes.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer times'**
+  String get prayerTimes;
+
+  /// No description provided for @viewTodayPrayerTimes.
+  ///
+  /// In en, this message translates to:
+  /// **'View today’s prayer times'**
+  String get viewTodayPrayerTimes;
+
+  /// No description provided for @nextPrayer.
+  ///
+  /// In en, this message translates to:
+  /// **'Next prayer'**
+  String get nextPrayer;
+
+  /// No description provided for @chooseCity.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose city'**
+  String get chooseCity;
+
+  /// No description provided for @chooseCityToShowPrayerTimes.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a city to show prayer times'**
+  String get chooseCityToShowPrayerTimes;
+
+  /// No description provided for @noPrayerTimesFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No prayer times available'**
+  String get noPrayerTimesFound;
+
+  /// No description provided for @fajr.
+  ///
+  /// In en, this message translates to:
+  /// **'Fajr'**
+  String get fajr;
+
+  /// No description provided for @sunrise.
+  ///
+  /// In en, this message translates to:
+  /// **'Sunrise'**
+  String get sunrise;
+
+  /// No description provided for @dhuhr.
+  ///
+  /// In en, this message translates to:
+  /// **'Dhuhr'**
+  String get dhuhr;
+
+  /// No description provided for @asr.
+  ///
+  /// In en, this message translates to:
+  /// **'Asr'**
+  String get asr;
+
+  /// No description provided for @maghrib.
+  ///
+  /// In en, this message translates to:
+  /// **'Maghrib'**
+  String get maghrib;
+
+  /// No description provided for @isha.
+  ///
+  /// In en, this message translates to:
+  /// **'Isha'**
+  String get isha;
+
+  /// No description provided for @currentPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Current password'**
+  String get currentPassword;
+
+  /// No description provided for @enterCurrentPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter current password'**
+  String get enterCurrentPassword;
+
+  /// No description provided for @confirmNewPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm new password'**
+  String get confirmNewPassword;
+
+  /// No description provided for @passwordChangedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Password changed successfully'**
+  String get passwordChangedSuccessfully;
+
+  /// No description provided for @changePasswordDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your current password and the new password to update your login credentials.'**
+  String get changePasswordDescription;
+
+  /// No description provided for @passwordTooShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 6 characters'**
+  String get passwordTooShort;
 }
 
 class _AppLocalizationsDelegate

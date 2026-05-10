@@ -738,7 +738,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get profileImageUrlHint => 'Gib die URL des Profilbilds ein';
 
   @override
-  String get noCitiesFound => 'Keine passenden Städte gefunden';
+  String get noCitiesFound => 'Keine Städte verfügbar';
 
   @override
   String get promoteUserToTeacher => 'Benutzer zum Lehrer befördern';
@@ -828,4 +828,90 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get selectCategory => 'Kategorie auswählen';
+
+  @override
+  String get noAcademiesFound => 'Keine Akademien gefunden';
+
+  @override
+  String get addAcademy => 'Akademie hinzufügen';
+
+  @override
+  String get academyLink => 'Akademie-Link';
+
+  @override
+  String get academyUpdatedSuccessfully => 'Akademie erfolgreich aktualisiert';
+
+  @override
+  String get academyCreatedSuccessfully => 'Akademie erfolgreich erstellt';
+
+  @override
+  String get academyDeletedSuccessfully => 'Akademie erfolgreich gelöscht';
+
+  @override
+  String get deleteAcademy => 'Akademie löschen';
+
+  @override
+  String get deleteAcademyConfirmation =>
+      'Sind Sie sicher, dass Sie diese Akademie löschen möchten?';
+
+  @override
+  String get unexpectedError => 'Ein unerwarteter Fehler ist aufgetreten';
+
+  @override
+  String get prayerTimes => 'Gebetszeiten';
+
+  @override
+  String get viewTodayPrayerTimes => 'Heutige Gebetszeiten anzeigen';
+
+  @override
+  String get nextPrayer => 'Nächstes Gebet';
+
+  @override
+  String get chooseCity => 'Stadt auswählen';
+
+  @override
+  String get chooseCityToShowPrayerTimes =>
+      'Wähle eine Stadt aus, um Gebetszeiten anzuzeigen';
+
+  @override
+  String get noPrayerTimesFound => 'Keine Gebetszeiten verfügbar';
+
+  @override
+  String get fajr => 'Fadschr';
+
+  @override
+  String get sunrise => 'Sonnenaufgang';
+
+  @override
+  String get dhuhr => 'Dhuhr';
+
+  @override
+  String get asr => 'Asr';
+
+  @override
+  String get maghrib => 'Maghrib';
+
+  @override
+  String get isha => 'Ischa';
+
+  @override
+  String get currentPassword => 'Aktuelles Passwort';
+
+  @override
+  String get enterCurrentPassword => 'Aktuelles Passwort eingeben';
+
+  @override
+  String get confirmNewPassword => 'Neues Passwort bestätigen';
+
+  @override
+  String get passwordChangedSuccessfully =>
+      'Passwort wurde erfolgreich geändert';
+
+  @override
+  String get changePasswordDescription =>
+      'Gib dein aktuelles Passwort und das neue Passwort ein, um deine Anmeldedaten zu aktualisieren.';
+
+  @override
+  String get passwordTooShort =>
+      'Das Passwort muss mindestens 6 Zeichen lang sein';
 }

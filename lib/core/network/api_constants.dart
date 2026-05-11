@@ -20,6 +20,16 @@ abstract final class ApiConstants {
     return '$lessons/$lessonId/publish';
   }
 
+  static String attendLesson(int lessonId) {
+    return '$lessons/$lessonId/attend';
+  }
+
+  static String completeLesson(int lessonId) {
+    return '$lessons/$lessonId/complete';
+  }
+
+  static const String myRegisteredLessons = '$lessons/my-registered';
+
   static String unpublishLesson(int lessonId) {
     return '$lessons/$lessonId/unpublish';
   }

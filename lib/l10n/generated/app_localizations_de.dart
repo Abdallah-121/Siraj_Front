@@ -914,4 +914,78 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get passwordTooShort =>
       'Das Passwort muss mindestens 6 Zeichen lang sein';
+
+  @override
+  String get attendLesson => 'Teilnahme markieren';
+
+  @override
+  String get completeLessonAction => 'Als abgeschlossen markieren';
+
+  @override
+  String get lessonAttendedSuccessfully =>
+      'Die Teilnahme an der Lektion wurde erfolgreich markiert';
+
+  @override
+  String get lessonCompletedSuccessfully =>
+      'Die Lektion wurde erfolgreich als abgeschlossen markiert';
+
+  @override
+  String get lessonOverview => 'Lektionsübersicht';
+
+  @override
+  String get lessonInformation => 'Lektionsinformationen';
+
+  @override
+  String get lessonTeacher => 'Lehrer';
+
+  @override
+  String get linkedMosque => 'Verknüpfte Moschee';
+
+  @override
+  String get lessonCategory => 'Kategorie';
+
+  @override
+  String get lessonType => 'Lektionstyp';
+
+  @override
+  String get liveStreaming => 'Live-Streaming';
+
+  @override
+  String get available => 'Verfügbar';
+
+  @override
+  String get notAvailable => 'Nicht verfügbar';
+
+  @override
+  String get notPublished => 'Nicht veröffentlicht';
+
+  @override
+  String get isPublishedLabel => 'Veröffentlicht';
+
+  @override
+  String get fullCourseShort => 'Vollständiger Kurs';
+
+  @override
+  String get singleLessonShort => 'Einzelne Lektion';
+
+  @override
+  String get withLiveStreaming => 'Live-Streaming';
+
+  @override
+  String get withoutLiveStreaming => 'Ohne Live-Streaming';
+
+  @override
+  String get addressLabel => 'Adresse';
+
+  @override
+  String get noLessonDetailsFound => 'Keine Lektionsdetails gefunden';
+
+  @override
+  String get unavailable => 'Nicht verfügbar';
+
+  @override
+  String get lessonDescription => 'Beschreibung';
+
+  @override
+  String get status => 'Status';
 }

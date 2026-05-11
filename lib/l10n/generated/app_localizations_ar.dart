@@ -889,4 +889,76 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get passwordTooShort => 'كلمة المرور يجب أن تكون 6 أحرف على الأقل';
+
+  @override
+  String get attendLesson => 'تسجيل الحضور';
+
+  @override
+  String get completeLessonAction => 'إكمال الدرس';
+
+  @override
+  String get lessonAttendedSuccessfully => 'تم تسجيل حضور الدرس بنجاح';
+
+  @override
+  String get lessonCompletedSuccessfully => 'تم إكمال الدرس بنجاح';
+
+  @override
+  String get lessonOverview => 'نبذة عن الدرس';
+
+  @override
+  String get lessonInformation => 'معلومات الدرس';
+
+  @override
+  String get lessonTeacher => 'المدرّس';
+
+  @override
+  String get linkedMosque => 'المسجد المرتبط';
+
+  @override
+  String get lessonCategory => 'التصنيف';
+
+  @override
+  String get lessonType => 'نوع الدرس';
+
+  @override
+  String get liveStreaming => 'البث المباشر';
+
+  @override
+  String get available => 'متاح';
+
+  @override
+  String get notAvailable => 'غير متاح';
+
+  @override
+  String get notPublished => 'غير منشور';
+
+  @override
+  String get isPublishedLabel => 'منشور';
+
+  @override
+  String get fullCourseShort => 'كامل';
+
+  @override
+  String get singleLessonShort => 'مفرد';
+
+  @override
+  String get withLiveStreaming => 'بث مباشر';
+
+  @override
+  String get withoutLiveStreaming => 'بدون بث';
+
+  @override
+  String get addressLabel => 'العنوان';
+
+  @override
+  String get noLessonDetailsFound => 'لا توجد تفاصيل للدرس';
+
+  @override
+  String get unavailable => 'غير متوفر';
+
+  @override
+  String get lessonDescription => 'الوصف';
+
+  @override
+  String get status => 'الحالة';
 }

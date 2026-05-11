@@ -74,14 +74,18 @@ import 'package:seraj/features/lessons/data/datasources/lessons_remote_datasourc
 import 'package:seraj/features/lessons/data/datasources/lessons_remote_datasource_impl.dart';
 import 'package:seraj/features/lessons/data/repositories/lessons_repositoryI_impl.dart';
 import 'package:seraj/features/lessons/domain/repositories/lessons_repository.dart';
+import 'package:seraj/features/lessons/domain/usecases/attend_lesson_usecase.dart';
+import 'package:seraj/features/lessons/domain/usecases/complete_lesson_usecase.dart';
 import 'package:seraj/features/lessons/domain/usecases/create_lesson_usecase.dart';
 import 'package:seraj/features/lessons/domain/usecases/get_lesson_detail_usecase.dart';
 import 'package:seraj/features/lessons/domain/usecases/get_lessons_usecase.dart';
+import 'package:seraj/features/lessons/domain/usecases/get_my_registered_lessons_usecase.dart';
 import 'package:seraj/features/lessons/domain/usecases/publish_lesson_usecase.dart';
 import 'package:seraj/features/lessons/domain/usecases/unpublish_lesson_usecase.dart';
 import 'package:seraj/features/lessons/presentation/cubit/create_lesson_cubit.dart';
 import 'package:seraj/features/lessons/presentation/cubit/lesson_detail_cubit.dart';
 import 'package:seraj/features/lessons/presentation/cubit/lessons_cubit.dart';
+import 'package:seraj/features/lessons/presentation/cubit/registered_lessons_cubit.dart';
 
 import 'package:seraj/features/location/data/datasources/location_remote_data_source.dart';
 import 'package:seraj/features/location/data/datasources/location_remote_data_source_impl.dart';
@@ -380,8 +384,28 @@ Future<void> initDependencies() async {
 
   sl.registerFactory<CreateLessonCubit>(() => CreateLessonCubit(sl()));
 
-  sl.registerFactory<LessonDetailCubit>(() => LessonDetailCubit(sl()));
+  sl.registerLazySingleton<AttendLessonUseCase>(
+    () => AttendLessonUseCase(sl()),
+  );
 
+  sl.registerLazySingleton<CompleteLessonUseCase>(
+    () => CompleteLessonUseCase(sl()),
+  );
+
+  sl.registerLazySingleton<GetMyRegisteredLessonsUseCase>(
+    () => GetMyRegisteredLessonsUseCase(sl()),
+  );
+
+  sl.registerFactory<RegisteredLessonsCubit>(
+    () => RegisteredLessonsCubit(sl()),
+  );
+  sl.registerFactory<LessonDetailCubit>(
+    () => LessonDetailCubit(
+      getLessonDetailUseCase: sl(),
+      attendLessonUseCase: sl(),
+      completeLessonUseCase: sl(),
+    ),
+  );
   // Invitation Codes
   sl.registerLazySingleton<InvitationCodesRemoteDataSource>(
     () => InvitationCodesRemoteDataSourceImpl(sl()),

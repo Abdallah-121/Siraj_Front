@@ -12,6 +12,7 @@ class CourseProgressCard extends StatelessWidget {
   final String timeLine;
   final double progress;
   final VoidCallback? onTap;
+  final Widget? trailingBadge;
 
   const CourseProgressCard({
     super.key,
@@ -20,6 +21,7 @@ class CourseProgressCard extends StatelessWidget {
     required this.timeLine,
     required this.progress,
     this.onTap,
+    this.trailingBadge,
   });
 
   @override
@@ -41,17 +43,17 @@ class CourseProgressCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    const Icon(
-                      Icons.more_horiz_rounded,
-                      color: AppColors.textSecondary,
-                      size: 20,
-                    ),
+                    if (trailingBadge != null) trailingBadge!,
                     const Spacer(),
-                    Text(
-                      title,
-                      textAlign: TextAlign.end,
-                      style: AppTextStyles.titleMedium.copyWith(
-                        fontWeight: FontWeight.w600,
+                    Flexible(
+                      child: Text(
+                        title,
+                        textAlign: TextAlign.end,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextStyles.titleMedium.copyWith(
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
                   ],
@@ -60,6 +62,8 @@ class CourseProgressCard extends StatelessWidget {
                 Text(
                   teacherLine,
                   textAlign: TextAlign.end,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: AppTextStyles.bodyMedium.copyWith(
                     color: AppColors.textSecondary,
                   ),
@@ -68,13 +72,15 @@ class CourseProgressCard extends StatelessWidget {
                 Text(
                   timeLine,
                   textAlign: TextAlign.end,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: AppTextStyles.bodyMedium.copyWith(
                     color: AppColors.textSecondary,
                   ),
                 ),
                 const SizedBox(height: AppSpacing.md),
                 LinearProgressIndicator(
-                  value: progress,
+                  value: progress.clamp(0.0, 1.0),
                   minHeight: 4,
                   backgroundColor: AppColors.border,
                   color: AppColors.success,
@@ -88,8 +94,13 @@ class CourseProgressCard extends StatelessWidget {
             width: 108,
             height: 108,
             decoration: BoxDecoration(
-              color: AppColors.border,
+              color: AppColors.primary.withValues(alpha: 0.08),
               borderRadius: BorderRadius.circular(AppRadius.lg),
+            ),
+            child: const Icon(
+              Icons.menu_book_rounded,
+              color: AppColors.primary,
+              size: 42,
             ),
           ),
         ],

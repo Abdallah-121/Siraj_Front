@@ -897,4 +897,78 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get passwordTooShort => 'Password must be at least 6 characters';
+
+  @override
+  String get attendLesson => 'Mark as attending';
+
+  @override
+  String get completeLessonAction => 'Mark as completed';
+
+  @override
+  String get lessonAttendedSuccessfully =>
+      'Lesson attendance was marked successfully';
+
+  @override
+  String get lessonCompletedSuccessfully =>
+      'Lesson was marked as completed successfully';
+
+  @override
+  String get lessonOverview => 'Lesson overview';
+
+  @override
+  String get lessonInformation => 'Lesson information';
+
+  @override
+  String get lessonTeacher => 'Teacher';
+
+  @override
+  String get linkedMosque => 'Linked mosque';
+
+  @override
+  String get lessonCategory => 'Category';
+
+  @override
+  String get lessonType => 'Lesson type';
+
+  @override
+  String get liveStreaming => 'Live streaming';
+
+  @override
+  String get available => 'Available';
+
+  @override
+  String get notAvailable => 'Not available';
+
+  @override
+  String get notPublished => 'Not published';
+
+  @override
+  String get isPublishedLabel => 'Published';
+
+  @override
+  String get fullCourseShort => 'Full course';
+
+  @override
+  String get singleLessonShort => 'Single lesson';
+
+  @override
+  String get withLiveStreaming => 'Live streaming';
+
+  @override
+  String get withoutLiveStreaming => 'No live streaming';
+
+  @override
+  String get addressLabel => 'Address';
+
+  @override
+  String get noLessonDetailsFound => 'No lesson details found';
+
+  @override
+  String get unavailable => 'Unavailable';
+
+  @override
+  String get lessonDescription => 'Description';
+
+  @override
+  String get status => 'Status';
 }

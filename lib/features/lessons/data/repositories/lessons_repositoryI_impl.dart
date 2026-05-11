@@ -5,7 +5,9 @@ import 'package:seraj/features/lessons/data/datasources/lessons_remote_datasourc
 import 'package:seraj/features/lessons/data/model/create_lesson_request_model.dart';
 import 'package:seraj/features/lessons/domain/entities/lesson_detail_entity.dart';
 import 'package:seraj/features/lessons/domain/entities/lesson_entity.dart';
+import 'package:seraj/features/lessons/domain/entities/registered_lessons_page_entity.dart';
 import 'package:seraj/features/lessons/domain/usecases/create_lesson_usecase.dart';
+import 'package:seraj/features/lessons/domain/usecases/get_my_registered_lessons_usecase.dart';
 
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/error/failures.dart';
@@ -96,6 +98,50 @@ class LessonsRepositoryImpl implements LessonsRepository {
   Future<Either<Failure, LessonEntity>> unpublishLesson(int lessonId) async {
     try {
       final result = await remoteDataSource.unpublishLesson(lessonId);
+      return Right(result);
+    } on NetworkException catch (e) {
+      return Left(NetworkFailure(e.message));
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    } on UnexpectedException catch (e) {
+      return Left(UnexpectedFailure(e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, Unit>> attendLesson(int lessonId) async {
+    try {
+      await remoteDataSource.attendLesson(lessonId);
+      return const Right(unit);
+    } on NetworkException catch (e) {
+      return Left(NetworkFailure(e.message));
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    } on UnexpectedException catch (e) {
+      return Left(UnexpectedFailure(e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, Unit>> completeLesson(int lessonId) async {
+    try {
+      await remoteDataSource.completeLesson(lessonId);
+      return const Right(unit);
+    } on NetworkException catch (e) {
+      return Left(NetworkFailure(e.message));
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    } on UnexpectedException catch (e) {
+      return Left(UnexpectedFailure(e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, RegisteredLessonsPageEntity>> getMyRegisteredLessons(
+    GetMyRegisteredLessonsParams params,
+  ) async {
+    try {
+      final result = await remoteDataSource.getMyRegisteredLessons(params);
       return Right(result);
     } on NetworkException catch (e) {
       return Left(NetworkFailure(e.message));

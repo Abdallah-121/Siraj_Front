@@ -1827,6 +1827,150 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Password must be at least 6 characters'**
   String get passwordTooShort;
+
+  /// No description provided for @attendLesson.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as attending'**
+  String get attendLesson;
+
+  /// No description provided for @completeLessonAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as completed'**
+  String get completeLessonAction;
+
+  /// No description provided for @lessonAttendedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Lesson attendance was marked successfully'**
+  String get lessonAttendedSuccessfully;
+
+  /// No description provided for @lessonCompletedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Lesson was marked as completed successfully'**
+  String get lessonCompletedSuccessfully;
+
+  /// No description provided for @lessonOverview.
+  ///
+  /// In en, this message translates to:
+  /// **'Lesson overview'**
+  String get lessonOverview;
+
+  /// No description provided for @lessonInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Lesson information'**
+  String get lessonInformation;
+
+  /// No description provided for @lessonTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher'**
+  String get lessonTeacher;
+
+  /// No description provided for @linkedMosque.
+  ///
+  /// In en, this message translates to:
+  /// **'Linked mosque'**
+  String get linkedMosque;
+
+  /// No description provided for @lessonCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get lessonCategory;
+
+  /// No description provided for @lessonType.
+  ///
+  /// In en, this message translates to:
+  /// **'Lesson type'**
+  String get lessonType;
+
+  /// No description provided for @liveStreaming.
+  ///
+  /// In en, this message translates to:
+  /// **'Live streaming'**
+  String get liveStreaming;
+
+  /// No description provided for @available.
+  ///
+  /// In en, this message translates to:
+  /// **'Available'**
+  String get available;
+
+  /// No description provided for @notAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Not available'**
+  String get notAvailable;
+
+  /// No description provided for @notPublished.
+  ///
+  /// In en, this message translates to:
+  /// **'Not published'**
+  String get notPublished;
+
+  /// No description provided for @isPublishedLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Published'**
+  String get isPublishedLabel;
+
+  /// No description provided for @fullCourseShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Full course'**
+  String get fullCourseShort;
+
+  /// No description provided for @singleLessonShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Single lesson'**
+  String get singleLessonShort;
+
+  /// No description provided for @withLiveStreaming.
+  ///
+  /// In en, this message translates to:
+  /// **'Live streaming'**
+  String get withLiveStreaming;
+
+  /// No description provided for @withoutLiveStreaming.
+  ///
+  /// In en, this message translates to:
+  /// **'No live streaming'**
+  String get withoutLiveStreaming;
+
+  /// No description provided for @addressLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Address'**
+  String get addressLabel;
+
+  /// No description provided for @noLessonDetailsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No lesson details found'**
+  String get noLessonDetailsFound;
+
+  /// No description provided for @unavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Unavailable'**
+  String get unavailable;
+
+  /// No description provided for @lessonDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get lessonDescription;
+
+  /// No description provided for @status.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get status;
 }
 
 class _AppLocalizationsDelegate

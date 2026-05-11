@@ -5,6 +5,10 @@ import 'package:seraj/features/lessons/data/model/create_lesson_request_model.da
 import 'package:seraj/features/lessons/data/model/lesson_detail_model.dart';
 import 'package:seraj/features/lessons/data/model/lesson_model.dart';
 import 'package:seraj/features/lessons/data/model/lessons_page_model.dart';
+import 'package:seraj/features/lessons/data/model/registered_lessons_page_model.dart';
+import 'package:seraj/features/lessons/data/model/user_lesson_model.dart';
+import 'package:seraj/features/lessons/data/model/user_lessons_page_model.dart';
+import 'package:seraj/features/lessons/domain/usecases/get_my_registered_lessons_usecase.dart';
 
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/network/api_constants.dart';
@@ -191,5 +195,103 @@ class LessonsRemoteDataSourceImpl implements LessonsRemoteDataSource {
       message: serverMessage,
       statusCode: e.response?.statusCode,
     );
+  }
+
+  @override
+  Future<UserLessonModel> attendLesson(int lessonId) async {
+    try {
+      final response = await dioClient.dio.post(
+        ApiConstants.attendLesson(lessonId),
+      );
+
+      return _parseUserLessonActionResponse(
+        response,
+        fallbackMessage: 'Attend lesson failed',
+      );
+    } on DioException catch (e) {
+      _throwMappedDioException(e, fallbackMessage: 'Attend lesson failed');
+    } catch (e, s) {
+      debugPrint('ATTEND LESSON ERROR: $e');
+      debugPrint('$s');
+      throw UnexpectedException(message: 'Unexpected error');
+    }
+  }
+
+  @override
+  Future<UserLessonModel> completeLesson(int lessonId) async {
+    try {
+      final response = await dioClient.dio.post(
+        ApiConstants.completeLesson(lessonId),
+      );
+
+      return _parseUserLessonActionResponse(
+        response,
+        fallbackMessage: 'Complete lesson failed',
+      );
+    } on DioException catch (e) {
+      _throwMappedDioException(e, fallbackMessage: 'Complete lesson failed');
+    } catch (e, s) {
+      debugPrint('COMPLETE LESSON ERROR: $e');
+      debugPrint('$s');
+      throw UnexpectedException(message: 'Unexpected error');
+    }
+  }
+
+  @override
+  @override
+  Future<RegisteredLessonsPageModel> getMyRegisteredLessons(
+    GetMyRegisteredLessonsParams params,
+  ) async {
+    try {
+      final response = await dioClient.dio.get(
+        ApiConstants.myRegisteredLessons,
+        queryParameters: {
+          if (params.status != null) 'Status': params.status,
+          'PageNumber': params.pageNumber,
+          'PageSize': params.pageSize,
+        },
+      );
+
+      final responseMap = response.data as Map<String, dynamic>;
+      final bool isSuccess = responseMap['isSuccess'] as bool? ?? false;
+
+      if (!isSuccess) {
+        throw ServerException(
+          message:
+              responseMap['message'] as String? ?? 'Registered lessons failed',
+          statusCode: response.statusCode,
+        );
+      }
+
+      final data = responseMap['data'] as Map<String, dynamic>;
+      return RegisteredLessonsPageModel.fromJson(data);
+    } on DioException catch (e) {
+      _throwMappedDioException(
+        e,
+        fallbackMessage: 'Registered lessons request failed',
+      );
+    } catch (e, s) {
+      debugPrint('REGISTERED LESSONS ERROR: $e');
+      debugPrint('$s');
+      throw UnexpectedException(message: 'Unexpected error');
+    }
+  }
+
+  UserLessonModel _parseUserLessonActionResponse(
+    Response<dynamic> response, {
+    required String fallbackMessage,
+  }) {
+    final responseMap = response.data as Map<String, dynamic>;
+    final bool isSuccess = responseMap['isSuccess'] as bool? ?? false;
+
+    if (!isSuccess) {
+      throw ServerException(
+        message: responseMap['message'] as String? ?? fallbackMessage,
+        statusCode: response.statusCode,
+      );
+    }
+
+    final data = responseMap['data'] as Map<String, dynamic>;
+    return UserLessonModel.fromJson(data);
   }
 }

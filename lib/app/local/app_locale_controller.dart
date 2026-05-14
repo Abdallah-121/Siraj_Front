@@ -14,7 +14,17 @@ class AppLocaleController extends ChangeNotifier {
   }
 
   void toggleLocale() {
-    _locale = isArabic ? const Locale('en') : const Locale('ar');
+    switch (_locale.languageCode) {
+      case 'ar':
+        _locale = const Locale('en');
+        break;
+      case 'en':
+        _locale = const Locale('de');
+        break;
+      default:
+        _locale = const Locale('ar');
+        break;
+    }
     notifyListeners();
   }
 }

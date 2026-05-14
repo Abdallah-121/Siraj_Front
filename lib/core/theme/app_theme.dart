@@ -137,10 +137,21 @@ abstract final class AppTheme {
       iconTheme: const IconThemeData(color: AppColors.iconPrimary, size: 24),
       snackBarTheme: SnackBarThemeData(
         behavior: SnackBarBehavior.floating,
-        backgroundColor: AppColors.transparent,
-        elevation: 0,
+        backgroundColor: AppColors.textPrimary,
+        elevation: 8,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppRadius.lg),
+        ),
+        contentTextStyle: AppTextStyles.bodyMedium.copyWith(
+          color: AppColors.white,
+          fontWeight: FontWeight.w600,
+          height: 1.4,
+        ),
+        insetPadding: const EdgeInsets.fromLTRB(
+          AppSpacing.lg,
+          0,
+          AppSpacing.lg,
+          88,
         ),
       ),
     );

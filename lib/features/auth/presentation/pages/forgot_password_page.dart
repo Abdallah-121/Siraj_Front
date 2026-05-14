@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../../../../app/router/route_names.dart';
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/responsive/responsive_constraints.dart';
 import '../../../../core/responsive/responsive_wrapper.dart';
-import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/context_extensions.dart';
 import '../../../../core/widgets/app_gap.dart';
 import '../../../../core/widgets/app_scaffold.dart';
+import '../widgets/auth_flow_actions.dart';
 import '../widgets/auth_logo_panel.dart';
 import '../widgets/auth_title_text.dart';
 import '../widgets/forgot_password_form.dart';
@@ -19,7 +20,9 @@ class ForgotPasswordPage extends StatelessWidget {
     Navigator.pop(context);
   }
 
-  void _onNextPressed(BuildContext context) {}
+  void _onNextPressed(BuildContext context) {
+    Navigator.pushReplacementNamed(context, RouteNames.login);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,13 +56,13 @@ class ForgotPasswordPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   AuthTitleText(
-                    title: context.l10n.forgotPassword,
+                    title: context.l10n.forgotPasswordTitle,
                     textAlign: TextAlign.center,
                   ),
                   AppGap.v32,
                   const ForgotPasswordForm(),
                   const Spacer(),
-                  _ForgotPasswordActions(
+                  AuthFlowActions(
                     onBackPressed: () => _onBackPressed(context),
                     onNextPressed: () => _onNextPressed(context),
                   ),
@@ -68,75 +71,6 @@ class ForgotPasswordPage extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _ForgotPasswordActions extends StatelessWidget {
-  final VoidCallback onBackPressed;
-  final VoidCallback onNextPressed;
-
-  const _ForgotPasswordActions({
-    required this.onBackPressed,
-    required this.onNextPressed,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: AppSpacing.lg),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          _ActionCircleButton(
-            onPressed: onBackPressed,
-            icon: Icons.arrow_back_rounded,
-            isFilled: false,
-          ),
-          _ActionCircleButton(
-            onPressed: onNextPressed,
-            icon: Icons.arrow_forward_rounded,
-            isFilled: true,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _ActionCircleButton extends StatelessWidget {
-  final VoidCallback onPressed;
-  final IconData icon;
-  final bool isFilled;
-
-  const _ActionCircleButton({
-    required this.onPressed,
-    required this.icon,
-    required this.isFilled,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final Color backgroundColor = isFilled
-        ? AppColors.primary
-        : AppColors.transparent;
-    final Color borderColor = isFilled ? AppColors.primary : AppColors.primary;
-    final Color iconColor = isFilled ? AppColors.white : AppColors.primary;
-
-    return SizedBox(
-      width: 58,
-      height: 58,
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          color: backgroundColor,
-          shape: BoxShape.circle,
-          border: Border.all(color: borderColor, width: 1.4),
-        ),
-        child: IconButton(
-          onPressed: onPressed,
-          icon: Icon(icon, color: iconColor, size: 28),
-        ),
       ),
     );
   }
